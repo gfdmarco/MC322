@@ -9,7 +9,8 @@ public class CartaDano {
         this.dano = dano;
     }
     
-    public void usar(Inimigo inimigo, int dano){
-        inimigo.receberDano(dano);
+    public void usar(Inimigo nome, int dano){
+        nome.receberDano(dano);
+        System.out.println(this.nome + " deu " + dano + " de dano na(o) " + nome);
     }
 }

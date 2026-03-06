@@ -9,7 +9,8 @@ public class CartaEscudo {
         this.escudo = escudo;
     }
 
-    public void usar(Heroi heroi, int escudo){
+    public void usar(Heroi heroi, int escudo, Heroi nome){
         heroi.ganharEscudo(escudo);
+        System.out.println(this.nome + " deu " + escudo + " de escudo para o(a) " + nome);
     }
 }

@@ -11,6 +11,8 @@ public class Inimigo {
 
     public void receberDano(int dano){
         this.vida -= dano;
+        System.out.println(nome + " recebeu " + dano + " de dano");
+        System.out.println(nome + " possui" + vida + "de vida");
     }
 
     public void atacar(Heroi heroi, int dano){
@@ -21,7 +23,7 @@ public class Inimigo {
         if (inimigo.vida > 0){
             return true;
         }
-        System.out.println("Vitória do herói! Parabéns!");
+        System.out.println("Parabéns bixão! Você conseguiu fugir dos perigos noturnos!");
         return false;
     }
 }

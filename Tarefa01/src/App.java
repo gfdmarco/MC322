@@ -6,9 +6,9 @@ public class App {
         String leitura;
         boolean turno_heroi = true; //variável que determina se é a vez do herói jogar
         Scanner entrada = new Scanner(System.in);
-        System.out.println("Seja bem vindo ao Fuga dos Perigos Noturnos - Versão Unicamp!");
+        System.out.println("Seja bem vindo ao 'Fuga dos Perigos Noturnos' - Versão Unicamp!");
         System.out.println("Aqui, sua missão é enfrentar a tentação das festas universitárias! Se proteja!")
-        System.out.println("Vamos criar o seu calouro! Para isso, crie um nome pro bixão: ");
+        System.out.println("Vamos criar o seu calouro! Para isso, dê um nome ao bixão: ");
         leitura = entrada.next();
 
         //INICIALIZAÇÃO
