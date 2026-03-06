@@ -10,7 +10,22 @@ public class Inimigo {
     }
 
     public void receberDano(int dano){
-        this.vida -= dano;
+        if (this.escudo > 0){
+            if (dano >= this.escudo){
+                this.vida -= (dano - this.escudo);
+                this.escudo = 0;
+            }
+            else {
+                this.escudo -= dano;
+            }
+        }
+        else {
+            this.vida -= dano;
+        }
+    }
+
+    public void ganharEscudo(int escudo){
+        this.escudo += escudo;
     }
 
     public void atacar(Heroi heroi, int dano){
@@ -23,5 +38,17 @@ public class Inimigo {
         }
         System.out.println("Vitória do herói! Parabéns!");
         return false;
+    }
+
+    public String pegaNome(Inimigo inimigo){
+        return nome;
+    }
+
+    public int qtdVida(Inimigo inimigo){
+        return vida;
+    }
+
+    public int qtdEscudo(Inimigo inimigo){
+        return escudo;
     }
 }

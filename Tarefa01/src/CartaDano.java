@@ -9,7 +9,26 @@ public class CartaDano {
         this.dano = dano;
     }
     
-    public void usar(Inimigo inimigo, int dano){
-        inimigo.receberDano(dano);
+    public void usar(Heroi heroi, Inimigo inimigo){
+        //método de uso de carta para o herói
+        if (heroi.qtdEnergia(heroi) - this.custo < 0){
+            System.out.println("Energia insuficiente! Escolha outra!");
+        }
+        else {
+            heroi.consomeEnergia(this.custo);
+            inimigo.receberDano(this.dano);
+        }
+    }
+    
+    public String pegaNome(CartaDano carta){
+        return nome;
+    }
+
+    public int qtdCusto(CartaDano carta){
+        return custo;
+    }
+
+    public int qtdDano(CartaDano carta){
+        return dano;
     }
 }

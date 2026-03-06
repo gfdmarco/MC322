@@ -8,11 +8,13 @@ public class Heroi {
         this.nome = nome;
         this.vida = vida;
         this.escudo = escudo;
+        this.energia = 4; //energia máxima (inicial)
     }
 
     public void receberDano(int dano){
         if (this.escudo > 0){
             if (dano >= this.escudo){
+                this.vida -= (dano - this.escudo);
                 this.escudo = 0;
             }
             else {
@@ -28,7 +30,7 @@ public class Heroi {
         this.escudo += escudo;
     }
 
-    public void restaurarEscudo(int escudo){
+    public void restaurarEscudo(){
         //Método para zerar o escudo do herói ao trocar turnos
         this.escudo = 0;
     }
@@ -37,16 +39,32 @@ public class Heroi {
         if (heroi.vida > 0){
             return true;
         }
-        System.out.println("Vitória do inimigo! Não sobrou nada...");
+        System.out.println("Vitória do inimigo! Meu Deus! Não sobrou nada...");
         return false;
     }
 
-    public void restauraEnergia(){
+    public void restaurarEnergia(){
         this.energia = 4;
     }
 
     //toda vez que uma carta é utilizada, consome energia
     public void consomeEnergia(int custo_carta){
         this.energia -= custo_carta;
+    }
+
+    public String pegaNome(Heroi heroi){
+        return nome;
+    }
+
+    public int qtdEnergia(Heroi heroi){
+        return energia;
+    }
+
+    public int qtdVida(Heroi heroi){
+        return vida;
+    }
+
+    public int qtdEscudo(Heroi heroi){
+        return escudo;
     }
 }
