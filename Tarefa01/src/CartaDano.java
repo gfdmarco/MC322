@@ -17,6 +17,7 @@ public class CartaDano {
         else {
             heroi.consomeEnergia(this.custo);
             inimigo.receberDano(this.dano);
+            System.out.println("O calouro " + this.nome + " causou " + this.dano + " no(a) " + inimigo.pegaNome(inimigo));
         }
     }
     

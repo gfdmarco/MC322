@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
     public static void menuInicial(Heroi heroi, Inimigo inimigo){
-        System.out.println("Calouro " + heroi.pegaNome(heroi) + " contra o(a) " + inimigo.pegaNome(inimigo));
+        System.out.println("Calouro " + heroi.pegaNome(heroi) + " VS " + inimigo.pegaNome(inimigo));
         System.out.println("------------------------------------------------------------------------------------");
         System.out.println("Calouro '" + heroi.pegaNome(heroi) + "' - Vida: " + heroi.qtdVida(heroi) + "/80");
         if (heroi.qtdEscudo(heroi) > 0){

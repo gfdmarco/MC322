@@ -91,21 +91,21 @@ public class App {
                     inimigo.atacar(heroi, cartadano1_in.qtdDano(cartadano1_in));
 
                     System.out.println(inimigo.pegaNome(inimigo) + " atacou causando " + 
-                    cartadano1_in.qtdDano(cartadano1_in) + " no calouro!");
+                    cartadano1_in.qtdDano(cartadano1_in) + " de dano no calouro!");
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 1){
                     inimigo.atacar(heroi, cartadano2_in.qtdDano(cartadano2_in));
 
                     System.out.println(inimigo.pegaNome(inimigo) + " atacou causando " + 
-                    cartadano2_in.qtdDano(cartadano2_in) + " no calouro!");
+                    cartadano2_in.qtdDano(cartadano2_in) + " de dano no calouro!");
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 2){
                     inimigo.atacar(heroi, cartadano3_in.qtdDano(cartadano3_in));
 
                     System.out.println(inimigo.pegaNome(inimigo) + " atacou causando " + 
-                    cartadano3_in.qtdDano(cartadano3_in) + " no calouro!");
+                    cartadano3_in.qtdDano(cartadano3_in) + " de dano no calouro!");
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 3){

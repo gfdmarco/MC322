@@ -36,7 +36,7 @@ public class Inimigo {
         if (inimigo.vida > 0){
             return true;
         }
-        System.out.println("Vitória do herói! Parabéns!");
+        System.out.println("Parabéns bixão! Você conseguiu fugir dos perigos noturnos!");
         return false;
     }
 
