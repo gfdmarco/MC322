@@ -24,6 +24,11 @@ public class Inimigo {
         }
     }
 
+    public void restaurarEscudo(){
+        //Método para zerar o escudo do inimigo ao trocar turnos
+        this.escudo = 0;
+    }
+
     public void ganharEscudo(int escudo){
         this.escudo += escudo;
     }
@@ -36,7 +41,8 @@ public class Inimigo {
         if (inimigo.vida > 0){
             return true;
         }
-        System.out.println("Parabéns bixão! Você conseguiu fugir dos perigos noturnos!");
+        System.out.println("Parabens bixao! Voce conseguiu acabar com o hype da festa e manteve sua sanidade!");
+        System.out.println();
         return false;
     }
 
