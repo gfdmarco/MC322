@@ -40,8 +40,8 @@ E de maneira simples mas concreta, esse é o modus operandi do jogo, esperamos q
 
 ## COMO COMPILAR:
 
-No terminal, acesse a pasta src do projeto (Tarefa01) e execute: javac App.java
+Caso esteja na pasta "src" diretamente, no terminal, acesse a pasta src do projeto (Tarefa01) e execute: javac App.java. Após a compilação, execute: java App
 
-após a compilação, execute: java App
+Caso esteja na pasta "Tarefa01" propriamente, execute javac -d bin $(find src -name "App.java") para compular. Para a execução, após a compilação, execute: java -cp bin App.
 
 ## OBS: Certifique-se que ao compilar o usuário está na pasta "src" do projeto.
