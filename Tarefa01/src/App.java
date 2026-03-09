@@ -3,7 +3,6 @@ import java.util.Random;
 
 public class App {
     public static void main(String[] args) {
-        //DÚVIDAS: compra de cartas, mais de uma ação por rodada para o bot
 
         String leitura;
         boolean turno_heroi = true; //variável que determina se é a vez do herói jogar
