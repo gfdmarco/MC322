@@ -1,11 +1,8 @@
-public class CartaDano {
-    private String nome;
-    private int custo;
+public class CartaDano extends Carta{
     private int dano; //atributo extra para saber quanto de dano a carta causa
 
-    public CartaDano(String nome, int custo, int dano){
-        this.nome = nome;
-        this.custo = custo;
+    public CartaDano(String nome, int custo, String descricao, int dano){
+        super(nome, custo, descricao);
         this.dano = dano;
     }
     
@@ -24,14 +21,6 @@ public class CartaDano {
             + inimigo.pegaNome(inimigo) + " com " + this.nome);
             System.out.println();
         }
-    }
-    
-    public String pegaNome(CartaDano carta){
-        return nome;
-    }
-
-    public int qtdCusto(CartaDano carta){
-        return custo;
     }
 
     public int qtdDano(CartaDano carta){
