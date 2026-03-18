@@ -45,6 +45,7 @@ public class Menu {
         //INICIO DO TURNO
         System.out.println();
         System.out.println("SUA VEZ DE JOGAR!");
+        System.out.println("OBS: caso nao tenha energia suficiente para gastar em uma carte, encerre o turno!");
         System.out.println();
         System.out.println("///////////////////////////////////////////////////////////////////////////////////");
         while (heroi.qtdEnergia() > 0 && heroi.estaVivo() && inimigo.estaVivo()){
@@ -52,6 +53,9 @@ public class Menu {
             System.out.println("O bixao tem " + heroi.qtdEnergia() + "/4 de Energia para utilizar");
             System.out.println();
             System.out.println("Mao atual do bixao:");
+            if (mao_heroi.size() == 0){
+                System.out.println("Voce ja utilizou as tres cartas e sobrou energia! Encerre o turno!");
+            }
             for (int i = 0; i < mao_heroi.size(); i++){
                 System.out.println(i + " - " + mao_heroi.get(i).pegaNome() + " - " 
                 + mao_heroi.get(i).pegaDescricao());
