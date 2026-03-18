@@ -8,20 +8,20 @@ public class CartaEscudo extends Carta{
 
     public void usar(Heroi heroi, Inimigo inimigo){
         //método de uso de carta para o herói
-        if (heroi.qtdEnergia(heroi) - this.custo < 0){
+        if (heroi.qtdEnergia() - this.custo < 0){
             System.out.println("Energia insuficiente! Escolha outra!");
         }
         else {
             heroi.consomeEnergia(this.custo);
             heroi.ganharEscudo(this.escudo);
             System.out.println();
-            System.out.println("O calouro " + heroi.pegaNome(heroi) + " ganhou " + this.escudo + " de escudo com " 
+            System.out.println("O calouro " + heroi.pegaNome() + " ganhou " + this.escudo + " de escudo com " 
             + this.nome);
             System.out.println();
         }
     }
 
-    public int qtdEscudo(CartaEscudo carta){
+    public int qtdEscudo(){
         return escudo;
     }
 }

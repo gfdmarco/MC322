@@ -33,22 +33,22 @@ public abstract class Entidade {
         this.escudo += escudo;
     }
 
-    public boolean estaVivo(Entidade entidade){
-        if (entidade.vida > 0){
+    public boolean estaVivo(){
+        if (vida > 0){
             return true;
         }
         return false;
     }
 
-    public String pegaNome(Entidade entidade){
+    public String pegaNome(){
         return nome;
     }
 
-    public int qtdVida(Entidade entidade){
+    public int qtdVida(){
         return vida;
     }
 
-    public int qtdEscudo(Entidade entidade){
+    public int qtdEscudo(){
         return escudo;
     }
 }

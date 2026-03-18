@@ -8,7 +8,7 @@ public class CartaDano extends Carta{
     
     public void usar(Heroi heroi, Inimigo inimigo){
         //método de uso de carta para o herói
-        if (heroi.qtdEnergia(heroi) - this.custo < 0){
+        if (heroi.qtdEnergia() - this.custo < 0){
             System.out.println();
             System.out.println("ERRO: Energia insuficiente! Escolha outra!");
             System.out.println();
@@ -17,13 +17,13 @@ public class CartaDano extends Carta{
             heroi.consomeEnergia(this.custo);
             inimigo.receberDano(this.dano);
             System.out.println();
-            System.out.println("O calouro " + heroi.pegaNome(heroi) + " causou " + this.dano + " de dano no(a) " 
-            + inimigo.pegaNome(inimigo) + " com " + this.nome);
+            System.out.println("O calouro " + heroi.pegaNome() + " causou " + this.dano + " de dano no(a) " 
+            + inimigo.pegaNome() + " com " + this.nome);
             System.out.println();
         }
     }
 
-    public int qtdDano(CartaDano carta){
+    public int qtdDano(){
         return dano;
     }
 }

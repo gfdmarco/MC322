@@ -11,15 +11,15 @@ public abstract class Carta {
     
     public abstract void usar(Heroi heroi, Inimigo inimigo);
     
-    public String pegaNome(Carta carta){
+    public String pegaNome(){
         return nome;
     }
 
-    public String pegaDescricao(Carta carta){
+    public String pegaDescricao(){
         return descricao;
     }
 
-    public int qtdCusto(Carta carta){
+    public int qtdCusto(){
         return custo;
     }
 }

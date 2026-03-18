@@ -15,7 +15,7 @@ public class Heroi extends Entidade {
         this.energia -= custo_carta;
     }
 
-    public int qtdEnergia(Heroi heroi){
+    public int qtdEnergia(){
         return energia;
     }
 }

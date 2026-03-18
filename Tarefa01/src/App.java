@@ -63,7 +63,7 @@ public class App {
         pilha_compra.add(cartaescudo2);
         Collections.shuffle(pilha_compra);
 
-        while (heroi.estaVivo(heroi) && inimigo.estaVivo(inimigo)){
+        while (heroi.estaVivo() && inimigo.estaVivo()){
             //aqui, geramos um menu de visualização para o jogador com os métodos da classe Menu
             Menu.menuInicial(heroi, inimigo);
 
@@ -72,7 +72,7 @@ public class App {
 
                 //mandar as cartas não utilizadas para a pilha de descarte
                 for (int l = 0; l < mao_heroi.size(); l++){
-                    pilha_descarte.add(mao_heroi.get(l));
+                    pilha_descarte.add(0, mao_heroi.get(l));
                 }
                 mao_heroi.clear();
                 inimigo.restaurarEscudo();
@@ -81,51 +81,51 @@ public class App {
             else { //turno do inimigo
                 //usamos o artifício de random choice para o inimigo realizar uma ação (escolher uma das cinco cartas)
                 Random random2 = new Random();
-                int numCarta = random2.nextInt(5);
+                int numCarta = random2.nextInt( 5);
                 if (numCarta == 0){
-                    inimigo.atacar(heroi, cartadano1_in.qtdDano(cartadano1_in));
+                    inimigo.atacar(heroi, cartadano1_in.qtdDano());
 
                     System.out.println();
-                    System.out.println(inimigo.pegaNome(inimigo) + " atacou com " + cartadano1_in.pegaNome(cartadano1_in) 
-                    + ", causando " + cartadano1_in.qtdDano(cartadano1_in) + " de dano no calouro!");
+                    System.out.println(inimigo.pegaNome() + " atacou com " + cartadano1_in.pegaNome() 
+                    + ", causando " + cartadano1_in.qtdDano() + " de dano no calouro!");
                     System.out.println();
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 1){
-                    inimigo.atacar(heroi, cartadano2_in.qtdDano(cartadano2_in));
+                    inimigo.atacar(heroi, cartadano2_in.qtdDano());
 
                     System.out.println();
-                    System.out.println(inimigo.pegaNome(inimigo) + " atacou com " + cartadano2_in.pegaNome(cartadano2_in) 
-                    + ", causando " + cartadano2_in.qtdDano(cartadano2_in) + " de dano no calouro!");
+                    System.out.println(inimigo.pegaNome() + " atacou com " + cartadano2_in.pegaNome() 
+                    + ", causando " + cartadano2_in.qtdDano() + " de dano no calouro!");
                     System.out.println();
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 2){
-                    inimigo.atacar(heroi, cartadano3_in.qtdDano(cartadano3_in));
+                    inimigo.atacar(heroi, cartadano3_in.qtdDano());
 
                     System.out.println();
-                    System.out.println(inimigo.pegaNome(inimigo) + " atacou com " + cartadano3_in.pegaNome(cartadano3_in) 
-                    + ", causando " + cartadano3_in.qtdDano(cartadano3_in) + " de dano no calouro!");
+                    System.out.println(inimigo.pegaNome() + " atacou com " + cartadano3_in.pegaNome() 
+                    + ", causando " + cartadano3_in.qtdDano() + " de dano no calouro!");
                     System.out.println();
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 3){
-                    inimigo.ganharEscudo(cartaescudo1_in.qtdEscudo(cartaescudo1_in));
+                    inimigo.ganharEscudo(cartaescudo1_in.qtdEscudo());
 
                     System.out.println();
-                    System.out.println(inimigo.pegaNome(inimigo) + " se protegeu com " + 
-                    cartaescudo1_in.pegaNome(cartaescudo1_in) + ", concedendo " + 
-                    cartaescudo1_in.qtdEscudo(cartaescudo1_in) + " de escudo!");
+                    System.out.println(inimigo.pegaNome() + " se protegeu com " + 
+                    cartaescudo1_in.pegaNome() + ", concedendo " + 
+                    cartaescudo1_in.qtdEscudo() + " de escudo!");
                     System.out.println();
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 4){
-                    inimigo.ganharEscudo(cartaescudo2_in.qtdEscudo(cartaescudo2_in));
+                    inimigo.ganharEscudo(cartaescudo2_in.qtdEscudo());
 
                     System.out.println();
-                    System.out.println(inimigo.pegaNome(inimigo) + " se protegeu com " + 
-                    cartaescudo2_in.pegaNome(cartaescudo2_in) + ", concedendo " + 
-                    cartaescudo2_in.qtdEscudo(cartaescudo2_in) + " de escudo!");
+                    System.out.println(inimigo.pegaNome() + " se protegeu com " + 
+                    cartaescudo2_in.pegaNome() + ", concedendo " + 
+                    cartaescudo2_in.qtdEscudo() + " de escudo!");
                     System.out.println();
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
@@ -134,11 +134,11 @@ public class App {
                 turno_heroi = true;
             }
         }
-        if (!heroi.estaVivo(heroi)){
+        if (!heroi.estaVivo()){
             System.out.println("Voce perdeu! O bixao enlouqueceu! Nao sobrou nada...");
             System.out.println();
         }
-        else if (!inimigo.estaVivo(inimigo)){
+        else if (!inimigo.estaVivo()){
             System.out.println("Parabens bixao! Voce conseguiu acabar com o hype da festa e manteve sua sanidade!");
             System.out.println();
         }
