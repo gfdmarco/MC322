@@ -1,49 +1,103 @@
 import java.util.Scanner;
+import java.util.Collections;
+import java.util.List;
 
 public class Menu {
     public static void menuInicial(Heroi heroi, Inimigo inimigo){
-        System.out.println("Calouro " + heroi.pegaNome(heroi) + " VS " + inimigo.pegaNome(inimigo));
+        System.out.println("Calouro " + heroi.pegaNome() + " VS " + inimigo.pegaNome());
         System.out.println("------------------------------------------------------------------------------------");
-        System.out.println("Calouro '" + heroi.pegaNome(heroi) + "' - Vida: " + heroi.qtdVida(heroi) + "/80");
-        if (heroi.qtdEscudo(heroi) > 0){
-            System.out.println("Escudo:" + heroi.qtdEscudo(heroi));
+        System.out.println("Calouro '" + heroi.pegaNome() + "' - Sanidade: " + heroi.qtdVida() + "/50");
+        if (heroi.qtdEscudo() > 0){
+            System.out.println("Protecao:" + heroi.qtdEscudo());
         }
-        System.out.println("Festa do(a) '" + inimigo.pegaNome(inimigo) + "' - Vida: " + inimigo.qtdVida(inimigo) + "/40");
-        if (inimigo.qtdEscudo(inimigo) > 0){
-            System.out.println("Escudo:" + inimigo.qtdEscudo(inimigo));
+        System.out.println("Festa do(a) '" + inimigo.pegaNome() + "' - Hype: " + inimigo.qtdVida() + "/40");
+        if (inimigo.qtdEscudo() > 0){
+            System.out.println("Protecao:" + inimigo.qtdEscudo());
         }
         System.out.println("------------------------------------------------------------------------------------");
     }
 
-    public static int menuDecisao(Heroi heroi, Inimigo inimigo, Scanner entrada){
-        System.out.println("O 'bixão' tem " + heroi.qtdEnergia(heroi) + "/4 de Energia para utilizar");
-        System.out.println("Como você deseja reagir ao(à) " + inimigo.pegaNome(inimigo) + "?");
-        System.out.println("1 - Usar Carta de Dano (Atacar)");
-        System.out.println("2 - Usar Carta de Escudo (Proteger)");
-        System.out.println("3 - Encerrar turno");
-        System.out.println("E aí? Como o 'bixão' reage? Digite: ");
-        int leitura = entrada.nextInt();
-        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-        return leitura;
-    }
+   public static void menuJogador(Heroi heroi, Inimigo inimigo, List<Carta> pilha_compra, List<Carta> mao_heroi,
+    List<Carta> pilha_descarte, Scanner entrada){
 
-    public static int menuDano(Heroi heroi, Inimigo inimigo, Scanner entrada, CartaDano carta1, CartaDano carta2, CartaDano carta3){
-        System.out.println("Qual das cartas de dano deseja utilizar?");
-        System.out.println("1 - " + carta1.pegaNome(carta1));
-        System.out.println("2 - " + carta2.pegaNome(carta2));
-        System.out.println("3 - " + carta3.pegaNome(carta3));
-        System.out.println("Escolha: ");
-        int leitura = entrada.nextInt();
-        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-        return leitura;
-    }
+        //ETAPA DE COMPRAS
+        System.out.println("Recebendo novas cartas e compondo nova mao...");
+        System.out.println("OBS: voce recebe sempre 3 cartas por turno!");
+        
+        for (int carta_comprar = 0; carta_comprar < 3; carta_comprar++){
+            //embaralhar
+            if (pilha_compra.size() == 0){
+                Collections.shuffle(pilha_descarte);
+                for (int k = 0; k < pilha_descarte.size(); k++){
+                    pilha_compra.add(0, pilha_descarte.get(k));
+                }
+                pilha_descarte.clear();
+            }
+            if (pilha_compra.size() > 0) {
+                System.out.println();
+                mao_heroi.add(pilha_compra.get(0)); //0 para pegar sempre o topo!
+                System.out.println(pilha_compra.get(0).pegaNome() 
+                + " foi adicionada a mao!");
+                pilha_compra.remove(0);
+            }
+        }
 
-    public static int menuEscudo(Heroi heroi, Inimigo inimigo, Scanner entrada, CartaEscudo carta1, CartaEscudo carta2){
-        System.out.println("Qual das cartas de escudo deseja utilizar?");
-        System.out.println("1 - " + carta1.pegaNome(carta1));
-        System.out.println("2 - " + carta2.pegaNome(carta2));
-        int leitura = entrada.nextInt();
+        //INICIO DO TURNO
+        System.out.println();
+        System.out.println("SUA VEZ DE JOGAR!");
+        System.out.println();
         System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-        return leitura;
-    }
+        while (heroi.qtdEnergia() > 0 && heroi.estaVivo() && inimigo.estaVivo()){
+            Menu.menuInicial(heroi, inimigo);
+            System.out.println("O bixao tem " + heroi.qtdEnergia() + "/4 de Energia para utilizar");
+            System.out.println();
+            System.out.println("Mao atual do bixao:");
+            for (int i = 0; i < mao_heroi.size(); i++){
+                System.out.println(i + " - " + mao_heroi.get(i).pegaNome() + " - " 
+                + mao_heroi.get(i).pegaDescricao());
+            }
+            System.out.println();
+            System.out.println("E ai? Como o(a) " + heroi.pegaNome() + " reage?");
+            System.out.println("1 - Utilizar carta");
+            System.out.println("2 - Encerrar turno");
+            System.out.println("Digite: ");
+            int leitura2 = entrada.nextInt();
+            if (leitura2 == 2){
+                System.out.println("ENCERRANDO TURNO DO JOGADOR...");
+                break;
+            }
+            else if (leitura2 == 1){
+                System.out.println("Digite qual carta deseja utilizar conforme a numeracao dela:");
+                int leitura3 = entrada.nextInt();
+                if (leitura3 >= 0 && leitura3 < mao_heroi.size() && (heroi.qtdEnergia() - mao_heroi.get(leitura3).qtdCusto()) < 0){
+                    System.out.println();
+                    System.out.println("ERRO: nao foi possivel utilizar esta carta (energia insuficiente)!");
+                    System.out.println();
+                }
+                else if (leitura3 >= 0 && leitura3 < mao_heroi.size() && (heroi.qtdEnergia() - mao_heroi.get(leitura3).qtdCusto()) >= 0){
+                    mao_heroi.get(leitura3).usar(heroi, inimigo);
+                    pilha_descarte.add(mao_heroi.get(leitura3));
+                    mao_heroi.remove(leitura3);
+                }
+                else {
+                    System.out.println();
+                    System.out.println("ERRO: numero invalido!");
+                    System.out.println();
+                }
+            }
+            else {
+                System.out.println();
+                System.out.println("ERRO: numero invalido!");
+                System.out.println();
+            }
+        }
+        if (heroi.qtdEnergia() == 0){
+            System.out.println("///////////////////////////////////////////////////////////////////////////////////");            
+            System.out.println("Energia esgotada! Turno se encerrando automaticamente...");
+            System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+        }
+
+        System.out.println();
+        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+   }
 }
