@@ -104,7 +104,7 @@ public class App {
                 turno_heroi = false;
             }
             else { //turno do inimigo
-                //usamos o artifício de random choice para o inimigo realizar uma ação (escolher uma das cinco cartas)
+                //usamos o artifício de random choice para o inimigo realizar uma ação (escolher uma das cartas)
                 Random random2 = new Random();
                 int numCarta = random2.nextInt( 10);
                 if (numCarta == 0){
