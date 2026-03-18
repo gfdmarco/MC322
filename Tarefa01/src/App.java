@@ -26,15 +26,15 @@ public class App {
         CartaDano cartadano1 = new CartaDano("Causar tempestade", 1, 
         "Gera uma grande chuva no local da festa. Custo energetico: 1; Dano: 5", 5);
         CartaDano cartadano2 = new CartaDano("Estudar: Lock-In", 3, 
-        "O bixao foca 100% nos estudos e se torna -1 consumidor. Custo energetico: 3; Dano: 10", 10);
+        "O bixao foca 100% nos estudos e se torna um consumidor a menos. Custo energetico: 3; Dano: 10", 10);
         CartaDano cartadano3 = new CartaDano("Discar 190", 2, 
         "Liga para a policia e eles acabam com a festa. Custo energetico: 2; Dano: 8", 8);
         CartaDano cartadano4 = new CartaDano("Reclamar no Spotted", 2, 
-        "Uma reclamação anônima surge no spotted criticando a festa. Custo energetico: 2; Dano: 6", 6);
+        "Uma reclamacao anonima surge no spotted criticando a festa. Custo energetico: 2; Dano: 6", 6);
         CartaDano cartadano5 = new CartaDano("Hackear a caixa de som", 3, 
-        "O bixao usa suas habilidades computacionais para colocar musicas infantis na ciaxa de som da festa. Custo energetico: 3; Dano: 9", 9);
+        "Usa habilidades computacionais para colocar musicas infantis na caixa de som da festa. Custo energetico: 3; Dano: 9", 9);
         CartaDano cartadano6 = new CartaDano("Boicotar a Cheers", 1, 
-        "Um ataque cibernético faz com que o app da Cheers fique fora do ar por alguns minutos. Custo energetico: 1; Dano: 4", 4);
+        "Um ataque cibernetico faz com que o app fique fora do ar por alguns minutos. Custo energetico: 1; Dano: 4", 4);
         CartaEscudo cartaescudo1 = new CartaEscudo("Kit Bixo", 2, 
         "Nosso calouro adquire o kit de protecao para o mesmo. Custo energetico: 2; Escudo: 5", 5);
         CartaEscudo cartaescudo2 = new CartaEscudo("Sair de um dos grupos do OXXO", 1, 
@@ -57,19 +57,19 @@ public class App {
         CartaDano cartadano3_in = new CartaDano("Reprovar por presenca", 2, 
         "Reprova por ter comparecido em menos de 75% das aulas. Custo energetico: 2; Dano: 8", 8);
         CartaDano cartadano4_in = new CartaDano("Perder a hora do Bandeco", 3, 
-        "O bixao acorda atrasado bo outro dia e se depara com o RU fechado. Custo energetico: 3; Dano: 12", 12);
+        "O bixao acorda atrasado no outro dia e se depara com o RU fechado. Custo energetico: 3; Dano: 12", 12);
         CartaDano cartadano5_in = new CartaDano("Nausea", 2, 
         "Faz com que o calouro tenha um dia repleto de Nauseas. Custo energetico: 2; Dano: 7", 7);
         CartaDano cartadano6_in = new CartaDano("Tontura", 1, 
         "Faz com que o calouro perca o equilibrio pelas proximas horas. Custo energetico: 1; Dano: 6", 6);
         CartaEscudo cartaescudo1_in = new CartaEscudo("Open Bar", 3, 
-        "A festa libera todas as bebidas de graça. Custo energetico: 3; Escudo: 5", 5);
+        "A festa libera todas as bebidas de graca. Custo energetico: 3; Escudo: 5", 5);
         CartaEscudo cartaescudo2_in = new CartaEscudo("Presenca de segurancas", 1, 
         "A festa contrata segurancas para protecao da festa. Custo energetico: 1; Escudo: 3", 3);
         CartaEscudo cartaescudo3_in = new CartaEscudo("Booms/Rotativos", 2, 
-        "A festa libera consumíveis exclusivos por um curto periodo de tempo. Custo energetico: 2; Escudo: 4", 4);
+        "A festa libera consumiveis exclusivos por um curto periodo de tempo. Custo energetico: 2; Escudo: 4", 4);
         CartaEscudo cartaescudo4_in = new CartaEscudo("C.A (Comissão Acolhedora)", 1, 
-        "A comissão acolhedora protege a festa de embriagados e criminosos sexuais. Custo energetico: 1; Escudo: 2", 2);
+        "A comissao acolhedora protege a festa de embriagados e criminosos sexuais. Custo energetico: 1; Escudo: 2", 2);
 
         //criação dos arrays que compõem o sistema de baralho
         ArrayList<Carta> pilha_compra = new ArrayList<>();
