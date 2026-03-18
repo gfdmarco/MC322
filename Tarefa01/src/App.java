@@ -68,7 +68,7 @@ public class App {
         "A festa contrata segurancas para protecao da festa. Custo energetico: 1; Escudo: 3", 3);
         CartaEscudo cartaescudo3_in = new CartaEscudo("Booms/Rotativos", 2, 
         "A festa libera consumiveis exclusivos por um curto periodo de tempo. Custo energetico: 2; Escudo: 4", 4);
-        CartaEscudo cartaescudo4_in = new CartaEscudo("C.A (Comissão Acolhedora)", 1, 
+        CartaEscudo cartaescudo4_in = new CartaEscudo("C.A. (Comissao Acolhedora)", 1, 
         "A comissao acolhedora protege a festa de embriagados e criminosos sexuais. Custo energetico: 1; Escudo: 2", 2);
 
         //criação dos arrays que compõem o sistema de baralho

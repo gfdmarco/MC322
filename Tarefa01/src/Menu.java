@@ -45,7 +45,7 @@ public class Menu {
         //INICIO DO TURNO
         System.out.println();
         System.out.println("SUA VEZ DE JOGAR!");
-        System.out.println("OBS: caso nao tenha energia suficiente para gastar em uma carte, encerre o turno!");
+        System.out.println("OBS: caso nao tenha energia suficiente para gastar em uma carta, encerre o turno!");
         System.out.println();
         System.out.println("///////////////////////////////////////////////////////////////////////////////////");
         while (heroi.qtdEnergia() > 0 && heroi.estaVivo() && inimigo.estaVivo()){
