@@ -1,33 +1,68 @@
-Fuga dos Perigos Noturnos - Versão Unicamp!
-DESCRIÇÃO DO JOGO:
+## Fuga dos Perigos Noturnos - Versão Unicamp!
 
-Neste jogo de interação por terminal desenvolvido pelos alunos Gabriel Farias De Marco (249656) e João Vitor Ferreira Matias (196931), inspirado no card game Slay the Spire, há um calouro da Universidade de Campinas que enfrenta diferentes festas, encaradas como perigos noturnos. Nele, seu objetivo é permanecer focado nos estudos mantendo sua sanidade e escapar dos "Perigos Noturnos" (festas universitárias) enfraquecendo-os diminuindo seu hype.
+## DESCRIÇÃO DO JOGO:
+
+Neste jogo de interação por terminal desenvolvido pelos alunos Gabriel Farias De Marco (249656) e João Vitor Ferreira Matias (196931), inspirado no card game e deckbuilder Slay the Spire, há um calouro da Universidade de Campinas que enfrenta diferentes festas, encaradas como perigos noturnos. Nele, seu objetivo é permanecer focado nos estudos mantendo sua sanidade e escapar dos "Perigos Noturnos" (festas universitárias) enfraquecendo-os diminuindo seu hype.
 
 Para esclarecer os últimos termos, aqui explicamos os principais tópicos do jogo (representados pelas classes e seus objetos):
-Calouro (Héroi):
 
-Nome -> identificação do calouro. Sanidade -> representa a "vida" do calouro. Proteção -> representa o escudo/vida extra do calouro, utilizada somente durante um turno, sendo restaurada na troca deste. Energia -> representa a capacidade de agir do calouro. É utilizada para realizar as ações do jogo, sendo consumida a cada uso de acordo com o custo de cada carta. A cada início de turno, é restaurada para seu valor máximo, analogamente à proteção.
-Festas Universitárias (Inimigo):
+## Entidades:
+    São definidas como os indivíduos que compõem o jogo. Englobam os heróis e os inimigos, que se enfrentam durante o combate. Possuem comportamentos em comum e específicos.
 
-Nome -> identificação da festa. Hype -> representa a "vida" da festa. Proteção -> representa o escudo/vida extra da festa, sendo restaurada assim como o escudo do calouro.
-CartaDano:
+    Calouro (Héroi):
 
-Nome -> identificação da carta. Custo -> o quanto de energia a carta consome. Dano -> o quanto de dano causa no adversário ao utilizá-la. Para o calouro, representa ações que este realiza para prejudicar as festas diminuindo o hype (relevância/popularidade) destas. Para as festas, representa ações que estas realizam para prejudicar o calouro e tentar fazê-lo perder sua sanidade.
-CartaEscudo:
+    Nome -> identificação do calouro. 
+    Sanidade -> representa a "vida" do calouro. 
+    Proteção -> representa o escudo/vida extra do calouro, utilizada somente durante um turno, sendo restaurada na troca deste. 
+    Energia -> representa a capacidade de agir do calouro. É utilizada para realizar as ações do jogo, sendo consumida a cada uso de acordo com o custo de cada carta. A cada início de turno, é restaurada para seu valor máximo, analogamente à proteção.
 
-Nome -> identificação da carta. Custo -> o quanto de energia a carta consome. Proteção -> o quanto de escudo/vida extra a carta fornece ao ser utilizada. Para o calouro, representa movimentos de blindagem ou para manter distância das festas e evitar a perda de sanidade. Para as festas, representa aumentar sua relevância ou popularidade.
-Jogabilidade:
+    Festas Universitárias (Inimigo):
 
-Ao iniciar o jogo, o usuário deverá escolher um nome para seu calouro e logo em seguida o mesmo será direcionado para um menu, no qual poderá escolher entre 3 opções:
+    Nome -> identificação da festa. 
+    Hype -> representa a "vida" da festa. 
+    Proteção -> representa o escudo/vida extra da festa, sendo restaurada assim como o escudo do calouro.
 
-1 - Usar Carta de Dano (Atacar) -> Ao escolher essa opção, o usuário será direcionado para outro menu contendo as cartas de Dano; 2 - Usar Carta de Escudo (Proteger) -> Ao escolher essa opção, o usuário será direcionado para outro menu contendo as cartas de Escudo; 3 - Encerrar turno -> Ao escolher essa opção, o usuário encerra suas atividades naquele turno e passa a vez para o inimigo;
+## Cartas:
+    Definem as ações do jogo. Cada carta define um modo de ataque ou defesa a base de energia para permitir que a batalha aconteça.
+
+    CartaDano:
+
+    Nome -> identificação da carta. 
+    Custo -> o quanto de energia a carta consome. 
+    Dano -> o quanto de dano causa no adversário ao utilizá-la. Para o calouro, representa ações que este realiza para prejudicar as festas diminuindo o hype (relevância/popularidade) destas. Para as festas, representa ações que estas realizam para prejudicar o calouro e tentar fazê-lo perder sua sanidade.
+
+    CartaEscudo:
+
+    Nome -> identificação da carta.
+    Custo -> o quanto de energia a carta consome. 
+    Proteção -> o quanto de escudo/vida extra a carta fornece ao ser utilizada. Para o calouro, representa movimentos de blindagem ou para manter distância das festas e evitar a perda de sanidade. Para as festas, representa aumentar sua relevância ou popularidade.
+
+## Jogabilidade:
+
+Primeiramente, cada jogo abrange apenas um combate Herói vs Inimigo. Ou seja, o jogo acontece até que um dos dois seja eliminado.
+
+Para garantir o dinamismo das partidas, o jogo utiliza um sistema de gerenciamento de cartas dividido em três zonas principais. A movimentação entre essas zonas ocorre de forma cíclica a cada turno:
+
+No início de cada combate, todas as cartas do inventário do Calouro são inseridas na Pilha de Compra de modo a iniciar o sistema. A cada novo turno, o jogador recebe as primeiras três cartas desta pilha que irão compor a sua mão. Dentre as cartas que tem, o jogador pode utilizar quantas desejar, desde que possua energia suficiente para cobrir o custo de cada carta. A cada turno, o jogador inicia com um valor máximo de quatro pontos de energia. Assim que uma carta é jogada, seu efeito (Dano ou Escudo) é aplicado e ela é movida imediatamente para a Pilha de Descarte. É importante apresentar que os escudos utilizados durante um turno duram apenas neste. Ao iniciar uma nova rodada, estes são resetados. Isso ocorre tanto para o Herói quanto para o Inimigo. Outro caso no qual a carta vai pra pilha de descarte é quando o jogador não usa uma carta. Caso a pilha de compra se esgote, a pilha de descarte é embaralhada e transformada em uma nova pilha de compra.
+
+Ao iniciar o jogo, o usuário deverá escolher um nome para seu calouro e logo em seguida o mesmo será direcionado para um menu, que representa a mão do jogador, e ele poderá escolher entre:
+    1 - Utilizar carta,
+    2 - Encerrar turno.
+As cartas que vão para a mão do jogador são inicialmente embaralhadas na pilha de compra para garantir diferentes jogos e são selecionadas as três primeiras após isso para ir, de fato, à mão. Tais cartas variam entre:
+
+1 - Carta de Dano (Atacar) -> Concedem dano no inimigo (festa universitária); 
+2 - Usar Carta de Escudo (Proteger) -> Concedem escudo ao herói (calouro); 
+
+O jogador deve sempre digitar a ação que quer realizar primeiramente e, após isso, digitar o número da carta que quer utilizar. Caso digite um número inválido, uma mensagem de erro é levantada e se requisita novamente o comando até que seja favorável. Além disso, caso o jogador tenha energia, mas não suficiente para utilizar as cartas restantes da mão, esse deve encerrar o turno para continuar o fluxo de jogo.
+
+Ao encerrar o turno ou esgotar sua energia, as cartas que estavam na mão do jogador vão para a pilha de descarte e o usuário encerra suas atividades naquele período e passa a vez para o inimigo;
 
 As jogadas do inimigo são randomizadas, tendo em vista que, a fim de tornar a experiência do jogador mais dinâmica, foram implementados mais de um inimigo (festas universitárias), bem como cartas de dano e escudo distintas das do herói.
 
 E de maneira simples mas concreta, esse é o modus operandi do jogo, esperamos que você se divirta e vença as tentações universitárias!
+
 COMO COMPILAR:
 
 Caso esteja na pasta "src" diretamente, no terminal, acesse a pasta src do projeto (Tarefa01) e execute: javac App.java. Após a compilação, execute: java App
 
-Caso esteja na pasta "Tarefa01" propriamente, execute javac -d bin $(find src -name "App.java") para compular. Para a execução, após a compilação, execute: java -cp bin App.
-OBS: Certifique-se que ao compilar o usuário está na pasta "src" do projeto.
+Caso esteja na pasta "Tarefa01" propriamente, execute javac -d bin $(find src -name "*.java") para compilar. Para a execução, após a compilação, execute: java -cp bin App.

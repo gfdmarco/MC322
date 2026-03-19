@@ -75,7 +75,9 @@ public class Menu {
                 int leitura3 = entrada.nextInt();
                 if (leitura3 >= 0 && leitura3 < mao_heroi.size() && (heroi.qtdEnergia() - mao_heroi.get(leitura3).qtdCusto()) < 0){
                     System.out.println();
+                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                     System.out.println("ERRO: nao foi possivel utilizar esta carta (energia insuficiente)!");
+                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                     System.out.println();
                 }
                 else if (leitura3 >= 0 && leitura3 < mao_heroi.size() && (heroi.qtdEnergia() - mao_heroi.get(leitura3).qtdCusto()) >= 0){
@@ -85,13 +87,17 @@ public class Menu {
                 }
                 else {
                     System.out.println();
+                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                     System.out.println("ERRO: numero invalido!");
+                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                     System.out.println();
                 }
             }
             else {
                 System.out.println();
+                System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 System.out.println("ERRO: numero invalido!");
+                System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 System.out.println();
             }
         }
