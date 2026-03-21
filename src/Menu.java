@@ -1,9 +1,26 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Menu {
-    public static void menuInicial(Heroi heroi, Inimigo inimigo){
+    public ArrayList<Efeito> subscribers;
+
+    public void inscrever(Efeito efeito){
+        subscribers.add(efeito);
+    }
+
+    public void desinscrever(Efeito efeito){
+        subscribers.remove(efeito);
+    }
+
+    public void notificar(String evento){
+        for (int i = 0; i < subscribers.size(); i++){
+            subscribers.get(i).serNotificado(evento);
+        }
+    }
+
+    public void menuInicial(Heroi heroi, Inimigo inimigo){
         System.out.println("Calouro " + heroi.pegaNome() + " VS " + inimigo.pegaNome());
         System.out.println("------------------------------------------------------------------------------------");
         System.out.println("Calouro '" + heroi.pegaNome() + "' - Sanidade: " + heroi.qtdVida() + "/50");
@@ -17,8 +34,8 @@ public class Menu {
         System.out.println("------------------------------------------------------------------------------------");
     }
 
-   public static void menuJogador(Heroi heroi, Inimigo inimigo, List<Carta> pilha_compra, List<Carta> mao_heroi,
-    List<Carta> pilha_descarte, Scanner entrada){
+   public void menuJogador(Heroi heroi, Inimigo inimigo, List<Carta> pilha_compra, List<Carta> mao_heroi,
+    List<Carta> pilha_descarte, Scanner entrada, Menu menu){
 
         //ETAPA DE COMPRAS
         System.out.println("Recebendo novas cartas e compondo nova mao...");
@@ -49,7 +66,7 @@ public class Menu {
         System.out.println();
         System.out.println("///////////////////////////////////////////////////////////////////////////////////");
         while (heroi.qtdEnergia() > 0 && heroi.estaVivo() && inimigo.estaVivo()){
-            Menu.menuInicial(heroi, inimigo);
+            this.menuInicial(heroi, inimigo);
             System.out.println("O bixao tem " + heroi.qtdEnergia() + "/4 de Energia para utilizar");
             System.out.println();
             System.out.println("Mao atual do bixao:");
@@ -81,7 +98,8 @@ public class Menu {
                     System.out.println();
                 }
                 else if (leitura3 >= 0 && leitura3 < mao_heroi.size() && (heroi.qtdEnergia() - mao_heroi.get(leitura3).qtdCusto()) >= 0){
-                    mao_heroi.get(leitura3).usar(heroi, inimigo);
+                    this.notificar("ATAQUE");
+                    mao_heroi.get(leitura3).usar(heroi, inimigo, menu);
                     pilha_descarte.add(mao_heroi.get(leitura3));
                     mao_heroi.remove(leitura3);
                 }

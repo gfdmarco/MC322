@@ -6,6 +6,7 @@ import java.util.Collections;
 public class App {
     public static void main(String[] args) {
 
+        Menu menu = new Menu();
         String leitura;
         boolean turno_heroi = true; //variável que determina se é a vez do herói jogar
         Scanner entrada = new Scanner(System.in);
@@ -18,7 +19,13 @@ public class App {
         System.out.println("------------------------------------------------------------------------------------");
 
         //INICIALIZAÇÃO
-
+        
+        /*Cartas de Efeito */
+        CartaEfeito cartaefeito1 =  new CartaEfeito("Investimento", 3, 
+        "Para o calouro, recebe uma Bolsa da Fapesp. Para a festa, recebe investimento para Booms. Custo energetico: 3; Acumulo do Efeito: 3", "Bolsa", 3);
+        CartaEfeito cartaefeito2 = new CartaEfeito("Resenhoff", 2,
+        "Fornecer a vodka Resenhoff, contaminada com Metanol. Custo energetico: 2; Acumulo do Efeito: 2", "Veneno", 2);
+        
         /*Herói (calouro):
         vida máxima: 50, escudo inicial: 0; */
         Heroi heroi = new Heroi(leitura, 50, 0);
@@ -58,8 +65,8 @@ public class App {
         "Reprova por ter comparecido em menos de 75% das aulas. Custo energetico: 2; Dano: 8", 8);
         CartaDano cartadano4_in = new CartaDano("Perder a hora do Bandeco", 3, 
         "O bixao acorda atrasado no outro dia e se depara com o RU fechado. Custo energetico: 3; Dano: 12", 12);
-        CartaDano cartadano5_in = new CartaDano("Nausea", 2, 
-        "Faz com que o calouro tenha um dia repleto de Nauseas. Custo energetico: 2; Dano: 7", 7);
+        CartaDano cartadano5_in = new CartaDano("Perder a caneca", 2, 
+        "O calouro perde sua caneca de bebidas para as festas. Custo energetico: 2; Dano: 7", 7);
         CartaDano cartadano6_in = new CartaDano("Tontura", 1, 
         "Faz com que o calouro perca o equilibrio pelas proximas horas. Custo energetico: 1; Dano: 6", 6);
         CartaEscudo cartaescudo1_in = new CartaEscudo("Open Bar", 3, 
@@ -86,14 +93,16 @@ public class App {
         pilha_compra.add(cartaescudo2);
         pilha_compra.add(cartaescudo3);
         pilha_compra.add(cartaescudo4);
+        pilha_compra.add(cartaefeito1);
+        pilha_compra.add(cartaefeito2);
         Collections.shuffle(pilha_compra);
 
         while (heroi.estaVivo() && inimigo.estaVivo()){
             //aqui, geramos um menu de visualização para o jogador com os métodos da classe Menu
-            Menu.menuInicial(heroi, inimigo);
+            menu.menuInicial(heroi, inimigo);
 
             if (turno_heroi){ //caso seja a vez do heroi
-                Menu.menuJogador(heroi, inimigo, pilha_compra, mao_heroi, pilha_descarte, entrada);
+                menu.menuJogador(heroi, inimigo, pilha_compra, mao_heroi, pilha_descarte, entrada, menu);
 
                 //mandar as cartas não utilizadas para a pilha de descarte
                 for (int l = 0; l < mao_heroi.size(); l++){
@@ -101,12 +110,13 @@ public class App {
                 }
                 mao_heroi.clear();
                 inimigo.restaurarEscudo();
+                menu.notificar("FIM_TURNO");
                 turno_heroi = false;
             }
             else { //turno do inimigo
                 //usamos o artifício de random choice para o inimigo realizar uma ação (escolher uma das cartas)
                 Random random2 = new Random();
-                int numCarta = random2.nextInt( 10);
+                int numCarta = random2.nextInt( 12);
                 if (numCarta == 0){
                     inimigo.atacar(heroi, cartadano1_in.qtdDano());
 
@@ -201,8 +211,25 @@ public class App {
                     System.out.println();
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
+                else if (numCarta == 10){
+                    inimigo.aplicarEfeito("Investimento", 3, inimigo, menu);
+
+                    System.out.println();
+                    System.out.println(inimigo.pegaNome() + " aplicou o efeito Investimento. Portanto, vai receber uma grana para Booms!");
+                    System.out.println();
+                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                }
+                else if (numCarta == 11){
+                    heroi.aplicarEfeito("Metanol", 2, heroi, menu);
+
+                    System.out.println();
+                    System.out.println(inimigo.pegaNome() + " aplicou o efeito Metanol, infectando o calouro!");
+                    System.out.println();
+                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                }
                 heroi.restaurarEnergia();
                 heroi.restaurarEscudo();
+                menu.notificar("FIM_TURNO");
                 turno_heroi = true;
             }
         }

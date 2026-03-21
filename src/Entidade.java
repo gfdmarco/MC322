@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 public abstract class Entidade {
     protected String nome;
     protected int vida;
     protected int escudo;
+    protected ArrayList<Efeito> efeitos;
 
     public Entidade(String nome, int vida, int escudo){
         this.nome = nome;
@@ -31,6 +34,31 @@ public abstract class Entidade {
 
     public void ganharEscudo(int escudo){
         this.escudo += escudo;
+    }
+
+    public void aplicarEfeito(String efeito, int acumulos, Entidade entidade, Menu menu){
+        boolean contem = false;
+        int i;
+        for (i = 0; i < efeitos.size(); i++){
+            if (efeitos.get(i).pegaNome().equals(efeito)){
+                contem = true;
+            }
+        }
+        if (contem){
+            efeitos.get(i).somaAcumulo(acumulos);
+        }
+        else {
+            if (efeito.equals("Investimento")){
+                Investimento investimento = new Investimento("Investimento", entidade, 1);
+                efeitos.add(investimento);
+                menu.inscrever(investimento);
+            }
+            else if (efeito.equals("Metanol")){
+                Metanol metanol = new Metanol("Metanol", entidade, 1);
+                efeitos.add(metanol);
+                menu.inscrever(metanol);
+            }
+        }
     }
 
     public boolean estaVivo(){

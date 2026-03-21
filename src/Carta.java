@@ -9,7 +9,7 @@ public abstract class Carta {
         this.descricao = descricao;
     }
     
-    public abstract void usar(Heroi heroi, Inimigo inimigo);
+    public abstract void usar(Heroi heroi, Inimigo inimigo, Menu menu);
     
     public String pegaNome(){
         return nome;

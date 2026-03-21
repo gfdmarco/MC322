@@ -6,7 +6,7 @@ public class CartaDano extends Carta{
         this.dano = dano;
     }
     
-    public void usar(Heroi heroi, Inimigo inimigo){
+    public void usar(Heroi heroi, Inimigo inimigo, Menu menu){
         //método de uso de carta para o herói
         if (heroi.qtdEnergia() - this.custo < 0){
             System.out.println();
@@ -15,7 +15,13 @@ public class CartaDano extends Carta{
         }
         else {
             heroi.consomeEnergia(this.custo);
-            inimigo.receberDano(this.dano);
+            int dano_total = this.dano;
+            for (int i = 0; i < heroi.efeitos.size(); i++){
+                if (heroi.efeitos.get(i).pegaNome().equals("Bolsa")){
+                    dano_total += heroi.efeitos.get(i).acumulos;
+                }
+            }
+            inimigo.receberDano(dano_total);
             System.out.println();
             System.out.println("O calouro " + heroi.pegaNome() + " causou " + this.dano + " de dano no(a) " 
             + inimigo.pegaNome() + " com " + this.nome);

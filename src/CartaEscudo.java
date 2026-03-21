@@ -6,7 +6,7 @@ public class CartaEscudo extends Carta{
         this.escudo = escudo;
     }
 
-    public void usar(Heroi heroi, Inimigo inimigo){
+    public void usar(Heroi heroi, Inimigo inimigo, Menu menu){
         //método de uso de carta para o herói
         if (heroi.qtdEnergia() - this.custo < 0){
             System.out.println("Energia insuficiente! Escolha outra!");
