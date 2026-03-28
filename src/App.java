@@ -22,9 +22,9 @@ public class App {
         
         /*Cartas de Efeito */
         CartaEfeito cartaefeito1 =  new CartaEfeito("Investimento", 3, 
-        "Para o calouro, recebe uma Bolsa da Fapesp. Para a festa, recebe investimento para Booms. Custo energetico: 3; Acumulo do Efeito: 3", "Bolsa", 3);
+        "Para o calouro, recebe uma Bolsa da Fapesp. Para a festa, recebe investimento para Booms. Custo energetico: 3; Acumulo do Efeito: 3", "Investimento", 3);
         CartaEfeito cartaefeito2 = new CartaEfeito("Resenhoff", 2,
-        "Fornecer a vodka Resenhoff, contaminada com Metanol. Custo energetico: 2; Acumulo do Efeito: 2", "Veneno", 2);
+        "Fornecer a vodka Resenhoff, contaminada com Metanol. Custo energetico: 2; Acumulo do Efeito: 3", "Metanol", 3);
         
         /*Herói (calouro):
         vida máxima: 50, escudo inicial: 0; */
@@ -108,9 +108,9 @@ public class App {
                 for (int l = 0; l < mao_heroi.size(); l++){
                     pilha_descarte.add(0, mao_heroi.get(l));
                 }
+                menu.notificar("FIM_TURNO_HEROI", menu);
                 mao_heroi.clear();
                 inimigo.restaurarEscudo();
-                menu.notificar("FIM_TURNO");
                 turno_heroi = false;
             }
             else { //turno do inimigo
@@ -118,30 +118,15 @@ public class App {
                 Random random2 = new Random();
                 int numCarta = random2.nextInt( 12);
                 if (numCarta == 0){
-                    inimigo.atacar(heroi, cartadano1_in.qtdDano());
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " atacou com " + cartadano1_in.pegaNome() 
-                    + ", causando " + cartadano1_in.qtdDano() + " de dano no calouro!");
-                    System.out.println();
+                    inimigo.atacar(heroi, cartadano1_in, menu);
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 1){
-                    inimigo.atacar(heroi, cartadano2_in.qtdDano());
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " atacou com " + cartadano2_in.pegaNome() 
-                    + ", causando " + cartadano2_in.qtdDano() + " de dano no calouro!");
-                    System.out.println();
+                    inimigo.atacar(heroi, cartadano2_in, menu);
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 2){
-                    inimigo.atacar(heroi, cartadano3_in.qtdDano());
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " atacou com " + cartadano3_in.pegaNome() 
-                    + ", causando " + cartadano3_in.qtdDano() + " de dano no calouro!");
-                    System.out.println();
+                    inimigo.atacar(heroi, cartadano3_in, menu);
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 3){
@@ -165,30 +150,15 @@ public class App {
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 5){
-                    inimigo.atacar(heroi, cartadano4_in.qtdDano());
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " atacou com " + cartadano4_in.pegaNome() 
-                    + ", causando " + cartadano4_in.qtdDano() + " de dano no calouro!");
-                    System.out.println();
+                    inimigo.atacar(heroi, cartadano4_in, menu);
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 6){
-                    inimigo.atacar(heroi, cartadano5_in.qtdDano());
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " atacou com " + cartadano5_in.pegaNome() 
-                    + ", causando " + cartadano5_in.qtdDano() + " de dano no calouro!");
-                    System.out.println();
+                    inimigo.atacar(heroi, cartadano5_in, menu);
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 7){
-                    inimigo.atacar(heroi, cartadano6_in.qtdDano());
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " atacou com " + cartadano6_in.pegaNome() 
-                    + ", causando " + cartadano6_in.qtdDano() + " de dano no calouro!");
-                    System.out.println();
+                    inimigo.atacar(heroi, cartadano6_in, menu);
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 8){
@@ -212,7 +182,7 @@ public class App {
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 10){
-                    inimigo.aplicarEfeito("Investimento", 3, inimigo, menu);
+                    inimigo.aplicarEfeito("Investimento", cartaefeito1.qtdAcumulos(), inimigo, menu);
 
                     System.out.println();
                     System.out.println(inimigo.pegaNome() + " aplicou o efeito Investimento. Portanto, vai receber uma grana para Booms!");
@@ -220,16 +190,16 @@ public class App {
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
                 else if (numCarta == 11){
-                    heroi.aplicarEfeito("Metanol", 2, heroi, menu);
+                    heroi.aplicarEfeito("Metanol", cartaefeito2.qtdAcumulos(), heroi, menu);
 
                     System.out.println();
                     System.out.println(inimigo.pegaNome() + " aplicou o efeito Metanol, infectando o calouro!");
                     System.out.println();
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
+                menu.notificar("FIM_TURNO_INIMIGO", menu);
                 heroi.restaurarEnergia();
                 heroi.restaurarEscudo();
-                menu.notificar("FIM_TURNO");
                 turno_heroi = true;
             }
         }

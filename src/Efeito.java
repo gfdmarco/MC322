@@ -32,5 +32,5 @@ public abstract class Efeito {
         acumulos--;
     }
 
-    public abstract void serNotificado(String evento); //o efeito deve ser usado
+    public abstract void serNotificado(String evento, Menu menu); //o efeito deve ser usado
 }

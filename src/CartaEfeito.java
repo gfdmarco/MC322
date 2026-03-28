@@ -17,15 +17,24 @@ public class CartaEfeito extends Carta {
         }
         else {
             heroi.consomeEnergia(this.custo);
-            inimigo.aplicarEfeito(efeito, acumulos, inimigo, menu);
+            if (efeito.equals("Investimento")){
+                heroi.aplicarEfeito(efeito, acumulos, heroi, menu);
+            }
+            else if (efeito.equals("Metanol")){
+                inimigo.aplicarEfeito(efeito, acumulos, inimigo, menu);
+            }
             System.out.println();
-            System.out.println("O calouro " + heroi.pegaNome() + " aplicou a carta de efeito" + this.nome);
-            System.out.println("Efeito: " + efeito + " ; Acumulos: " + acumulos);
+            System.out.println("O calouro " + heroi.pegaNome() + " aplicou a carta de efeito " + this.nome);
+            System.out.println("Efeito: " + efeito + "; Acumulos: " + acumulos);
             System.out.println();
         }
     }
 
     public String pegaEfeito(){
         return efeito;
+    }
+
+    public int qtdAcumulos(){
+        return acumulos;
     }
 }

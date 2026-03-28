@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Menu {
-    public ArrayList<Efeito> subscribers;
+    public ArrayList<Efeito> subscribers = new ArrayList<>();
 
     public void inscrever(Efeito efeito){
         subscribers.add(efeito);
@@ -14,9 +14,9 @@ public class Menu {
         subscribers.remove(efeito);
     }
 
-    public void notificar(String evento){
+    public void notificar(String evento, Menu menu){
         for (int i = 0; i < subscribers.size(); i++){
-            subscribers.get(i).serNotificado(evento);
+            subscribers.get(i).serNotificado(evento, menu);
         }
     }
 
@@ -25,11 +25,30 @@ public class Menu {
         System.out.println("------------------------------------------------------------------------------------");
         System.out.println("Calouro '" + heroi.pegaNome() + "' - Sanidade: " + heroi.qtdVida() + "/50");
         if (heroi.qtdEscudo() > 0){
+            System.out.println("**");
             System.out.println("Protecao:" + heroi.qtdEscudo());
         }
+        if (heroi.pegaEfeitos().size() > 0){
+            System.out.println("**");
+            System.out.println("Efeitos: ");
+            for (int i = 0; i < heroi.pegaEfeitos().size(); i++){
+                System.out.println(heroi.pegaEfeitos().get(i).pegaNome() + 
+                " (Acumulos: " + heroi.pegaEfeitos().get(i).qtdAcumulos() + ")");
+            }
+        }
+        System.out.println("---------------------------------------");
         System.out.println("Festa do(a) '" + inimigo.pegaNome() + "' - Hype: " + inimigo.qtdVida() + "/40");
         if (inimigo.qtdEscudo() > 0){
+            System.out.println("**");
             System.out.println("Protecao:" + inimigo.qtdEscudo());
+        }
+        if (inimigo.pegaEfeitos().size() > 0){
+            System.out.println("**");
+            System.out.println("Efeitos: ");
+            for (int i = 0; i < inimigo.pegaEfeitos().size(); i++){
+                System.out.println(inimigo.pegaEfeitos().get(i).pegaNome() + 
+                " (Acumulos: " + inimigo.pegaEfeitos().get(i).qtdAcumulos() + ")");;
+            }
         }
         System.out.println("------------------------------------------------------------------------------------");
     }
@@ -98,7 +117,6 @@ public class Menu {
                     System.out.println();
                 }
                 else if (leitura3 >= 0 && leitura3 < mao_heroi.size() && (heroi.qtdEnergia() - mao_heroi.get(leitura3).qtdCusto()) >= 0){
-                    this.notificar("ATAQUE");
                     mao_heroi.get(leitura3).usar(heroi, inimigo, menu);
                     pilha_descarte.add(mao_heroi.get(leitura3));
                     mao_heroi.remove(leitura3);

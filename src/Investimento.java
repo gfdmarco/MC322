@@ -11,7 +11,7 @@ public class Investimento extends Efeito { //analogo a força
     }
 
     @Override
-    public void serNotificado(String evento){
+    public void serNotificado(String evento, Menu menu){
         //função vazia pois a força age no momento de ataque a partir do dano
     }
 }

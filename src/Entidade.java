@@ -4,7 +4,7 @@ public abstract class Entidade {
     protected String nome;
     protected int vida;
     protected int escudo;
-    protected ArrayList<Efeito> efeitos;
+    private ArrayList<Efeito> efeitos = new ArrayList<>();
 
     public Entidade(String nome, int vida, int escudo){
         this.nome = nome;
@@ -38,27 +38,31 @@ public abstract class Entidade {
 
     public void aplicarEfeito(String efeito, int acumulos, Entidade entidade, Menu menu){
         boolean contem = false;
-        int i;
-        for (i = 0; i < efeitos.size(); i++){
-            if (efeitos.get(i).pegaNome().equals(efeito)){
-                contem = true;
+        if (entidade.efeitos != null){
+            for (int i = 0; i < entidade.efeitos.size(); i++){
+                if (entidade.efeitos.get(i).pegaNome().equals(efeito)){
+                    contem = true;
+                    entidade.efeitos.get(i).somaAcumulo(acumulos);
+                    break;
+                }
             }
         }
-        if (contem){
-            efeitos.get(i).somaAcumulo(acumulos);
-        }
-        else {
+        if(!contem) {
             if (efeito.equals("Investimento")){
-                Investimento investimento = new Investimento("Investimento", entidade, 1);
-                efeitos.add(investimento);
+                Investimento investimento = new Investimento("Investimento", entidade, acumulos);
+                entidade.efeitos.add(investimento);
                 menu.inscrever(investimento);
             }
             else if (efeito.equals("Metanol")){
-                Metanol metanol = new Metanol("Metanol", entidade, 1);
-                efeitos.add(metanol);
+                Metanol metanol = new Metanol("Metanol", entidade, acumulos);
+                entidade.efeitos.add(metanol);
                 menu.inscrever(metanol);
             }
         }
+    }
+
+    public ArrayList<Efeito> pegaEfeitos(){
+        return efeitos;
     }
 
     public boolean estaVivo(){

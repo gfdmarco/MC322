@@ -16,15 +16,24 @@ public class CartaDano extends Carta{
         else {
             heroi.consomeEnergia(this.custo);
             int dano_total = this.dano;
-            for (int i = 0; i < heroi.efeitos.size(); i++){
-                if (heroi.efeitos.get(i).pegaNome().equals("Bolsa")){
-                    dano_total += heroi.efeitos.get(i).acumulos;
+            menu.notificar("ATAQUE", menu);
+            boolean temEfeito = false;
+            for (int i = 0; i < heroi.pegaEfeitos().size(); i++){
+                if (heroi.pegaEfeitos().get(i).pegaNome().equals("Investimento")){
+                    dano_total += heroi.pegaEfeitos().get(i).acumulos;
+                    temEfeito = true;
                 }
             }
             inimigo.receberDano(dano_total);
             System.out.println();
             System.out.println("O calouro " + heroi.pegaNome() + " causou " + this.dano + " de dano no(a) " 
             + inimigo.pegaNome() + " com " + this.nome);
+            if (temEfeito == true){
+                System.out.println();
+                System.out.println("BOOST: voce possui o efeito Investimento, o que causou " + (dano_total - this.dano) + " de dano extra!");
+                System.out.println("Total de dano: " + dano_total);
+                System.out.println();
+            }
             System.out.println();
         }
     }

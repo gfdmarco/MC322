@@ -11,14 +11,18 @@ public class Metanol extends Efeito { //analogo ao veneno
     }
 
     @Override
-    public void serNotificado(String evento){
-        if (evento.equals("FIM_TURNO")){
+    public void serNotificado(String evento, Menu menu){
+        if (evento.equals("FIM_TURNO_HEROI") && dono instanceof Inimigo){
             this.dono.receberDano(this.acumulos);
-            this.acumulos--;
+            this.subtraiAcumulo();
+        }
+        if (evento.equals("FIM_TURNO_INIMIGO") && dono instanceof Heroi){
+            this.dono.receberDano(this.acumulos);
+            this.subtraiAcumulo();
         }
         if (this.acumulos == 0){
-            //Menu.desinscrever(this)
-            this.dono.efeitos.remove(this);
+            menu.desinscrever(this);
+            this.dono.pegaEfeitos().remove(this);
         }
     }
 }
