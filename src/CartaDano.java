@@ -15,19 +15,22 @@ public class CartaDano extends Carta{
         }
         else {
             heroi.consomeEnergia(this.custo);
-            int dano_total = this.dano;
-            menu.notificar("ATAQUE", menu);
-            boolean temEfeito = false;
-            for (int i = 0; i < heroi.pegaEfeitos().size(); i++){
-                if (heroi.pegaEfeitos().get(i).pegaNome().equals("Investimento")){
-                    dano_total += heroi.pegaEfeitos().get(i).acumulos;
-                    temEfeito = true;
-                }
-            }
+            
+            menu.reseta_danoExtra(); //para evitar acumular dano extra quando troca os turnos
+            menu.notificar("ATAQUE_HEROI", menu);
+            int dano_total = this.dano + menu.qtd_danoExtra();
             inimigo.receberDano(dano_total);
             System.out.println();
             System.out.println("O calouro " + heroi.pegaNome() + " causou " + this.dano + " de dano no(a) " 
             + inimigo.pegaNome() + " com " + this.nome);
+
+            //apenas para printar o bonus
+            boolean temEfeito = false;
+            for (int i = 0; i < heroi.pegaEfeitos().size(); i++){
+                if (heroi.pegaEfeitos().get(i).pegaNome().equals("Investimento")){
+                    temEfeito = true;
+                }
+            }
             if (temEfeito == true){
                 System.out.println();
                 System.out.println("BOOST: voce possui o efeito Investimento, o que causou " + (dano_total - this.dano) + " de dano extra!");

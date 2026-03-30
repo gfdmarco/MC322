@@ -12,6 +12,11 @@ public class Investimento extends Efeito { //analogo a força
 
     @Override
     public void serNotificado(String evento, Menu menu){
-        //função vazia pois a força age no momento de ataque a partir do dano
+        if (evento.equals("ATAQUE_HEROI") && dono instanceof Heroi){
+            menu.soma_danoExtra(this.acumulos);
+        }
+        if (evento.equals("ATAQUE_INIMIGO") && dono instanceof Inimigo){
+            menu.soma_danoExtra(this.acumulos);
+        }
     }
 }

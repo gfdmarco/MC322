@@ -4,7 +4,20 @@ import java.util.Collections;
 import java.util.List;
 
 public class Menu {
-    public ArrayList<Efeito> subscribers = new ArrayList<>();
+    private ArrayList<Efeito> subscribers = new ArrayList<>();
+    private int danoExtra = 0;
+
+    public int qtd_danoExtra(){
+        return danoExtra;
+    }
+
+    public void soma_danoExtra(int bonus){
+        danoExtra += bonus;
+    }
+
+    public void reseta_danoExtra(){
+        danoExtra = 0;
+    }
 
     public void inscrever(Efeito efeito){
         subscribers.add(efeito);
@@ -15,7 +28,8 @@ public class Menu {
     }
 
     public void notificar(String evento, Menu menu){
-        for (int i = 0; i < subscribers.size(); i++){
+        //iteração em ordem reversa para evitar bug de remoção ao longo da iteração
+        for (int i = subscribers.size() - 1; i >= 0; i--){
             subscribers.get(i).serNotificado(evento, menu);
         }
     }
