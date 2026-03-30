@@ -72,7 +72,8 @@ Ao iniciar o jogo, o usuário deverá escolher um nome para seu calouro e logo e
 As cartas que vão para a mão do jogador são inicialmente embaralhadas na pilha de compra para garantir diferentes jogos e são selecionadas as três primeiras após isso para ir, de fato, à mão. Tais cartas variam entre:
 
 1 - Carta de Dano (Atacar) -> Concedem dano no inimigo (festa universitária); 
-2 - Usar Carta de Escudo (Proteger) -> Concedem escudo ao herói (calouro); 
+2 - Carta de Escudo (Proteger) -> Concedem escudo ao herói (calouro); 
+3- Carta de Efeito (Dano extra ou Veneno) -> Aplicadas ao herói ou a entidade (variam).
 
 O jogador deve sempre digitar a ação que quer realizar primeiramente e, após isso, digitar o número da carta que quer utilizar. Caso digite um número inválido, uma mensagem de erro é levantada e se requisita novamente o comando até que seja favorável. Além disso, caso o jogador tenha energia, mas não suficiente para utilizar as cartas restantes da mão, esse deve encerrar o turno para continuar o fluxo de jogo.
 
