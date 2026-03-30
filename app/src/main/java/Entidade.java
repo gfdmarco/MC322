@@ -1,5 +1,13 @@
 import java.util.ArrayList;
 
+/**
+ * Representa qualquer personagem presente na batalha, calouros e festas universitárias
+ * 
+ * @param nome Nome da entidade
+ * @param vida Vida atual da entidade
+ * @param escudo Escudo atual da entidade
+ */
+
 public abstract class Entidade {
     protected String nome;
     protected int vida;

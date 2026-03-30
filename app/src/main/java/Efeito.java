@@ -1,3 +1,11 @@
+/**
+ * Representa efeitos, positivos e negativos, que podem ser aplicados em entidades.
+ * 
+ * @param nome Nome do efeito
+ * @param dono Entidade possuidora deste efeito
+ * @param acumulos Total de acúmulos de um efeito
+ */
+
 public abstract class Efeito {
     //OBS: pensar em criar novos inimigos - instancias de inimigo ou classes mesmo
     protected String nome;

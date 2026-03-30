@@ -1,3 +1,11 @@
+/**
+ * Representa as festas universitárias, que farão de tudo para acabar com a sanidade do calouro no jogo Fuga dos Perigos Noturnos - Versao Unicamp
+ * 
+ * @param nome Nome da festa
+ * @param vida Hype da festa
+ * @param escudo Representa o quanto de escudo a festa possui
+ */
+
 public class Inimigo extends Entidade {
     
     public Inimigo(String nome, int vida, int escudo){

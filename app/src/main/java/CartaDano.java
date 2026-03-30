@@ -1,3 +1,12 @@
+/**
+ * Causa dano na vida ou escudo (se tiver) da entidade adversária
+ * 
+ * @param nome Nome da carta
+ * @param custo Energia necessária para comprar uma carta
+ * @param descricao Detalha melhor a ação que a carta realiza
+ * @param dano Dano que a carta causa na entidade adversária
+ */
+
 public class CartaDano extends Carta{
     private int dano; //atributo extra para saber quanto de dano a carta causa
 

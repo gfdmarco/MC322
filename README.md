@@ -85,6 +85,8 @@ E de maneira simples mas concreta, esse é o modus operandi do jogo, esperamos q
 
 ## COMO COMPILAR:
 
-Caso esteja na pasta "src" diretamente, no terminal, acesse a pasta src do projeto (Tarefa01) e execute: javac App.java. Após a compilação, execute: java App
+Certifique-se de estar na raiz do projeto no terminal e siga as instruções:
 
-Caso esteja na pasta "Tarefa01" propriamente, execute javac -d bin $(find src -name "*.java") para compilar. Para a execução, após a compilação, execute: java -cp bin App.
+Para compilar, execute: ./gradlew build
+
+Para iniciar o jogo, execute: ./gradlew run

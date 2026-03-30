@@ -1,3 +1,11 @@
+/**
+ * Representa o conceito geral de uma carta jogável.
+ * 
+ * @param nome Título da carta
+ * @param custo Custo em energia da carta
+ * @param descricao Detalha melhor a ação que a carta realiza
+ */
+
 public abstract class Carta {
     protected String nome;
     protected int custo;

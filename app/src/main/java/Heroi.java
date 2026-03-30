@@ -1,3 +1,11 @@
+/**
+ * Representa um calouro que batalha para acabar com o hype das festas universitárias no jogo Fuga dos Perigos Noturnos - Versao Unicamp
+ * 
+ * @param nome Nome do calouro
+ * @param vida Sanidade do calouro
+ * @param escudo Representa o quanto de escudo o calouro possui
+ */
+
 public class Heroi extends Entidade {
     private int energia;
 

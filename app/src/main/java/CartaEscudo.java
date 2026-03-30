@@ -1,3 +1,12 @@
+/**
+ * Concede escudo (vida adicional) à entidade que utilizar a carta
+ * 
+ * @param nome Nome da carta
+ * @param custo Energia necessária para comprar uma carta
+ * @param descricao Detalha melhor a ação que a carta realiza
+ * @param escudo Escudo que a carta é capaz de conceder à entidade
+ */
+
 public class CartaEscudo extends Carta{
     private int escudo; //atributo extra para saber quanto de escudo a carta fornece
 

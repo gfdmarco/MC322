@@ -1,3 +1,13 @@
+/**
+ * Representa efeitos, positivos e negativos, que podem ser aplicados em entidades
+ * 
+ * @param nome Nome do efeito
+ * @param custo Custo em energia da carta
+ * @param descricao Detalha melhor a ação que a carta realiza
+ * @param efeito O efeito que a carta realiza sobre a entidade
+ * @param acumulos Total de acúmulos de um efeito
+ */
+
 public class CartaEfeito extends Carta {
     private String efeito;
     private int acumulos;
