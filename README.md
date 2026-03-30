@@ -22,6 +22,14 @@ Para esclarecer os últimos termos, aqui explicamos os principais tópicos do jo
     Hype -> representa a "vida" da festa. 
     Proteção -> representa o escudo/vida extra da festa, sendo restaurada assim como o escudo do calouro.
 
+## Efeitos:
+    Além das ações comuns de dano e escudo descritas abaixo na seção das Cartas, este jogo possui efeitos aplicáveis nas Entidades. Aqui, temos duas opções de efeitos:
+        - Metanol: análogo a um veneno, em que ao final do turno da entidade afligida pelo efeito é descontado um valor X da sua vida, em que X corresponde aos acúmulos do efeito. Após a aplicação do dano, os acúmulos são reduzidos em 1 unidade. Com isso, a aplicação segue este ciclo até que os acúmulos se esgotem.
+        - Investimento: análogo a uma força extra, este efeito concede dano extra a entidade que possui este efeito no momento em que esta realiza um ataque. O efeito é constante e uma vez aplicado dura até o final do combate.
+    OBS: para as aplicações dos efeitos, utiliza-se cartas próprias assim como para as cartas de dano e de escudo, como descritas abaixo. 
+    Como detalhes de implementação do programa, utiliza-se o padrão de designer Observer para notificar os momentos de ação dos efeitos, em que temos como Publisher (uma espécie de game manager) a classe Menu (utilizando trechos da classe App também), enquanto temos os próprios efeitos como Subscribers, notificados e agindo conforme o estado e executor de ações do combate.
+
+
 ## Cartas:
     Definem as ações do jogo. Cada carta define um modo de ataque ou defesa a base de energia para permitir que a batalha aconteça.
 
@@ -29,13 +37,26 @@ Para esclarecer os últimos termos, aqui explicamos os principais tópicos do jo
 
     Nome -> identificação da carta. 
     Custo -> o quanto de energia a carta consome. 
+    Descrição -> Texto que informa sobre todos os atributos e usabilidade da carta.
     Dano -> o quanto de dano causa no adversário ao utilizá-la. Para o calouro, representa ações que este realiza para prejudicar as festas diminuindo o hype (relevância/popularidade) destas. Para as festas, representa ações que estas realizam para prejudicar o calouro e tentar fazê-lo perder sua sanidade.
 
     CartaEscudo:
 
     Nome -> identificação da carta.
-    Custo -> o quanto de energia a carta consome. 
+    Custo -> o quanto de energia a carta consome.
+    Descrição -> Texto que informa sobre todos os atributos e usabilidade da carta.
     Proteção -> o quanto de escudo/vida extra a carta fornece ao ser utilizada. Para o calouro, representa movimentos de blindagem ou para manter distância das festas e evitar a perda de sanidade. Para as festas, representa aumentar sua relevância ou popularidade.
+
+    CartaEfeito:
+    Nome -> identificação da carta.
+    Custo -> o quanto de energia a carta consome.
+    Descrição -> Texto que informa sobre todos os atributos e usabilidade da carta.
+    Efeito -> indica qual o efeito que aquela carta aplica.
+    Acumulos -> indica a quantidade de acúmulos do efeito correspondente que a carta oferece.
+    
+    - Apenas por detalhe e melhor visualização, foram implementadas duas CartaEfeito: "Resenhoff", a qual aplica o efeito Metanol com 3 acúmulos e a carta "Investimento" (mesmo nome do efeito), a qual aplica o efeito de Investimento com 3 acúmulos também.
+
+
 
 ## Jogabilidade:
 
@@ -61,7 +82,7 @@ As jogadas do inimigo são randomizadas, tendo em vista que, a fim de tornar a e
 
 E de maneira simples mas concreta, esse é o modus operandi do jogo, esperamos que você se divirta e vença as tentações universitárias!
 
-COMO COMPILAR:
+## COMO COMPILAR:
 
 Caso esteja na pasta "src" diretamente, no terminal, acesse a pasta src do projeto (Tarefa01) e execute: javac App.java. Após a compilação, execute: java App
 

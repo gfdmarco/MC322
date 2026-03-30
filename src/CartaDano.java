@@ -18,6 +18,7 @@ public class CartaDano extends Carta{
             
             menu.reseta_danoExtra(); //para evitar acumular dano extra quando troca os turnos
             menu.notificar("ATAQUE_HEROI", menu);
+            
             int dano_total = this.dano + menu.qtd_danoExtra();
             inimigo.receberDano(dano_total);
             System.out.println();
