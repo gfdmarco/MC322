@@ -1,17 +1,18 @@
 import java.util.ArrayList;
 
 /**
- * Representa qualquer personagem presente na batalha, calouros e festas universitárias
- * 
- * @param nome Nome da entidade
- * @param vida Vida atual da entidade
- * @param escudo Escudo atual da entidade
+ * Representa um personagem genérico presente na batalha (calouros e festas universitárias)
+ * Possui nome, vida e escudo.
+ *
  */
 
 public abstract class Entidade {
     protected String nome;
     protected int vida;
     protected int escudo;
+    /**
+     * Representa a lista de efeitos aplicados à entidade.
+     */
     private ArrayList<Efeito> efeitos = new ArrayList<>();
 
     public Entidade(String nome, int vida, int escudo){
@@ -20,6 +21,12 @@ public abstract class Entidade {
         this.escudo = escudo;
     }
 
+    /** 
+     * Realiza a ação de perder vida devido a um ataque adversário. 
+     * Para isso, verifica se a entidade possui escudo ou não e recebe o dano repassado.
+     * 
+     * @param dano Representa o dano repassado, que pode vir de uma carta de herói ou ataque do inimigo.
+    */
     public void receberDano(int dano){
         if (this.escudo > 0){
             if (dano >= this.escudo){
@@ -35,8 +42,10 @@ public abstract class Entidade {
         }
     }
 
+    /**
+     * Método para zerar o escudo da entidade ao trocar turnos, garantindo o fluxo de batalha.
+     */
     public void restaurarEscudo(){
-        //Método para zerar o escudo da entidade ao trocar turnos
         this.escudo = 0;
     }
 
@@ -44,6 +53,10 @@ public abstract class Entidade {
         this.escudo += escudo;
     }
 
+    /**
+     * Aplica um efeito a partir do nome correspondente ao efeito, seus acúmulos e a entidade que o contém.
+     * Assim como muitos outros métodos, recebe o Game Manager "Menu" para aplicar o design Observer.
+     */
     public void aplicarEfeito(String efeito, int acumulos, Entidade entidade, Menu menu){
         boolean contem = false;
         if (entidade.efeitos != null){
@@ -73,6 +86,10 @@ public abstract class Entidade {
         return efeitos;
     }
 
+    /**
+     * Essencial para o fluxo de batalha, serve para verificar se a entidade está viva.
+     * Necessário, pois o combate se encerra quando um dos lados deixa de estar vivo.
+     */
     public boolean estaVivo(){
         if (vida > 0){
             return true;

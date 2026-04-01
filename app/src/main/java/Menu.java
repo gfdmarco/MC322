@@ -3,8 +3,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Representa a classe Game Manager do jogo. Controla o fluxo de batalha e as interações usuário-jogo pelo terminal.
+ */
 public class Menu {
+    /**
+     * Configura a lista de efeitos presentes no jogo, necessário ao padrão de design Observer de aplicação de efeitos.
+     */
     private ArrayList<Efeito> subscribers = new ArrayList<>();
+    /**
+     * Representa o dano extra que o efeito de Investimento aplica no momento de ataque
+     */
     private int danoExtra = 0;
 
     public int qtd_danoExtra(){
@@ -15,18 +24,31 @@ public class Menu {
         danoExtra += bonus;
     }
 
+    /**
+     * Ação necessária para retornar o valor de dano extra a zero para que, no próximo turno, recalcule o dano extra.
+     * Evita que se acumule dano extra de um turno para o outro.
+     */
     public void reseta_danoExtra(){
         danoExtra = 0;
     }
 
+    /**
+     * Adiciona um efeito à lista de efeitos em vigor no jogo
+     */
     public void inscrever(Efeito efeito){
         subscribers.add(efeito);
     }
 
+    /**
+     * Remove um efeito da lista de efeitos em vigor no jogo
+     */
     public void desinscrever(Efeito efeito){
         subscribers.remove(efeito);
     }
 
+    /**
+     * Notifica todos os efeitos em vigor no jogo sobre o estado da batalha para que seja verificado se esses devem agir.
+     */
     public void notificar(String evento, Menu menu){
         //iteração em ordem reversa para evitar bug de remoção ao longo da iteração
         for (int i = subscribers.size() - 1; i >= 0; i--){
@@ -34,6 +56,10 @@ public class Menu {
         }
     }
 
+    /**
+     * Representa o menu de inicialização do jogo e troca de turnos, para mostrar informações básicas das entidades em combate.
+     * As informações básicas incluem nome, vida (herói: sanidade ou inimigo: hype), escudo e efeito (se presentes).
+     */
     public void menuInicial(Heroi heroi, Inimigo inimigo){
         System.out.println("Calouro " + heroi.pegaNome() + " VS " + inimigo.pegaNome());
         System.out.println("------------------------------------------------------------------------------------");
@@ -67,7 +93,10 @@ public class Menu {
         System.out.println("------------------------------------------------------------------------------------");
     }
 
-   public void menuJogador(Heroi heroi, Inimigo inimigo, List<Carta> pilha_compra, List<Carta> mao_heroi,
+    /**
+     * Rege as ações do jogador, informando seu estado de jogo, como cartas (e suas informações), a disposição e ações possíveis.
+     */
+    public void menuJogador(Heroi heroi, Inimigo inimigo, List<Carta> pilha_compra, List<Carta> mao_heroi,
     List<Carta> pilha_descarte, Scanner entrada, Menu menu){
 
         //ETAPA DE COMPRAS

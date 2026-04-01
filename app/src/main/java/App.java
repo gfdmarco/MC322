@@ -3,7 +3,13 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Representa a classe principal do jogo, a qual contém o método main, as instanciações dos objetos e o controle do jogo.
+ */
 public class App {
+    /**
+     * A principal função do jogo, onde instancia-se os objetos e controla o que acontece na batalha.
+     */
     public static void main(String[] args) {
 
         Menu menu = new Menu();

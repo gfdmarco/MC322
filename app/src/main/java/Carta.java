@@ -1,9 +1,7 @@
 /**
- * Representa o conceito geral de uma carta jogável.
+ * Representa uma carta jogável geral do jogo. 
+ * Possui nome, custo e descrição e uma forma de uso de acordo com seu tipo.
  * 
- * @param nome Título da carta
- * @param custo Custo em energia da carta
- * @param descricao Detalha melhor a ação que a carta realiza
  */
 
 public abstract class Carta {
@@ -16,7 +14,11 @@ public abstract class Carta {
         this.custo = custo;
         this.descricao = descricao;
     }
-    
+
+    /**
+     * Método que determina a ação de usar uma carta conforme sua especificação, gastando energia.
+     * Cada extensão que herda esta classe implementa este método.
+     */
     public abstract void usar(Heroi heroi, Inimigo inimigo, Menu menu);
     
     public String pegaNome(){

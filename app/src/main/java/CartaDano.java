@@ -1,10 +1,8 @@
 /**
- * Causa dano na vida ou escudo (se tiver) da entidade adversária
+ * Derivada da classe Carta, representa as cartas que causam dano.
+ * Causa dano na vida ou escudo, caso exista, da entidade adversária.
+ * Além dos atributos padrão de uma carta, possui o dano que a carta causa no adversário.
  * 
- * @param nome Nome da carta
- * @param custo Energia necessária para comprar uma carta
- * @param descricao Detalha melhor a ação que a carta realiza
- * @param dano Dano que a carta causa na entidade adversária
  */
 
 public class CartaDano extends Carta{
@@ -14,7 +12,10 @@ public class CartaDano extends Carta{
         super(nome, custo, descricao);
         this.dano = dano;
     }
-    
+
+    /**
+     * Implementação da ação de usar a carta, para causar dano no adversário.
+     */
     public void usar(Heroi heroi, Inimigo inimigo, Menu menu){
         //método de uso de carta para o herói
         if (heroi.qtdEnergia() - this.custo < 0){

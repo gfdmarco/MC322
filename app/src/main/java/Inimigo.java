@@ -1,9 +1,7 @@
 /**
  * Representa as festas universitárias, que farão de tudo para acabar com a sanidade do calouro no jogo Fuga dos Perigos Noturnos - Versao Unicamp
+ * Possui nome, vida (hype) e a quantidade de escudo que possui.
  * 
- * @param nome Nome da festa
- * @param vida Hype da festa
- * @param escudo Representa o quanto de escudo a festa possui
  */
 
 public class Inimigo extends Entidade {
@@ -12,6 +10,9 @@ public class Inimigo extends Entidade {
         super(nome, vida, escudo);
     }
 
+    /**
+     * Similar ao método de usar para as cartas de dano dos heróis, o inimigo utiliza este método para causar dano no adversário.
+     */
     public void atacar(Heroi heroi, CartaDano carta, Menu menu){
         menu.reseta_danoExtra(); //para evitar acumular dano extra quando troca os turnos
         menu.notificar("ATAQUE_INIMIGO", menu);

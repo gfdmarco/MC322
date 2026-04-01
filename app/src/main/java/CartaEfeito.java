@@ -1,11 +1,8 @@
 /**
- * Representa efeitos, positivos e negativos, que podem ser aplicados em entidades
+ * Derivada da classe Carta, representa as cartas que aplicam efeitos.
+ * Representa cartas de efeitos que podem ser aplicados em entidades.
+ * Além dos atribútos padrão, possui o nome do efeito contido na carta e os acúmulos que a carta oferece para esse efeito.
  * 
- * @param nome Nome do efeito
- * @param custo Custo em energia da carta
- * @param descricao Detalha melhor a ação que a carta realiza
- * @param efeito O efeito que a carta realiza sobre a entidade
- * @param acumulos Total de acúmulos de um efeito
  */
 
 public class CartaEfeito extends Carta {
@@ -18,6 +15,9 @@ public class CartaEfeito extends Carta {
         this.acumulos = acumulos;
     }
     
+    /**
+     * Implementação da ação de usar a carta, para aplicar efeito em si ou no adversário.
+     */
     public void usar(Heroi heroi, Inimigo inimigo, Menu menu){
         //método de uso de carta para o herói
         if (heroi.qtdEnergia() - this.custo < 0){

@@ -1,10 +1,8 @@
 /**
- * Concede escudo (vida adicional) à entidade que utilizar a carta
- * 
- * @param nome Nome da carta
- * @param custo Energia necessária para comprar uma carta
- * @param descricao Detalha melhor a ação que a carta realiza
- * @param escudo Escudo que a carta é capaz de conceder à entidade
+ * Derivada da classe Carta, representa as cartas que aplicam escudo.
+ * Concede escudo (vida adicional) ao herói.
+ * Além dos atributos padrão, possui o escudo que a carta concede à entidade utilizadora.
+ *
  */
 
 public class CartaEscudo extends Carta{
@@ -15,6 +13,9 @@ public class CartaEscudo extends Carta{
         this.escudo = escudo;
     }
 
+    /**
+     * Implementação da ação de usar a carta, para ganho próprio de escudo.
+     */
     public void usar(Heroi heroi, Inimigo inimigo, Menu menu){
         //método de uso de carta para o herói
         if (heroi.qtdEnergia() - this.custo < 0){

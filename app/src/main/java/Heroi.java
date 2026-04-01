@@ -1,12 +1,13 @@
 /**
- * Representa um calouro que batalha para acabar com o hype das festas universitárias no jogo Fuga dos Perigos Noturnos - Versao Unicamp
- * 
- * @param nome Nome do calouro
- * @param vida Sanidade do calouro
- * @param escudo Representa o quanto de escudo o calouro possui
+ * Representa um calouro, o qual batalha para acabar com o hype das festas universitárias.
+ * Possui nome, vida (sanidade) e a quantidade de escudo que possui.
+ *
  */
 
 public class Heroi extends Entidade {
+    /**
+     * Representa a quantidade que se pode gastar para consumir cartas, realizando ações de jogo.
+     */
     private int energia;
 
     public Heroi(String nome, int vida, int escudo){
@@ -14,6 +15,9 @@ public class Heroi extends Entidade {
         this.energia = 4; //energia máxima (inicial)
     }
 
+    /**
+     * Garante que nas trocas de turno a energia seja restaurada ao seu valor máximo.
+     */
     public void restaurarEnergia(){
         this.energia = 4;
     }

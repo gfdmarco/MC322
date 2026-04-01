@@ -1,15 +1,16 @@
 /**
- * Representa efeitos, positivos e negativos, que podem ser aplicados em entidades.
+ * Representa efeitos gerais que podem ser aplicados em entidades.
+ * Possui nome, um dono que representa a entidade possuidora do efeito e a quantidade de acúmulos (intensidade) do efeito.
  * 
- * @param nome Nome do efeito
- * @param dono Entidade possuidora deste efeito
- * @param acumulos Total de acúmulos de um efeito
  */
 
 public abstract class Efeito {
     //OBS: pensar em criar novos inimigos - instancias de inimigo ou classes mesmo
     protected String nome;
     protected Entidade dono;
+    /**
+     * Representa a quantidade de intensidade do efeito acumulada.
+     */
     protected int acumulos;
 
     public Efeito(String nome, Entidade dono, int acumulos){
@@ -18,6 +19,9 @@ public abstract class Efeito {
         this.acumulos = acumulos;
     }
 
+    /**
+     * Método que oferece o nome, uma descrição breve e os acúmulos do efeito..
+     */
     public abstract String getString();
 
     public String pegaNome(){
@@ -40,5 +44,10 @@ public abstract class Efeito {
         acumulos--;
     }
 
+    /**
+     * Método utilizado no padrão de design Observer para os efeitos receberem informação sobre o estado de batalha.
+     * Com isso, age conforme necessário e exerce a função do efeito.
+     * Para isso, recebe uma string que informa o estado de batalha (evento).
+     */
     public abstract void serNotificado(String evento, Menu menu); //o efeito deve ser usado
 }
