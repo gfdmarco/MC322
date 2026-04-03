@@ -27,7 +27,7 @@ public class App {
         //INICIALIZAÇÃO
         
         /*Cartas de Efeito */
-        CartaEfeito cartaefeito1 =  new CartaEfeito("Investimento", 3, 
+        CartaEfeito cartaefeito1 =  new CartaEfeito("Bolsa", 3, 
         "Para o calouro, recebe uma Bolsa da Fapesp. Para a festa, recebe investimento para Booms. Custo energetico: 3; Acumulo do Efeito: 3", "Investimento", 3);
         CartaEfeito cartaefeito2 = new CartaEfeito("Resenhoff", 2,
         "Fornecer a vodka Resenhoff, contaminada com Metanol. Custo energetico: 2; Acumulo do Efeito: 3", "Metanol", 3);
@@ -48,6 +48,7 @@ public class App {
         "Usa habilidades computacionais para colocar musicas infantis na caixa de som da festa. Custo energetico: 3; Dano: 9", 9);
         CartaDano cartadano6 = new CartaDano("Boicotar a Cheers", 1, 
         "Um ataque cibernetico faz com que o app fique fora do ar por alguns minutos. Custo energetico: 1; Dano: 4", 4);
+        
         CartaEscudo cartaescudo1 = new CartaEscudo("Kit Bixo", 2, 
         "Nosso calouro adquire o kit de protecao para o mesmo. Custo energetico: 2; Escudo: 5", 5);
         CartaEscudo cartaescudo2 = new CartaEscudo("Sair de um dos grupos do OXXO", 1, 
@@ -56,6 +57,19 @@ public class App {
         "O bixao se aventura em entidades da computacao, aumentando suas softskills. Custo energetico: 2; Escudo: 4", 4);
         CartaEscudo cartaescudo4 = new CartaEscudo("Jogar Videogame", 1, 
         "Seguindo o estereotipo, o bixao passa a noite jogando Fuga dos Perigos Noturnos. Custo energetico: 1; Escudo: 2", 2);
+
+        //NOVAS CARTAS (Tarefa 04)
+        CartaDano cartadano7 = new CartaDano("Exposed nas redes", 3, 
+        "Faz um post em diversas redes sociais difamando a festa e expondo podres! Custo energetico: 3; Dano: 11", 11);
+        CartaEscudo cartaescudo5 = new CartaEscudo("Dormir na aula", 2, 
+        "Voce descansa e se protege de ser convidado para as festas. Custo energetico: 2; Escudo: 6", 6);
+        CartaEscudo cartaescudo6 = new CartaEscudo("Ficar offiline", 3, 
+        "Desliga Wi-Fi e dados moveis do celular, evitando que receba convites duvidosos!. Custo energetico: 3; Escudo: 10", 10);
+        CartaEfeito cartaefeito3 = new CartaEfeito("Trote", 2, 
+        "Distribuicao de bebidas duvidosas para o adversario!. Custo energetico: 2; Acumulo do Efeito: 2", "Metanol", 2);
+        CartaEfeito cartaefeito4 = new CartaEfeito("PIX", 2, 
+        "Recebe uma transacao financeira anonima como incentivo a batalha Custo energetico: 2; Acumulo do Efeito: 2", "Investimento", 2);
+
 
         /*Inimigo (festas universitárias):
         vida máxima: 40, escudo inicial: 0 */
@@ -101,6 +115,12 @@ public class App {
         pilha_compra.add(cartaescudo4);
         pilha_compra.add(cartaefeito1);
         pilha_compra.add(cartaefeito2);
+        //NOVAS CARTAS (Tarefa 04)
+        pilha_compra.add(cartadano7);
+        pilha_compra.add(cartaescudo5);
+        pilha_compra.add(cartaescudo6);
+        pilha_compra.add(cartaefeito3);
+        pilha_compra.add(cartaefeito4);
         Collections.shuffle(pilha_compra);
 
         while (heroi.estaVivo() && inimigo.estaVivo()){
