@@ -5,9 +5,15 @@
  */
 
 public class Inimigo extends Entidade {
-    
+    private int vidaMax;
+
     public Inimigo(String nome, int vida, int escudo){
         super(nome, vida, escudo);
+        this.vidaMax = vida;
+    }
+
+    public int pegaVidaMax(){
+        return vidaMax;
     }
 
     /**
@@ -21,9 +27,15 @@ public class Inimigo extends Entidade {
         heroi.receberDano(dano_total);
         System.out.println();
         System.out.println();
-        System.out.println(this.pegaNome() + " atacou com " + carta.pegaNome() 
-        + ", causando " + carta.qtdDano() + " de dano no calouro!");
-        System.out.println();
+        try{
+            System.out.println(this.pegaNome() + " atacou com " + carta.pegaNome() 
+            + ", causando " + carta.qtdDano() + " de dano no calouro!");
+            System.out.println();
+            Thread.sleep(2000);
+        }
+        catch (InterruptedException e){
+            System.err.println("Pausa interrompida");
+        }
 
         //apenas para visualização do boost
         boolean temEfeito = false;

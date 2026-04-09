@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * Representa a classe principal do jogo, a qual contém o método main, as instanciações dos objetos e o controle do jogo.
@@ -14,7 +15,6 @@ public class App {
 
         Menu menu = new Menu();
         String leitura;
-        boolean turno_heroi = true; //variável que determina se é a vez do herói jogar
         Scanner entrada = new Scanner(System.in);
         System.out.println();
         System.out.println("Seja bem vindo ao Fuga dos Perigos Noturnos - Versao Unicamp!");
@@ -25,16 +25,23 @@ public class App {
         System.out.println("------------------------------------------------------------------------------------");
 
         //INICIALIZAÇÃO
-        
+
+        ArrayList<CartaDano> cartas_dano_in = new ArrayList<>();
+        ArrayList<CartaEscudo> cartas_escudo_in = new ArrayList<>();
+        ArrayList<CartaEfeito> cartas_efeito = new ArrayList<>();
+        ArrayList<Inimigo> inimigos = new ArrayList<>();
+
         /*Cartas de Efeito */
         CartaEfeito cartaefeito1 =  new CartaEfeito("Bolsa", 3, 
-        "Para o calouro, recebe uma Bolsa da Fapesp. Para a festa, recebe investimento para Booms. Custo energetico: 3; Acumulo do Efeito: 3", "Investimento", 3);
+        "Para o calouro, recebe uma Bolsa da Fapesp. Para a festa, recebe investimento para Booms. Custo energetico: 3; Acumulo do Efeito: 3; Tipo: Investimento", "Investimento", 3);
         CartaEfeito cartaefeito2 = new CartaEfeito("Resenhoff", 2,
-        "Fornecer a vodka Resenhoff, contaminada com Metanol. Custo energetico: 2; Acumulo do Efeito: 3", "Metanol", 3);
+        "Fornecer a vodka Resenhoff, contaminada. Custo energetico: 2; Acumulo do Efeito: 3. Tipo: Metanol", "Metanol", 3);
+        cartas_efeito.add(cartaefeito1);
+        cartas_efeito.add(cartaefeito2);
         
         /*Herói (calouro):
         vida máxima: 50, escudo inicial: 0; */
-        Heroi heroi = new Heroi(leitura, 50, 0);
+        Heroi heroi = new Heroi(leitura, 80, 0);
         //cartas do herói:
         CartaDano cartadano1 = new CartaDano("Causar tempestade", 1, 
         "Gera uma grande chuva no local da festa. Custo energetico: 1; Dano: 5", 5);
@@ -63,19 +70,44 @@ public class App {
         "Faz um post em diversas redes sociais difamando a festa e expondo podres! Custo energetico: 3; Dano: 11", 11);
         CartaEscudo cartaescudo5 = new CartaEscudo("Dormir na aula", 2, 
         "Voce descansa e se protege de ser convidado para as festas. Custo energetico: 2; Escudo: 6", 6);
-        CartaEscudo cartaescudo6 = new CartaEscudo("Ficar offiline", 3, 
+        CartaEscudo cartaescudo6 = new CartaEscudo("Ficar offline", 3, 
         "Desliga Wi-Fi e dados moveis do celular, evitando que receba convites duvidosos!. Custo energetico: 3; Escudo: 10", 10);
         CartaEfeito cartaefeito3 = new CartaEfeito("Trote", 2, 
-        "Distribuicao de bebidas duvidosas para o adversario!. Custo energetico: 2; Acumulo do Efeito: 2", "Metanol", 2);
+        "Distribuicao de bebidas duvidosas para o adversario!. Custo energetico: 2; Acumulo do Efeito: 2. Tipo: Metanol", "Metanol", 2);
         CartaEfeito cartaefeito4 = new CartaEfeito("PIX", 2, 
-        "Recebe uma transacao financeira anonima como incentivo a batalha Custo energetico: 2; Acumulo do Efeito: 2", "Investimento", 2);
+        "Recebe uma transacao financeira anonima como incentivo a batalha Custo energetico: 2; Acumulo do Efeito: 2. Tipo: Investimento", "Investimento", 2);
+        cartas_efeito.add(cartaefeito3);
+        cartas_efeito.add(cartaefeito4);
 
 
         /*Inimigo (festas universitárias):
         vida máxima: 40, escudo inicial: 0 */
-        String[] festas = {"Calourada", "Postinho", "Churras a Trois", "Mc Lovin", "After", "FEA Fantasy"};
-        Random random = new Random();
-        Inimigo inimigo = new Inimigo(festas[random.nextInt(festas.length)], 40, 0);
+        Inimigo inimigo1 = new Inimigo("Integras", 25, 0);
+
+        Inimigo inimigo2 = new Inimigo("Postinho", 34, 0);
+        Inimigo inimigo3 = new Inimigo("After", 32, 0);
+        Inimigo inimigo4 = new Inimigo("Embrev", 30, 0);
+
+        Inimigo inimigo5 = new Inimigo("Cachaca as Bruxas", 60, 0);
+        Inimigo inimigo6 = new Inimigo("FEA Fantasy", 75, 0);
+
+        Inimigo inimigo7 = new Inimigo("Churras a Trois", 70, 0);
+        Inimigo inimigo8 = new Inimigo("Mc Lovin", 80, 0);
+
+        Inimigo inimigo9 = new Inimigo("Quintas Intencoes", 90, 0);
+        Inimigo inimigo10 = new Inimigo("Calourada", 100, 0);
+
+        inimigos.add(inimigo1);
+        inimigos.add(inimigo2);
+        inimigos.add(inimigo3);
+        inimigos.add(inimigo4);
+        inimigos.add(inimigo5);
+        inimigos.add(inimigo6);
+        inimigos.add(inimigo7);
+        inimigos.add(inimigo8);
+        inimigos.add(inimigo9);
+        inimigos.add(inimigo10);
+
         //cartas do inimigo (marcador _in de inimigo):
         CartaDano cartadano1_in = new CartaDano("Perder pontos de CR", 1, 
         "Faz o bixao perder pontos de coeficiente de rendimento. Custo energetico: 1; Dano: 5", 5);
@@ -89,6 +121,13 @@ public class App {
         "O calouro perde sua caneca de bebidas para as festas. Custo energetico: 2; Dano: 7", 7);
         CartaDano cartadano6_in = new CartaDano("Tontura", 1, 
         "Faz com que o calouro perca o equilibrio pelas proximas horas. Custo energetico: 1; Dano: 6", 6);
+        cartas_dano_in.add(cartadano1_in);
+        cartas_dano_in.add(cartadano2_in);
+        cartas_dano_in.add(cartadano3_in);
+        cartas_dano_in.add(cartadano4_in);
+        cartas_dano_in.add(cartadano5_in);
+        cartas_dano_in.add(cartadano6_in);
+
         CartaEscudo cartaescudo1_in = new CartaEscudo("Open Bar", 3, 
         "A festa libera todas as bebidas de graca. Custo energetico: 3; Escudo: 5", 5);
         CartaEscudo cartaescudo2_in = new CartaEscudo("Presenca de segurancas", 1, 
@@ -97,6 +136,10 @@ public class App {
         "A festa libera consumiveis exclusivos por um curto periodo de tempo. Custo energetico: 2; Escudo: 4", 4);
         CartaEscudo cartaescudo4_in = new CartaEscudo("C.A. (Comissao Acolhedora)", 1, 
         "A comissao acolhedora protege a festa de embriagados e criminosos sexuais. Custo energetico: 1; Escudo: 2", 2);
+        cartas_escudo_in.add(cartaescudo1_in);
+        cartas_escudo_in.add(cartaescudo2_in);
+        cartas_escudo_in.add(cartaescudo3_in);
+        cartas_escudo_in.add(cartaescudo4_in);
 
         //criação dos arrays que compõem o sistema de baralho
         ArrayList<Carta> pilha_compra = new ArrayList<>();
@@ -123,123 +166,123 @@ public class App {
         pilha_compra.add(cartaefeito4);
         Collections.shuffle(pilha_compra);
 
-        while (heroi.estaVivo() && inimigo.estaVivo()){
-            //aqui, geramos um menu de visualização para o jogador com os métodos da classe Menu
-            menu.menuInicial(heroi, inimigo);
-
-            if (turno_heroi){ //caso seja a vez do heroi
-                menu.menuJogador(heroi, inimigo, pilha_compra, mao_heroi, pilha_descarte, entrada, menu);
-
-                //mandar as cartas não utilizadas para a pilha de descarte
-                for (int l = 0; l < mao_heroi.size(); l++){
-                    pilha_descarte.add(0, mao_heroi.get(l));
+        //criacao do mapa
+        DefaultMutableTreeNode raiz = iniciaMapa(heroi, inimigos);
+        //comecar na raiz, realizar a batalha inicial. após isso, perguntar pra onde ele quer ir.
+        DefaultMutableTreeNode atual = raiz;
+        System.out.println("Vamos ao jogo! Para a primeira fase, voce ira enfrentar o" + inimigos.get(0) + "!");
+        System.out.println();
+        System.out.println("// MAPA:  |");
+        System.out.println("          V");
+        System.out.println();
+        System.out.println("Nivel 1 - " + inimigos.get(0).pegaNome());
+        System.out.println();
+        System.out.println("Nivel 2 - " + inimigos.get(1).pegaNome() + " || " + inimigos.get(2).pegaNome() + " || " + inimigos.get(3).pegaNome());
+        System.out.println();
+        System.out.println("Nivel 3 - " + inimigos.get(4).pegaNome() + " / " + inimigos.get(5).pegaNome() + " || " + inimigos.get(6).pegaNome()+ " / " + inimigos.get(7).pegaNome() + " || " + inimigos.get(8).pegaNome() + " / " + inimigos.get(9).pegaNome());
+        System.out.println();
+        
+        //pausa entre as ações no terminal
+        try{       
+            Thread.sleep(3000);
+        }
+        catch (InterruptedException e){
+            System.err.println("Pausa interrompida");
+        }
+        
+        while (heroi.estaVivo() && atual != null){
+            Batalha batalha = (Batalha) atual.getUserObject();
+            if (atual == raiz){
+                try {   
+                    System.out.println("//////////////////////////");
+                    System.out.println();    
+                    System.out.println("Vamos ao primeiro combate!");
+                    System.out.println();
+                    System.out.println("//////////////////////////");
+                    Thread.sleep(3000);
                 }
-                menu.notificar("FIM_TURNO_HEROI", menu);
-                mao_heroi.clear();
-                inimigo.restaurarEscudo();
-                turno_heroi = false;
+                catch (InterruptedException e){
+                    System.err.println("Pausa interrompida");
+                }
             }
-            else { //turno do inimigo
-                //usamos o artifício de random choice para o inimigo realizar uma ação (escolher uma das cartas)
-                Random random2 = new Random();
-                int numCarta = random2.nextInt( 12);
-                if (numCarta == 0){
-                    inimigo.atacar(heroi, cartadano1_in, menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 1){
-                    inimigo.atacar(heroi, cartadano2_in, menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 2){
-                    inimigo.atacar(heroi, cartadano3_in, menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 3){
-                    inimigo.ganharEscudo(cartaescudo1_in.qtdEscudo());
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " se protegeu com " + 
-                    cartaescudo1_in.pegaNome() + ", concedendo " + 
-                    cartaescudo1_in.qtdEscudo() + " de escudo!");
-                    System.out.println();
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 4){
-                    inimigo.ganharEscudo(cartaescudo2_in.qtdEscudo());
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " se protegeu com " + 
-                    cartaescudo2_in.pegaNome() + ", concedendo " + 
-                    cartaescudo2_in.qtdEscudo() + " de escudo!");
-                    System.out.println();
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 5){
-                    inimigo.atacar(heroi, cartadano4_in, menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 6){
-                    inimigo.atacar(heroi, cartadano5_in, menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 7){
-                    inimigo.atacar(heroi, cartadano6_in, menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 8){
-                    inimigo.ganharEscudo(cartaescudo3_in.qtdEscudo());
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " se protegeu com " + 
-                    cartaescudo3_in.pegaNome() + ", concedendo " + 
-                    cartaescudo3_in.qtdEscudo() + " de escudo!");
-                    System.out.println();
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 9){
-                    inimigo.ganharEscudo(cartaescudo4_in.qtdEscudo());
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " se protegeu com " + 
-                    cartaescudo4_in.pegaNome() + ", concedendo " + 
-                    cartaescudo4_in.qtdEscudo() + " de escudo!");
-                    System.out.println();
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 10){
-                    inimigo.aplicarEfeito("Investimento", cartaefeito1.qtdAcumulos(), inimigo, menu);
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " aplicou o efeito Investimento. Portanto, vai receber uma grana para Booms!");
-                    System.out.println();
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 11){
-                    heroi.aplicarEfeito("Metanol", cartaefeito2.qtdAcumulos(), heroi, menu);
-
-                    System.out.println();
-                    System.out.println(inimigo.pegaNome() + " aplicou o efeito Metanol, infectando o calouro!");
-                    System.out.println();
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                menu.notificar("FIM_TURNO_INIMIGO", menu);
+            if (batalha.combate(menu, pilha_compra, mao_heroi, pilha_descarte, entrada, 
+                cartas_dano_in, cartas_escudo_in, cartas_efeito) == true){ //herói venceu
+                
+                //resetar energia e efeitos
                 heroi.restaurarEnergia();
-                heroi.restaurarEscudo();
-                turno_heroi = true;
+                heroi.pegaEfeitos().clear();
+
+                if (atual.getChildCount() == 0){
+                    atual = null;
+                    break;
+                }
+                System.out.println("Agora, vamos a proxima fase! Escolha qual a proxima festa que queira enfrentar");
+                for (int i = 0; i < atual.getChildCount(); i++){
+                    System.out.println("Caminho " + (i + 1) + ": " + ((Batalha) ((DefaultMutableTreeNode) atual.getChildAt(i)).getUserObject()).pegaInimigo().pegaNome() +
+                    ". Vida: " + ((Batalha) ((DefaultMutableTreeNode) atual.getChildAt(i)).getUserObject()).pegaInimigo().pegaVidaMax());
+                }
+                int leitura2;
+                while (true){
+                    System.out.println("Digite o numero do caminho: ");
+                    leitura2 = entrada.nextInt();
+                    if (leitura2 > 0 && leitura2 <= atual.getChildCount()){
+                        atual = (DefaultMutableTreeNode) atual.getChildAt(leitura2 - 1);
+                        break;
+                    }
+                    try{
+                        System.out.println();
+                        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                        System.out.println("ERRO: numero invalido!");
+                        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                        System.out.println();
+                        Thread.sleep(5000);
+                    }
+                    catch (InterruptedException e){
+                        System.err.println("Pausa interrompida");
+                    }
+                }
+            }
+            else {
+                break;
             }
         }
-        if (!heroi.estaVivo()){
-            System.out.println("Voce perdeu! O bixao enlouqueceu! Nao sobrou nada...");
-            System.out.println();
+        if (heroi.estaVivo() && atual == null){
+            System.out.println("Parabens, " + heroi.pegaNome() + "! Voce chegou ao fim do mapa e venceu o jogo!");
+            System.out.println("Voce resistiu a todos os perigos das festas e agora consegue ter um semestre tranquilo!");
+            System.out.println("Nem tao tranquilo assim, rs... agora voce tem que passar nas materias...");
         }
-        else if (!inimigo.estaVivo()){
-            System.out.println("Parabens bixao! Voce conseguiu acabar com o hype da festa e manteve sua sanidade!");
-            System.out.println();
-        }
-        System.out.println();
-        System.out.println("JOGO ENCERRADO!");
-        System.out.println();
+
+        System.out.println("**************************");
+        System.out.println("    JOGO ENCERRADO!");
+        System.out.println("**************************");
         entrada.close();
+    }
+
+    public static DefaultMutableTreeNode iniciaMapa(Heroi heroi, ArrayList<Inimigo> inimigos){
+        DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(0)));
+
+        DefaultMutableTreeNode no1_fase1 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(1)));
+        DefaultMutableTreeNode no2_fase1 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(2)));
+        DefaultMutableTreeNode no3_fase1 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(3)));
+        raiz.add(no1_fase1);
+        raiz.add(no2_fase1);
+        raiz.add(no3_fase1);
+
+        DefaultMutableTreeNode no1_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(4)));
+        DefaultMutableTreeNode no2_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(5)));
+        no1_fase1.add(no1_fase2);
+        no1_fase1.add(no2_fase2);
+
+        DefaultMutableTreeNode no3_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(6)));
+        DefaultMutableTreeNode no4_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(7)));
+        no2_fase1.add(no3_fase2);
+        no2_fase1.add(no4_fase2);
+
+        DefaultMutableTreeNode no5_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(8)));
+        DefaultMutableTreeNode no6_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(9)));
+        no3_fase1.add(no5_fase2);
+        no3_fase1.add(no6_fase2);
+
+        return raiz;
     }
 }

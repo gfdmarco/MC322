@@ -63,7 +63,7 @@ public class Menu {
     public void menuInicial(Heroi heroi, Inimigo inimigo){
         System.out.println("Calouro " + heroi.pegaNome() + " VS " + inimigo.pegaNome());
         System.out.println("------------------------------------------------------------------------------------");
-        System.out.println("Calouro '" + heroi.pegaNome() + "' - Sanidade: " + heroi.qtdVida() + "/50");
+        System.out.println("Calouro '" + heroi.pegaNome() + "' - Sanidade: " + heroi.qtdVida() + "/80");
         if (heroi.qtdEscudo() > 0){
             System.out.println("**");
             System.out.println("Protecao:" + heroi.qtdEscudo());
@@ -77,7 +77,7 @@ public class Menu {
             }
         }
         System.out.println("---------------------------------------");
-        System.out.println("Festa do(a) '" + inimigo.pegaNome() + "' - Hype: " + inimigo.qtdVida() + "/40");
+        System.out.println("Festa do(a) '" + inimigo.pegaNome() + "' - Hype: " + inimigo.qtdVida() + "/" + inimigo.pegaVidaMax());
         if (inimigo.qtdEscudo() > 0){
             System.out.println("**");
             System.out.println("Protecao:" + inimigo.qtdEscudo());
@@ -100,8 +100,14 @@ public class Menu {
     List<Carta> pilha_descarte, Scanner entrada, Menu menu){
 
         //ETAPA DE COMPRAS
-        System.out.println("Recebendo novas cartas e compondo nova mao...");
-        System.out.println("OBS: voce recebe sempre 3 cartas por turno!");
+        try{
+            System.out.println("Recebendo novas cartas e compondo nova mao...");
+            System.out.println("OBS: voce recebe sempre 3 cartas por turno!");       
+            Thread.sleep(5000);
+        }
+        catch (InterruptedException e){
+            System.err.println("Pausa interrompida");
+        }
         
         for (int carta_comprar = 0; carta_comprar < 3; carta_comprar++){
             //embaralhar
@@ -119,6 +125,13 @@ public class Menu {
                 + " foi adicionada a mao!");
                 pilha_compra.remove(0);
             }
+        }
+
+        try{  
+            Thread.sleep(3000);
+        }
+        catch (InterruptedException e){
+            System.err.println("Pausa interrompida");
         }
 
         //INICIO DO TURNO
@@ -146,8 +159,16 @@ public class Menu {
             System.out.println("Digite: ");
             int leitura2 = entrada.nextInt();
             if (leitura2 == 2){
-                System.out.println("ENCERRANDO TURNO DO JOGADOR...");
-                break;
+                try{
+                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");          
+                    System.out.println("ENCERRANDO TURNO DO JOGADOR...");
+                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");          
+                    Thread.sleep(5000);
+                    break;
+                }
+                catch (InterruptedException e){
+                    System.err.println("Pausa interrompida");
+                }
             }
             else if (leitura2 == 1){
                 System.out.println("Digite qual carta deseja utilizar conforme a numeracao dela:");
@@ -165,25 +186,43 @@ public class Menu {
                     mao_heroi.remove(leitura3);
                 }
                 else {
+                    try{
+                        System.out.println();
+                        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                        System.out.println("ERRO: numero invalido!");
+                        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                        System.out.println();
+                        Thread.sleep(5000);
+                    }
+                    catch (InterruptedException e){
+                        System.err.println("Pausa interrompida");
+                    }
+                }
+            }
+            else {
+                try{
                     System.out.println();
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                     System.out.println("ERRO: numero invalido!");
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                     System.out.println();
+                    Thread.sleep(5000);
                 }
-            }
-            else {
-                System.out.println();
-                System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                System.out.println("ERRO: numero invalido!");
-                System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                System.out.println();
+                catch (InterruptedException e){
+                    System.err.println("Pausa interrompida");
+                }
             }
         }
         if (heroi.qtdEnergia() == 0){
-            System.out.println("///////////////////////////////////////////////////////////////////////////////////");            
-            System.out.println("Energia esgotada! Turno se encerrando automaticamente...");
-            System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+            try{
+                System.out.println("///////////////////////////////////////////////////////////////////////////////////");            
+                System.out.println("Energia esgotada! Turno se encerrando automaticamente...");
+                System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                Thread.sleep(5000);
+            }
+            catch (InterruptedException e){
+                System.err.println("Pausa interrompida");
+            }
         }
 
         System.out.println();

@@ -31,10 +31,16 @@ public class CartaDano extends Carta{
             
             int dano_total = this.dano + menu.qtd_danoExtra();
             inimigo.receberDano(dano_total);
-            System.out.println();
-            System.out.println("O calouro " + heroi.pegaNome() + " causou " + this.dano + " de dano no(a) " 
-            + inimigo.pegaNome() + " com " + this.nome);
-
+            try{ 
+                System.out.println("/////////////////////////////////////////////////////////////////////////");
+                System.out.println("O calouro " + heroi.pegaNome() + " causou " + this.dano + " de dano no(a) " 
+                + inimigo.pegaNome() + " com " + this.nome);
+                System.out.println("/////////////////////////////////////////////////////////////////////////");
+                Thread.sleep(3000);
+            }
+            catch (InterruptedException e){
+                System.err.println("Pausa interrompida");
+            }
             //apenas para printar o bonus
             boolean temEfeito = false;
             for (int i = 0; i < heroi.pegaEfeitos().size(); i++){
