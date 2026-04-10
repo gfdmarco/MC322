@@ -30,6 +30,9 @@ public class Publisher {
         }
     }
 
+    /**
+     * Limpa a lista de subscribers
+     */
     public void limpar(){
         subscribers.clear();
     }
