@@ -9,8 +9,31 @@ public class Menu {
 
     private Publisher publisher;
 
+    //MÉTODOS DO DESIGN OBSERVER
     public Menu(){
         this.publisher = new Publisher();
+    }
+
+    public void limpaEfeitos(){
+        publisher.limpar();
+    }
+    
+    public ArrayList<Efeito> pegaSubscribers(){
+        return publisher.pegaSubscribers();
+    }
+
+    /**
+     * Adiciona um efeito à lista de efeitos em vigor no jogo
+     */
+    public void inscrever(Efeito efeito){
+        publisher.inscrever(efeito);
+    }
+
+    /**
+     * Remove um efeito da lista de efeitos em vigor no jogo
+     */
+    public void desinscrever(Efeito efeito){
+        publisher.desinscrever(efeito);
     }
     
     /**
@@ -32,28 +55,6 @@ public class Menu {
      */
     public void reseta_danoExtra(){
         danoExtra = 0;
-    }
-
-    public void limpaEfeitos(){
-        publisher.limpar();
-    }
-
-    public ArrayList<Efeito> pegaSubscribers(){
-        return publisher.pegaSubscribers();
-    }
-
-    /**
-     * Adiciona um efeito à lista de efeitos em vigor no jogo
-     */
-    public void inscrever(Efeito efeito){
-        publisher.inscrever(efeito);
-    }
-
-    /**
-     * Remove um efeito da lista de efeitos em vigor no jogo
-     */
-    public void desinscrever(Efeito efeito){
-        publisher.desinscrever(efeito);
     }
 
     /**

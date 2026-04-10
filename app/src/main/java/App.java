@@ -7,6 +7,11 @@ import javax.swing.tree.DefaultMutableTreeNode;
  * Representa a classe principal do jogo, a qual contém o método main, as instanciações dos objetos e o controle do jogo.
  */
 public class App {
+    
+    /* OBS: muitas vezes neste jogo são utilizados trechos com Thread.sleep(x) para apenas acontecer uma pausa e espera
+    durante as informações impressas ao jogador durante o uso do terminal */
+
+
     /**
      * A principal função do jogo, onde instancia-se os objetos e controla o que acontece na batalha.
      */
