@@ -4,7 +4,7 @@
  * 
  */
 
-public abstract class Efeito {
+public abstract class Efeito implements Subscriber{
     //OBS: pensar em criar novos inimigos - instancias de inimigo ou classes mesmo
     protected String nome;
     protected Entidade dono;
@@ -49,5 +49,6 @@ public abstract class Efeito {
      * Com isso, age conforme necessário e exerce a função do efeito.
      * Para isso, recebe uma string que informa o estado de batalha (evento).
      */
-    public abstract void serNotificado(String evento, Menu menu); //o efeito deve ser usado
+    @Override
+    public abstract void serNotificado(String evento, Menu menu);
 }

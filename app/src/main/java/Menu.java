@@ -1,16 +1,18 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * Representa a classe Game Manager do jogo. Controla o fluxo de batalha e as interações usuário-jogo pelo terminal.
  */
 public class Menu {
-    /**
-     * Configura a lista de efeitos presentes no jogo, necessário ao padrão de design Observer de aplicação de efeitos.
-     */
-    private ArrayList<Efeito> subscribers = new ArrayList<>();
+
+    private Publisher publisher;
+
+    public Menu(){
+        this.publisher = new Publisher();
+    }
+    
     /**
      * Representa o dano extra que o efeito de Investimento aplica no momento de ataque
      */
@@ -32,28 +34,33 @@ public class Menu {
         danoExtra = 0;
     }
 
+    public void limpaEfeitos(){
+        publisher.limpar();
+    }
+
+    public ArrayList<Efeito> pegaSubscribers(){
+        return publisher.pegaSubscribers();
+    }
+
     /**
      * Adiciona um efeito à lista de efeitos em vigor no jogo
      */
     public void inscrever(Efeito efeito){
-        subscribers.add(efeito);
+        publisher.inscrever(efeito);
     }
 
     /**
      * Remove um efeito da lista de efeitos em vigor no jogo
      */
     public void desinscrever(Efeito efeito){
-        subscribers.remove(efeito);
+        publisher.desinscrever(efeito);
     }
 
     /**
      * Notifica todos os efeitos em vigor no jogo sobre o estado da batalha para que seja verificado se esses devem agir.
      */
-    public void notificar(String evento, Menu menu){
-        //iteração em ordem reversa para evitar bug de remoção ao longo da iteração
-        for (int i = subscribers.size() - 1; i >= 0; i--){
-            subscribers.get(i).serNotificado(evento, menu);
-        }
+    public void notificar(String evento){
+        publisher.notificar(evento, this);
     }
 
     /**
@@ -100,39 +107,7 @@ public class Menu {
     List<Carta> pilha_descarte, Scanner entrada, Menu menu){
 
         //ETAPA DE COMPRAS
-        try{
-            System.out.println("Recebendo novas cartas e compondo nova mao...");
-            System.out.println("OBS: voce recebe sempre 3 cartas por turno!");       
-            Thread.sleep(5000);
-        }
-        catch (InterruptedException e){
-            System.err.println("Pausa interrompida");
-        }
-        
-        for (int carta_comprar = 0; carta_comprar < 3; carta_comprar++){
-            //embaralhar
-            if (pilha_compra.size() == 0){
-                Collections.shuffle(pilha_descarte);
-                for (int k = 0; k < pilha_descarte.size(); k++){
-                    pilha_compra.add(0, pilha_descarte.get(k));
-                }
-                pilha_descarte.clear();
-            }
-            if (pilha_compra.size() > 0) {
-                System.out.println();
-                mao_heroi.add(pilha_compra.get(0)); //0 para pegar sempre o topo!
-                System.out.println(pilha_compra.get(0).pegaNome() 
-                + " foi adicionada a mao!");
-                pilha_compra.remove(0);
-            }
-        }
-
-        try{  
-            Thread.sleep(3000);
-        }
-        catch (InterruptedException e){
-            System.err.println("Pausa interrompida");
-        }
+        Baralho.organizar(pilha_compra, mao_heroi, pilha_descarte);
 
         //INICIO DO TURNO
         System.out.println();

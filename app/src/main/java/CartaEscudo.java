@@ -24,10 +24,16 @@ public class CartaEscudo extends Carta{
         else {
             heroi.consomeEnergia(this.custo);
             heroi.ganharEscudo(this.escudo);
-            System.out.println();
-            System.out.println("O calouro " + heroi.pegaNome() + " ganhou " + this.escudo + " de escudo com " 
-            + this.nome);
-            System.out.println();
+            try{ 
+                System.out.println();
+                System.out.println("O calouro " + heroi.pegaNome() + " ganhou " + this.escudo + " de escudo com " 
+                + this.nome);
+                System.out.println();
+                Thread.sleep(3000);
+            }
+            catch (InterruptedException e){
+                System.err.println("Pausa interrompida");
+            }
         }
     }
 

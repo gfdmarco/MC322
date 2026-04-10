@@ -33,10 +33,16 @@ public class CartaEfeito extends Carta {
             else if (efeito.equals("Metanol")){
                 inimigo.aplicarEfeito(efeito, acumulos, inimigo, menu);
             }
-            System.out.println();
-            System.out.println("O calouro " + heroi.pegaNome() + " aplicou a carta de efeito " + this.nome);
-            System.out.println("Efeito: " + efeito + "; Acumulos: " + acumulos);
-            System.out.println();
+            try{ 
+                System.out.println();
+                System.out.println("O calouro " + heroi.pegaNome() + " aplicou a carta de efeito " + this.nome);
+                System.out.println("Efeito: " + efeito + "; Acumulos: " + acumulos);
+                System.out.println();
+                Thread.sleep(3000);
+            }
+            catch (InterruptedException e){
+                System.err.println("Pausa interrompida");
+            }
         }
     }
 

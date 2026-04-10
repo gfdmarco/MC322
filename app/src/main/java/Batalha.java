@@ -36,35 +36,43 @@ public class Batalha {
                 for (int l = 0; l < mao_heroi.size(); l++){
                     pilha_descarte.add(0, mao_heroi.get(l));
                 }
-                menu.notificar("FIM_TURNO_HEROI", menu);
+                menu.notificar("FIM_TURNO_HEROI");
                 mao_heroi.clear();
                 this.inimigo.restaurarEscudo();
                 turno_heroi = false;
             }
-            else { //turno do this.inimigo
-                //usamos o artifício de random choice para o this.inimigo realizar uma ação (escolher uma das cartas)
+            else { //turno do inimigo
+                //usamos o artifício de random choice para o inimigo realizar uma ação (escolher uma das cartas)
                 Random random2 = new Random();
                 int numCarta = random2.nextInt(14);
-                if (numCarta == 0){
-                    this.inimigo.atacar(this.heroi, cartas_dano_in.get(0), menu);
+                boolean cartadano = false;
+                boolean cartaescudo = false;
+                boolean cartaefeito = false;
+
+                if (numCarta >= 0 && numCarta <= 5){
+                    cartadano = true;
+                }
+                else if (numCarta >= 6 && numCarta <= 9){
+                    cartaescudo = true;
+                }
+                else if (numCarta >= 10 && numCarta <= 13){
+                    cartaefeito = true;
+                }
+
+                if (cartadano){
+                    this.inimigo.atacar(this.heroi, cartas_dano_in.get(numCarta), menu);
+                    System.out.println();
+                    System.out.println();
                     System.out.println("///////////////////////////////////////////////////////////////////////////////////");
                 }
-                else if (numCarta == 1){
-                    this.inimigo.atacar(this.heroi, cartas_dano_in.get(1), menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 2){
-                    this.inimigo.atacar(this.heroi, cartas_dano_in.get(2), menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 3){
-                    this.inimigo.ganharEscudo(cartas_escudo_in.get(0).qtdEscudo());
+                else if (cartaescudo){
+                    this.inimigo.ganharEscudo(cartas_escudo_in.get(numCarta - 6).qtdEscudo());
 
                     try{
                         System.out.println();
                         System.out.println(this.inimigo.pegaNome() + " se protegeu com " + 
-                        cartas_escudo_in.get(0).pegaNome() + ", concedendo " + 
-                        cartas_escudo_in.get(0).qtdEscudo() + " de escudo!");
+                        cartas_escudo_in.get(numCarta - 6).pegaNome() + ", concedendo " + 
+                        cartas_escudo_in.get(numCarta - 6).qtdEscudo() + " de escudo!");
                         System.out.println();
                         System.out.println("///////////////////////////////////////////////////////////////////////////////////"); 
                         Thread.sleep(2000);
@@ -73,123 +81,38 @@ public class Batalha {
                         System.err.println("Pausa interrompida");
                     }
                 }
-                else if (numCarta == 4){
-                    this.inimigo.ganharEscudo(cartas_escudo_in.get(1).qtdEscudo());
+                else if (cartaefeito){
+                    if (numCarta == 10 || numCarta == 13){
+                        this.inimigo.aplicarEfeito("Investimento", cartas_efeito.get(numCarta - 10).qtdAcumulos(), this.inimigo, menu);
 
-                    try{
-                        System.out.println();
-                        System.out.println(this.inimigo.pegaNome() + " se protegeu com " + 
-                        cartas_escudo_in.get(1).pegaNome() + ", concedendo " + 
-                        cartas_escudo_in.get(1).qtdEscudo() + " de escudo!");
-                        System.out.println();
-                        System.out.println("///////////////////////////////////////////////////////////////////////////////////"); 
-                        Thread.sleep(2000);
+                        try{
+                            System.out.println();
+                            System.out.println(this.inimigo.pegaNome() + " aplicou o efeito Investimento. Portanto, vai receber uma forca!");
+                            System.out.println();
+                            System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                            Thread.sleep(2000);
+                        }
+                        catch (InterruptedException e){
+                            System.err.println("Pausa interrompida");
+                        }
                     }
-                    catch (InterruptedException e){
-                        System.err.println("Pausa interrompida");
-                    }
-                }
-                else if (numCarta == 5){
-                    this.inimigo.atacar(this.heroi, cartas_dano_in.get(3), menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 6){
-                    this.inimigo.atacar(this.heroi, cartas_dano_in.get(4), menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 7){
-                    this.inimigo.atacar(this.heroi, cartas_dano_in.get(5), menu);
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                }
-                else if (numCarta == 8){
-                    this.inimigo.ganharEscudo(cartas_escudo_in.get(2).qtdEscudo());
-
-                    try{
-                        System.out.println();
-                        System.out.println(this.inimigo.pegaNome() + " se protegeu com " + 
-                        cartas_escudo_in.get(2).pegaNome() + ", concedendo " + 
-                        cartas_escudo_in.get(2).qtdEscudo() + " de escudo!");
-                        System.out.println();
-                        System.out.println("///////////////////////////////////////////////////////////////////////////////////"); 
-                        Thread.sleep(2000);
-                    }
-                    catch (InterruptedException e){
-                        System.err.println("Pausa interrompida");
-                    }
-                }
-                else if (numCarta == 9){
-                    this.inimigo.ganharEscudo(cartas_escudo_in.get(3).qtdEscudo());
-
-                    try{
-                        System.out.println();
-                        System.out.println(this.inimigo.pegaNome() + " se protegeu com " + 
-                        cartas_escudo_in.get(3).pegaNome() + ", concedendo " + 
-                        cartas_escudo_in.get(3).qtdEscudo() + " de escudo!");
-                        System.out.println();
-                        System.out.println("///////////////////////////////////////////////////////////////////////////////////"); 
-                        Thread.sleep(2000);
-                    }
-                    catch (InterruptedException e){
-                        System.err.println("Pausa interrompida");
-                    }
-                }
-                else if (numCarta == 10){
-                    this.inimigo.aplicarEfeito("Investimento", cartas_efeito.get(0).qtdAcumulos(), this.inimigo, menu);
-
-                    try{
-                        System.out.println();
-                        System.out.println(this.inimigo.pegaNome() + " aplicou o efeito Investimento. Portanto, vai receber uma forca!");
-                        System.out.println();
-                        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                        Thread.sleep(2000);
-                    }
-                    catch (InterruptedException e){
-                        System.err.println("Pausa interrompida");
-                    }
-                }
-                else if (numCarta == 11){
-                    this.heroi.aplicarEfeito("Metanol", cartas_efeito.get(1).qtdAcumulos(), this.heroi, menu);
+                    else if (numCarta == 11 || numCarta == 12){
+                        this.heroi.aplicarEfeito("Metanol", cartas_efeito.get(numCarta - 10).qtdAcumulos(), this.heroi, menu);
                     
-                    try{
-                        System.out.println();
-                        System.out.println(this.inimigo.pegaNome() + " aplicou o efeito Metanol, infectando o calouro!");
-                        System.out.println();
-                        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                        Thread.sleep(2000);
+                        try{
+                            System.out.println();
+                            System.out.println(this.inimigo.pegaNome() + " aplicou o efeito Metanol, infectando o calouro!");
+                            System.out.println();
+                            System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                            Thread.sleep(2000);
+                        }
+                        catch (InterruptedException e){
+                            System.err.println("Pausa interrompida");
+                        }
                     }
-                    catch (InterruptedException e){
-                        System.err.println("Pausa interrompida");
-                    }
-                }
-                else if (numCarta == 12){
-                    this.heroi.aplicarEfeito("Metanol", cartas_efeito.get(3).qtdAcumulos(), this.heroi, menu);
                     
-                    try{
-                        System.out.println();
-                        System.out.println(this.inimigo.pegaNome() + " aplicou o efeito Metanol, infectando o calouro!");
-                        System.out.println();
-                        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                        Thread.sleep(2000);
-                    }
-                    catch (InterruptedException e){
-                        System.err.println("Pausa interrompida");
-                    }
                 }
-                else if (numCarta == 13){
-                    this.heroi.aplicarEfeito("Investimento", cartas_efeito.get(4).qtdAcumulos(), this.heroi, menu);
-                    
-                    try{
-                        System.out.println();
-                        System.out.println(this.inimigo.pegaNome() + " aplicou o efeito Investimento. Portanto, vai receber uma forca!");
-                        System.out.println();
-                        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                        Thread.sleep(2000);
-                    }
-                    catch (InterruptedException e){
-                        System.err.println("Pausa interrompida");
-                    }
-                }
-                menu.notificar("FIM_TURNO_INIMIGO", menu);
+                menu.notificar("FIM_TURNO_INIMIGO");
                 this.heroi.restaurarEnergia();
                 this.heroi.restaurarEscudo();
                 turno_heroi = true;

@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -29,7 +28,6 @@ public class App {
         ArrayList<CartaDano> cartas_dano_in = new ArrayList<>();
         ArrayList<CartaEscudo> cartas_escudo_in = new ArrayList<>();
         ArrayList<CartaEfeito> cartas_efeito = new ArrayList<>();
-        ArrayList<Inimigo> inimigos = new ArrayList<>();
 
         /*Cartas de Efeito */
         CartaEfeito cartaefeito1 =  new CartaEfeito("Bolsa", 3, 
@@ -82,32 +80,7 @@ public class App {
 
         /*Inimigo (festas universitárias):
         vida máxima: 40, escudo inicial: 0 */
-        Inimigo inimigo1 = new Inimigo("Integras", 25, 0);
-
-        Inimigo inimigo2 = new Inimigo("Postinho", 34, 0);
-        Inimigo inimigo3 = new Inimigo("After", 32, 0);
-        Inimigo inimigo4 = new Inimigo("Embrev", 30, 0);
-
-        Inimigo inimigo5 = new Inimigo("Cachaca as Bruxas", 60, 0);
-        Inimigo inimigo6 = new Inimigo("FEA Fantasy", 75, 0);
-
-        Inimigo inimigo7 = new Inimigo("Churras a Trois", 70, 0);
-        Inimigo inimigo8 = new Inimigo("Mc Lovin", 80, 0);
-
-        Inimigo inimigo9 = new Inimigo("Quintas Intencoes", 90, 0);
-        Inimigo inimigo10 = new Inimigo("Calourada", 100, 0);
-
-        inimigos.add(inimigo1);
-        inimigos.add(inimigo2);
-        inimigos.add(inimigo3);
-        inimigos.add(inimigo4);
-        inimigos.add(inimigo5);
-        inimigos.add(inimigo6);
-        inimigos.add(inimigo7);
-        inimigos.add(inimigo8);
-        inimigos.add(inimigo9);
-        inimigos.add(inimigo10);
-
+        ArrayList<Inimigo> inimigos = Inicializacoes.iniciaInimigos();
         //cartas do inimigo (marcador _in de inimigo):
         CartaDano cartadano1_in = new CartaDano("Perder pontos de CR", 1, 
         "Faz o bixao perder pontos de coeficiente de rendimento. Custo energetico: 1; Dano: 5", 5);
@@ -167,10 +140,10 @@ public class App {
         Collections.shuffle(pilha_compra);
 
         //criacao do mapa
-        DefaultMutableTreeNode raiz = iniciaMapa(heroi, inimigos);
+        DefaultMutableTreeNode raiz = Inicializacoes.iniciaMapa(heroi, inimigos);
         //comecar na raiz, realizar a batalha inicial. após isso, perguntar pra onde ele quer ir.
         DefaultMutableTreeNode atual = raiz;
-        System.out.println("Vamos ao jogo! Para a primeira fase, voce ira enfrentar o" + inimigos.get(0) + "!");
+        System.out.println("Vamos ao jogo! Para a primeira fase, voce ira enfrentar o " + inimigos.get(0).pegaNome() + "!");
         System.out.println();
         System.out.println("// MAPA:  |");
         System.out.println("          V");
@@ -211,6 +184,8 @@ public class App {
                 //resetar energia e efeitos
                 heroi.restaurarEnergia();
                 heroi.pegaEfeitos().clear();
+                batalha.pegaInimigo().pegaEfeitos().clear();
+                menu.limpaEfeitos();
 
                 if (atual.getChildCount() == 0){
                     atual = null;
@@ -256,33 +231,5 @@ public class App {
         System.out.println("    JOGO ENCERRADO!");
         System.out.println("**************************");
         entrada.close();
-    }
-
-    public static DefaultMutableTreeNode iniciaMapa(Heroi heroi, ArrayList<Inimigo> inimigos){
-        DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(0)));
-
-        DefaultMutableTreeNode no1_fase1 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(1)));
-        DefaultMutableTreeNode no2_fase1 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(2)));
-        DefaultMutableTreeNode no3_fase1 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(3)));
-        raiz.add(no1_fase1);
-        raiz.add(no2_fase1);
-        raiz.add(no3_fase1);
-
-        DefaultMutableTreeNode no1_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(4)));
-        DefaultMutableTreeNode no2_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(5)));
-        no1_fase1.add(no1_fase2);
-        no1_fase1.add(no2_fase2);
-
-        DefaultMutableTreeNode no3_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(6)));
-        DefaultMutableTreeNode no4_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(7)));
-        no2_fase1.add(no3_fase2);
-        no2_fase1.add(no4_fase2);
-
-        DefaultMutableTreeNode no5_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(8)));
-        DefaultMutableTreeNode no6_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(9)));
-        no3_fase1.add(no5_fase2);
-        no3_fase1.add(no6_fase2);
-
-        return raiz;
     }
 }

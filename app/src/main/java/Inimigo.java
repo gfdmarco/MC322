@@ -21,7 +21,7 @@ public class Inimigo extends Entidade {
      */
     public void atacar(Heroi heroi, CartaDano carta, Menu menu){
         menu.reseta_danoExtra(); //para evitar acumular dano extra quando troca os turnos
-        menu.notificar("ATAQUE_INIMIGO", menu);
+        menu.notificar("ATAQUE_INIMIGO");
         int dano_total = carta.qtdDano() + menu.qtd_danoExtra();
 
         heroi.receberDano(dano_total);
