@@ -22,7 +22,9 @@ public class Heroi extends Entidade {
         this.energia = 4;
     }
 
-    //toda vez que uma carta é utilizada, consome energia
+    /**
+     * Consome a energia toda vez que uma carta é utilizada.
+     */
     public void consomeEnergia(int custo_carta){
         this.energia -= custo_carta;
     }

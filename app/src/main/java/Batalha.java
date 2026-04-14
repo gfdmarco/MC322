@@ -2,10 +2,20 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Representa um encontro de combate entre o herói e um inimigo específico.
+ * Esta classe armazena os participantes e contém a lógica principal para 
+ * processar os turnos e interações de cartas durante o duelo.
+ */
 public class Batalha {
     private Heroi heroi;
     private Inimigo inimigo;
 
+    /**
+     * Instancia uma nova batalha definindo os oponentes.
+     * @param heroi O protagonista que será controlado pelo jogador.
+     * @param inimigo O adversário que o herói deverá enfrentar nesta etapa.
+     */
     public Batalha(Heroi heroi, Inimigo inimigo){
         this.heroi = heroi;
         this.inimigo = inimigo;
@@ -19,6 +29,18 @@ public class Batalha {
         return inimigo;
     }
 
+    /**
+     * Executa o ciclo principal de combate entre as entidades.
+     * Este método gerencia a organização de turnos, o fluxo de cartas e a aplicação de efeitos e danos.
+     * @param menu            Interface de usuário para exibição de opções e eventos.
+     * @param pilha_compra    Deck de cartas disponíveis para serem distribuidas.
+     * @param mao_heroi       Cartas atualmente disponíveis para uso do jogador.
+     * @param pilha_descarte  Local para onde as cartas vão após serem utilizadas.
+     * @param entrada         Scanner para leitura das decisões do jogador via terminal.
+     * @param cartas_dano_in  Lista de cartas de ataque do inimigo.
+     * @param cartas_escudo_in Lista de cartas de defesa do inimigo.
+     * @param cartas_efeito   Lista de cartas de efeitos especiais.
+     */
     public boolean combate(Menu menu, ArrayList<Carta> pilha_compra, ArrayList<Carta> mao_heroi, 
         ArrayList<Carta> pilha_descarte, Scanner entrada, ArrayList<CartaDano> cartas_dano_in, 
         ArrayList<CartaEscudo> cartas_escudo_in, ArrayList<CartaEfeito> cartas_efeito){

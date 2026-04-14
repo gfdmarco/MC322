@@ -12,6 +12,9 @@ public class Inimigo extends Entidade {
         this.vidaMax = vida;
     }
 
+    /**
+     * Retorna a vida que um inimigo possui sem ter recebido nenhum ataque ou efeito (vida maxima).
+     */
     public int pegaVidaMax(){
         return vidaMax;
     }
@@ -20,7 +23,7 @@ public class Inimigo extends Entidade {
      * Similar ao método de usar para as cartas de dano dos heróis, o inimigo utiliza este método para causar dano no adversário.
      */
     public void atacar(Heroi heroi, CartaDano carta, Menu menu){
-        menu.reseta_danoExtra(); //para evitar acumular dano extra quando troca os turnos
+        menu.reseta_danoExtra(); //para evitar acumular dano extra quando troca os turnos.
         menu.notificar("ATAQUE_INIMIGO");
         int dano_total = carta.qtdDano() + menu.qtd_danoExtra();
 

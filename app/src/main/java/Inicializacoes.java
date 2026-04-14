@@ -2,6 +2,12 @@ import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 public abstract class Inicializacoes {
+
+    /**
+     * Constrói a estrutura hierárquica do mapa de batalhas do jogo utilizando uma árvore.
+     * <p>O mapa define o caminho que o herói pode seguir, começando por uma batalha raiz 
+     * que se ramifica em múltiplas fases e escolhas possíveis.</p>
+     */
     public static DefaultMutableTreeNode iniciaMapa(Heroi heroi, ArrayList<Inimigo> inimigos){
         DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(0)));
 
@@ -30,6 +36,11 @@ public abstract class Inicializacoes {
         return raiz;
     }
 
+    /**
+     * Inicializa e popula a lista principal de inimigos do jogo.
+     * Este método cria instâncias específicas de {@link Inimigo} com atributos 
+     * pré-definidos de nome, vida e escudo, organizando-os em uma listas para o combate.
+     */
     public static ArrayList<Inimigo> iniciaInimigos(){
         ArrayList<Inimigo> inimigos = new ArrayList<>();
         Inimigo inimigo1 = new Inimigo("Integras", 25, 0);

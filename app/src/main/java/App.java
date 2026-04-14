@@ -11,7 +11,6 @@ public class App {
     /* OBS: muitas vezes neste jogo são utilizados trechos com Thread.sleep(x) para apenas acontecer uma pausa e espera
     durante as informações impressas ao jogador durante o uso do terminal */
 
-
     /**
      * A principal função do jogo, onde instancia-se os objetos e controla o que acontece na batalha.
      */
@@ -30,8 +29,13 @@ public class App {
 
         //INICIALIZAÇÃO
 
+        /** Array que contém as cartas de ataque (dano) do inimigo. */
         ArrayList<CartaDano> cartas_dano_in = new ArrayList<>();
+
+         /** Array que contém as cartas de defesa (escudo) do inimigo. */
         ArrayList<CartaEscudo> cartas_escudo_in = new ArrayList<>();
+
+         /** Array que contém as cartas de efeito. */
         ArrayList<CartaEfeito> cartas_efeito = new ArrayList<>();
 
         /*Cartas de Efeito */
@@ -119,10 +123,17 @@ public class App {
         cartas_escudo_in.add(cartaescudo3_in);
         cartas_escudo_in.add(cartaescudo4_in);
 
-        //criação dos arrays que compõem o sistema de baralho
+        //Criação dos arrays que compõem o sistema de baralho
+
+        /** Lista que representa o deck principal, de onde novas cartas são compradas. */
         ArrayList<Carta> pilha_compra = new ArrayList<>();
+
+        /** Lista que contém as cartas que o herói possui atualmente em mãos para jogar. */
         ArrayList<Carta> mao_heroi = new ArrayList<>();
+
+        /** Lista para onde as cartas são enviadas após serem utilizadas ou descartadas. */
         ArrayList<Carta> pilha_descarte = new ArrayList<>();
+
         //adicionando as cartas criadas na pilha inicial de compra
         pilha_compra.add(cartadano1);
         pilha_compra.add(cartadano2);
