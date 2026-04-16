@@ -49,7 +49,7 @@ public abstract class Inicializacoes {
         Inimigo inimigo3 = new Inimigo("After", 32, 0);
         Inimigo inimigo4 = new Inimigo("Embrev", 30, 0);
 
-        Inimigo inimigo5 = new Inimigo("Cachaca as Bruxas", 60, 0);
+        Inimigo inimigo5 = new Inimigo("Cachaca as Bruxas", 80, 0);
         Inimigo inimigo6 = new Inimigo("FEA Fantasy", 75, 0);
 
         Inimigo inimigo7 = new Inimigo("Churras a Trois", 70, 0);
@@ -57,6 +57,7 @@ public abstract class Inicializacoes {
 
         Inimigo inimigo9 = new Inimigo("Quintas Intencoes", 90, 0);
         Inimigo inimigo10 = new Inimigo("Calourada", 100, 0);
+        
         inimigos.add(inimigo1);
         inimigos.add(inimigo2);
         inimigos.add(inimigo3);
