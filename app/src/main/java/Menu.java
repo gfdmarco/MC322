@@ -10,14 +10,24 @@ public class Menu {
     private Publisher publisher;
 
     //MÉTODOS DO DESIGN OBSERVER
+
+    /**
+     * Inicializa o {@link Publisher} responsável por gerenciar os eventos e subscribers
+     */
     public Menu(){
         this.publisher = new Publisher();
     }
 
+    /**
+     * Limpa os efeitos em vigor no jogo
+     */
     public void limpaEfeitos(){
         publisher.limpar();
     }
     
+    /**
+     * Retorna um {@link ArrayList} contendo os objetos do tipo {@link Efeito} registrados no publisher
+     */
     public ArrayList<Efeito> pegaSubscribers(){
         return publisher.pegaSubscribers();
     }
@@ -41,10 +51,16 @@ public class Menu {
      */
     private int danoExtra = 0;
 
+    /**
+     * Retorna o dano extra promovido por determinado efeito
+     */
     public int qtd_danoExtra(){
         return danoExtra;
     }
 
+     /**
+     * Adiciona um bonus ao dano extra decorrente de algum efeito
+     */
     public void soma_danoExtra(int bonus){
         danoExtra += bonus;
     }
