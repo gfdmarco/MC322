@@ -1,6 +1,11 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import entidades.Heroi;
+import efeitos.Investimento;
+import efeitos.Metanol;
+import sistema.Menu;
+
 public class MenuTest {
     
     @Test

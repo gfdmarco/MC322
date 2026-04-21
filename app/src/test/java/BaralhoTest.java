@@ -3,6 +3,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import cartas.Carta;
+import cartas.CartaDano;
+import entidades.Heroi;
+import entidades.Inimigo;
+import sistema.Menu;
+import jogo.Baralho;
+
 public class BaralhoTest {
 
     @Test

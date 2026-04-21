@@ -1,3 +1,9 @@
+package efeitos;
+
+import efeitos.Efeito;
+import entidades.Entidade;
+import sistema.Menu;
+import sistema.Subscriber;
 /**
  * Representa efeitos gerais que podem ser aplicados em entidades.
  * Possui nome, um dono que representa a entidade possuidora do efeito e a quantidade de acúmulos (intensidade) do efeito.

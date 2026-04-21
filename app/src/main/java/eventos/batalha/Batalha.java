@@ -1,14 +1,24 @@
+package eventos.batalha;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+import cartas.Carta;
+import cartas.CartaDano;
+import cartas.CartaEscudo;
+import cartas.CartaEfeito;
+import entidades.Heroi;
+import entidades.Inimigo;
+import jogo.EstadoJogo;
+import sistema.Menu;
 
 /**
  * Representa um encontro de combate entre o herói e um inimigo específico.
  * Esta classe armazena os participantes e contém a lógica principal para 
  * processar os turnos e interações de cartas durante o duelo.
  */
-public class Batalha {
-    private Heroi heroi;
+public class Batalha extends eventos.Evento{
     private Inimigo inimigo;
 
     /**
@@ -17,12 +27,7 @@ public class Batalha {
      * @param inimigo O adversário que o herói deverá enfrentar nesta etapa.
      */
     public Batalha(Heroi heroi, Inimigo inimigo){
-        this.heroi = heroi;
         this.inimigo = inimigo;
-    }
-
-    public Heroi pegaHeroi(){
-        return heroi;
     }
 
     public Inimigo pegaInimigo(){
@@ -32,27 +37,30 @@ public class Batalha {
     /**
      * Executa o ciclo principal de combate entre as entidades.
      * Este método gerencia a organização de turnos, o fluxo de cartas e a aplicação de efeitos e danos.
-     * @param menu            Interface de usuário para exibição de opções e eventos.
-     * @param pilha_compra    Deck de cartas disponíveis para serem distribuidas.
-     * @param mao_heroi       Cartas atualmente disponíveis para uso do jogador.
-     * @param pilha_descarte  Local para onde as cartas vão após serem utilizadas.
-     * @param entrada         Scanner para leitura das decisões do jogador via terminal.
-     * @param cartas_dano_in  Lista de cartas de ataque do inimigo.
-     * @param cartas_escudo_in Lista de cartas de defesa do inimigo.
-     * @param cartas_efeito   Lista de cartas de efeitos especiais.
+     * @param estado        Estado de Jogo atual, que abrange os elementos imprescindíveis para a realização do combate.
      */
-    public boolean combate(Menu menu, ArrayList<Carta> pilha_compra, ArrayList<Carta> mao_heroi, 
-        ArrayList<Carta> pilha_descarte, Scanner entrada, ArrayList<CartaDano> cartas_dano_in, 
-        ArrayList<CartaEscudo> cartas_escudo_in, ArrayList<CartaEfeito> cartas_efeito){
+    @Override
+    public boolean iniciar(EstadoJogo estado, ArrayList<Carta> cartasExtras){
+
+        Heroi heroi = estado.pegaHeroi();
+        Menu menu = estado.pegaMenu();
+
+        ArrayList<Carta> pilha_compra = estado.pegaPilhaCompra();
+        ArrayList<Carta> mao_heroi = estado.pegaMaoHeroi();
+        ArrayList<Carta> pilha_descarte = estado.pegaPilhaDescarte();
+        Scanner entrada = estado.pegaEntrada();
+        ArrayList<CartaDano> cartas_dano_in = estado.pegaCartasDanoIn();
+        ArrayList<CartaEscudo> cartas_escudo_in = estado.pegaCartasEscudoIn();
+        ArrayList<CartaEfeito> cartas_efeito = estado.pegaCartasEfeito();
         
         boolean turno_heroi = true; //variável que determina se é a vez do herói jogar
 
-        while (this.heroi.estaVivo() && this.inimigo.estaVivo()){
+        while (heroi.estaVivo() && this.inimigo.estaVivo()){
             //aqui, geramos um menu de visualização para o jogador com os métodos da classe Menu
-            menu.menuInicial(this.heroi, this.inimigo);
+            menu.menuInicial(heroi, this.inimigo);
 
-            if (turno_heroi){ //caso seja a vez do this.heroi
-                menu.menuJogador(this.heroi, this.inimigo, pilha_compra, mao_heroi, pilha_descarte, entrada, menu);
+            if (turno_heroi){ //caso seja a vez do heroi
+                menu.menuJogador(heroi, this.inimigo, pilha_compra, mao_heroi, pilha_descarte, entrada, menu);
 
                 //mandar as cartas não utilizadas para a pilha de descarte
                 for (int l = 0; l < mao_heroi.size(); l++){
@@ -82,10 +90,10 @@ public class Batalha {
                 }
 
                 if (cartadano){
-                    this.inimigo.atacar(this.heroi, cartas_dano_in.get(numCarta), menu);
+                    this.inimigo.atacar(heroi, cartas_dano_in.get(numCarta), menu);
                     System.out.println();
                     System.out.println();
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                    System.out.println("==================================================================================");
                 }
                 else if (cartaescudo){
                     this.inimigo.ganharEscudo(cartas_escudo_in.get(numCarta - 6).qtdEscudo());
@@ -96,7 +104,7 @@ public class Batalha {
                         cartas_escudo_in.get(numCarta - 6).pegaNome() + ", concedendo " + 
                         cartas_escudo_in.get(numCarta - 6).qtdEscudo() + " de escudo!");
                         System.out.println();
-                        System.out.println("///////////////////////////////////////////////////////////////////////////////////"); 
+                        System.out.println("=================================================================================="); 
                         Thread.sleep(2000);
                     }
                     catch (InterruptedException e){
@@ -111,7 +119,7 @@ public class Batalha {
                             System.out.println();
                             System.out.println(this.inimigo.pegaNome() + " aplicou o efeito Investimento. Portanto, vai receber uma forca!");
                             System.out.println();
-                            System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                            System.out.println("==================================================================================");
                             Thread.sleep(2000);
                         }
                         catch (InterruptedException e){
@@ -119,13 +127,13 @@ public class Batalha {
                         }
                     }
                     else if (numCarta == 11 || numCarta == 12){
-                        this.heroi.aplicarEfeito("Metanol", cartas_efeito.get(numCarta - 10).qtdAcumulos(), this.heroi, menu);
+                        heroi.aplicarEfeito("Metanol", cartas_efeito.get(numCarta - 10).qtdAcumulos(), heroi, menu);
                     
                         try{
                             System.out.println();
                             System.out.println(this.inimigo.pegaNome() + " aplicou o efeito Metanol, infectando o calouro!");
                             System.out.println();
-                            System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                            System.out.println("==================================================================================");
                             Thread.sleep(2000);
                         }
                         catch (InterruptedException e){
@@ -135,12 +143,12 @@ public class Batalha {
                     
                 }
                 menu.notificar("FIM_TURNO_INIMIGO");
-                this.heroi.restaurarEnergia();
-                this.heroi.restaurarEscudo();
+                heroi.restaurarEnergia();
+                heroi.restaurarEscudo();
                 turno_heroi = true;
             }
         }
-        if (!this.heroi.estaVivo()){
+        if (!heroi.estaVivo()){
             System.out.println("Voce perdeu! O bixao enlouqueceu! Nao sobrou nada...");
             System.out.println("Agora voce esta sob o controle das festas... Cuidado!");
             System.out.println();
@@ -148,11 +156,13 @@ public class Batalha {
         else if (!this.inimigo.estaVivo()){
             System.out.println("Parabens bixao! Voce conseguiu acabar com o hype da festa e manteve sua sanidade!");
             System.out.println();
+            //RECOMPENSA AQUI
+            Recompensas.aplicar(estado, cartasExtras);
         }
         System.out.println("**************************");
         System.out.println("    BATALHA ENCERRADA!");
         System.out.println("**************************");
 
-        return this.heroi.estaVivo(); //retorna se o heroi venceu ou perdeu
+        return heroi.estaVivo(); //retorna se o heroi venceu ou perdeu
     }
 }

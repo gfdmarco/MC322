@@ -1,6 +1,13 @@
+package sistema;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import cartas.Carta;
+import efeitos.Efeito;
+import entidades.Heroi;
+import entidades.Inimigo;
+import jogo.Baralho;
+import sistema.Menu;
 
 /**
  * Representa a classe Game Manager do jogo. Controla o fluxo de batalha e as interações usuário-jogo pelo terminal.
@@ -127,11 +134,11 @@ public class Menu {
         Baralho.organizar(pilha_compra, mao_heroi, pilha_descarte);
 
         //INICIO DO TURNO
-        System.out.println();
-        System.out.println("SUA VEZ DE JOGAR!");
+        System.out.println("==================================================================================");
+        System.out.println("                            SUA VEZ DE JOGAR!");
         System.out.println("OBS: caso nao tenha energia suficiente para gastar em uma carta, encerre o turno!");
         System.out.println();
-        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+        System.out.println("==================================================================================");
         while (heroi.qtdEnergia() > 0 && heroi.estaVivo() && inimigo.estaVivo()){
             this.menuInicial(heroi, inimigo);
             System.out.println("O bixao tem " + heroi.qtdEnergia() + "/4 de Energia para utilizar");
@@ -141,8 +148,8 @@ public class Menu {
                 System.out.println("Voce ja utilizou as tres cartas e sobrou energia! Encerre o turno!");
             }
             for (int i = 0; i < mao_heroi.size(); i++){
-                System.out.println(i + " - " + mao_heroi.get(i).pegaNome() + " - " 
-                + mao_heroi.get(i).pegaDescricao());
+                System.out.println("[ " + i + " ] " + mao_heroi.get(i).pegaNome());
+                System.out.println("DESCRICAO: " + mao_heroi.get(i).pegaDescricao());
             }
             System.out.println();
             System.out.println("E ai? Como o(a) " + heroi.pegaNome() + " reage?");
@@ -152,9 +159,9 @@ public class Menu {
             int leitura2 = entrada.nextInt();
             if (leitura2 == 2){
                 try{
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");          
-                    System.out.println("ENCERRANDO TURNO DO JOGADOR...");
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");          
+                    System.out.println("==================================================================================");          
+                    System.out.println("                        ENCERRANDO TURNO DO JOGADOR...");
+                    System.out.println("==================================================================================");          
                     Thread.sleep(5000);
                     break;
                 }
@@ -167,9 +174,9 @@ public class Menu {
                 int leitura3 = entrada.nextInt();
                 if (leitura3 >= 0 && leitura3 < mao_heroi.size() && (heroi.qtdEnergia() - mao_heroi.get(leitura3).qtdCusto()) < 0){
                     System.out.println();
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                    System.out.println("ERRO: nao foi possivel utilizar esta carta (energia insuficiente)!");
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                    System.out.println("==================================================================================");
+                    System.out.println("       ERRO: nao foi possivel utilizar esta carta (energia insuficiente)!");
+                    System.out.println("==================================================================================");
                     System.out.println();
                 }
                 else if (leitura3 >= 0 && leitura3 < mao_heroi.size() && (heroi.qtdEnergia() - mao_heroi.get(leitura3).qtdCusto()) >= 0){
@@ -180,9 +187,9 @@ public class Menu {
                 else {
                     try{
                         System.out.println();
-                        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                        System.out.println("ERRO: numero invalido!");
-                        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                        System.out.println("==================================================================================");
+                        System.out.println("                            ERRO: numero invalido!");
+                        System.out.println("==================================================================================");
                         System.out.println();
                         Thread.sleep(5000);
                     }
@@ -194,9 +201,9 @@ public class Menu {
             else {
                 try{
                     System.out.println();
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
-                    System.out.println("ERRO: numero invalido!");
-                    System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                    System.out.println("==================================================================================");
+                    System.out.println("                            ERRO: numero invalido!");
+                    System.out.println("==================================================================================");
                     System.out.println();
                     Thread.sleep(5000);
                 }
@@ -207,9 +214,9 @@ public class Menu {
         }
         if (heroi.qtdEnergia() == 0){
             try{
-                System.out.println("///////////////////////////////////////////////////////////////////////////////////");            
-                System.out.println("Energia esgotada! Turno se encerrando automaticamente...");
-                System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+                System.out.println("==================================================================================");            
+                System.out.println("            Energia esgotada! Turno se encerrando automaticamente...");
+                System.out.println("==================================================================================");
                 Thread.sleep(5000);
             }
             catch (InterruptedException e){
@@ -218,6 +225,6 @@ public class Menu {
         }
 
         System.out.println();
-        System.out.println("///////////////////////////////////////////////////////////////////////////////////");
+        System.out.println("==================================================================================");
    }
 }

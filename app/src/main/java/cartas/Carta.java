@@ -1,3 +1,8 @@
+package cartas;
+import cartas.Carta;
+import entidades.Heroi;
+import entidades.Inimigo;
+import sistema.Menu;
 /**
  * Representa uma carta jogável geral do jogo. 
  * Possui nome, custo e descrição e uma forma de uso de acordo com seu tipo.

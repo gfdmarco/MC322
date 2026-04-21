@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import entidades.Inimigo;
+
 public class InimigoTest {
     @Test
     public void danoAbsorvidoPorEscudo(){

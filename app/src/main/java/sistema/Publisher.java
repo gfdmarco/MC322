@@ -1,4 +1,8 @@
+package sistema;
 import java.util.ArrayList;
+
+import efeitos.Efeito;
+import sistema.Publisher;
 
 /**
  * Classe responsável por gerenciar e controlar a lista de subscribers.

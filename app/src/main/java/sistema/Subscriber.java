@@ -1,3 +1,5 @@
+package sistema;
+import sistema.Subscriber;
 /**
  * Interface que define um observador no padrão Subscriber.
  * Qualquer classe que reaja a eventos do sistema implementa esta interface.

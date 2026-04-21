@@ -1,4 +1,11 @@
+package entidades;
+
 import java.util.ArrayList;
+import efeitos.Efeito;
+import efeitos.Investimento;
+import efeitos.Metanol;
+import entidades.Entidade;
+import sistema.Menu;
 
 /**
  * Representa um personagem genérico presente na batalha (calouros e festas universitárias)
@@ -43,6 +50,10 @@ public abstract class Entidade {
         if (this.vida < 0){
             this.vida = 0;
         }
+    }
+
+    public void receberVida(int bonus){
+        this.vida += bonus;
     }
 
     /**

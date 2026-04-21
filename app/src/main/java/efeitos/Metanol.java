@@ -1,3 +1,10 @@
+package efeitos;
+
+import efeitos.Metanol;
+import entidades.Heroi;
+import entidades.Inimigo;
+import entidades.Entidade;
+import sistema.Menu;
 /**
  * Derivada da classe Efeito, representa o efeito de Metanol.
  * Exerce uma função de dano extra ao final do turno da entidade, descontando um de acúmulo após isso.
