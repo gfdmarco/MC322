@@ -1,6 +1,11 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
+import cartas.CartaEfeito;
+import entidades.Heroi;
+import entidades.Inimigo;
+import sistema.Menu;
+
 public class CartaEfeitoTest {
 
     @Test 

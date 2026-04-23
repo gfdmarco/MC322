@@ -3,6 +3,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import cartas.Carta;
+import cartas.CartaDano;
+import entidades.Heroi;
+import entidades.Inimigo;
+import eventos.batalha.Batalha;
+import jogo.EstadoJogo;
+import sistema.Menu;
+
 public class BatalhaTest {
     
     @Test 
@@ -21,8 +29,10 @@ public class BatalhaTest {
         //leitura de 1 para decidir utilizar a carta e 0 para utilizar a primeira carta da mao
         Scanner entrada = new Scanner("1\n0\n");
 
-        boolean vitoria_heroi = b.combate(m, pilha_compra, mao_heroi, pilha_descarte, entrada, new ArrayList<>(), 
-        new ArrayList<>(), new ArrayList<>());
+        EstadoJogo estado = new EstadoJogo(h, m, pilha_compra, mao_heroi, pilha_descarte, new ArrayList<>(), 
+        new ArrayList<>(), new ArrayList<>(), entrada);
+
+        boolean vitoria_heroi = b.iniciar(estado, new ArrayList<>());
 
         assertEquals(true, vitoria_heroi);
     }

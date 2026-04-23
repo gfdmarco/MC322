@@ -1,6 +1,10 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import entidades.Heroi;
+import entidades.Inimigo;
+import sistema.Menu;
+
 public class EfeitoTest {
 
     @Test

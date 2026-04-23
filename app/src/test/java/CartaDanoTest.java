@@ -1,6 +1,11 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import cartas.CartaDano;
+import entidades.Heroi;
+import entidades.Inimigo;
+import sistema.Menu;
+
 public class CartaDanoTest {
 
     @Test

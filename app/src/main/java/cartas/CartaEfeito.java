@@ -1,3 +1,9 @@
+package cartas;
+
+import cartas.CartaEfeito;
+import entidades.Heroi;
+import entidades.Inimigo;
+import sistema.Menu;
 /**
  * Derivada da classe Carta, representa as cartas que aplicam efeitos.
  * Representa cartas de efeitos que podem ser aplicados em entidades.
@@ -21,9 +27,9 @@ public class CartaEfeito extends Carta {
     public void usar(Heroi heroi, Inimigo inimigo, Menu menu){
         //método de uso de carta para o herói
         if (heroi.qtdEnergia() - this.custo < 0){
-            System.out.println();
-            System.out.println("ERRO: Energia insuficiente! Escolha outra!");
-            System.out.println();
+            System.out.println("==================================================================================");
+            System.out.println("                    ERRO: Energia insuficiente! Escolha outra!");
+            System.out.println("==================================================================================");
         }
         else {
             heroi.consomeEnergia(this.custo);
@@ -34,10 +40,10 @@ public class CartaEfeito extends Carta {
                 inimigo.aplicarEfeito(efeito, acumulos, inimigo, menu);
             }
             try{ 
-                System.out.println();
+                System.out.println("==================================================================================");
                 System.out.println("O calouro " + heroi.pegaNome() + " aplicou a carta de efeito " + this.nome);
                 System.out.println("Efeito: " + efeito + "; Acumulos: " + acumulos);
-                System.out.println();
+                System.out.println("==================================================================================");
                 Thread.sleep(3000);
             }
             catch (InterruptedException e){

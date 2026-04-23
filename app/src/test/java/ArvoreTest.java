@@ -3,6 +3,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import entidades.Heroi;
+import entidades.Inimigo;
+import jogo.Inicializacoes;
+
 public class ArvoreTest {
     
     @Test

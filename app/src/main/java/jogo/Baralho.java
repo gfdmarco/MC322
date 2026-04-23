@@ -1,5 +1,8 @@
+package jogo;
 import java.util.Collections;
 import java.util.List;
+import cartas.Carta;
+import jogo.Baralho;
 
 public abstract class Baralho {
     /**

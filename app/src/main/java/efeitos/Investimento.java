@@ -1,3 +1,10 @@
+package efeitos;
+import efeitos.Investimento;
+import entidades.Heroi;
+import entidades.Inimigo;
+import entidades.Entidade;
+import sistema.Menu;
+
 /**
  * Derivada da classe Efeito, representa o efeito de Investimento.
  * Exerce uma função de dano extra, tal qual uma força, no momento de ataque.
