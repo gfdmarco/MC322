@@ -61,13 +61,15 @@ Para esclarecer os últimos termos, aqui explicamos os principais tópicos do jo
 
 ## Jogabilidade:
 
-Primeiramente, cada jogo abrange apenas um combate Herói vs Inimigo. Ou seja, o jogo acontece até que um dos dois seja eliminado.
+Primeiramente, cada jogo abrange três combates Herói vs Inimigo. Caso o Herói perca toda sua vida, é derrotado e o jogo encerra. Para vencer, este deve derrotar os três inimigos das três batalhas. Há um mapa comportando-se como árvore predefinido, em que a progressão do jogador ocorre com vitórias e escolhas de qual caminho percorrer. 
+
+Dessa forma, há uma batalha inicial predefinida com um inimigo inicial e, vencendo esta, o jogador (controlando o Herói) escolhe entre três opções para o segundo combate. Diante da vitória no segundo combate, o jogador escolhe uma entre duas opções para o combate final. Caso vença este, vence o jogo e este é encerrado. Caso seja derrotado em qualquer momento, o jogo se encerra.
 
 Para garantir o dinamismo das partidas, o jogo utiliza um sistema de gerenciamento de cartas dividido em três zonas principais. A movimentação entre essas zonas ocorre de forma cíclica a cada turno:
 
 No início de cada combate, todas as cartas do inventário do Calouro são inseridas na Pilha de Compra de modo a iniciar o sistema. A cada novo turno, o jogador recebe as primeiras três cartas desta pilha que irão compor a sua mão. Dentre as cartas que tem, o jogador pode utilizar quantas desejar, desde que possua energia suficiente para cobrir o custo de cada carta. A cada turno, o jogador inicia com um valor máximo de quatro pontos de energia. Assim que uma carta é jogada, seu efeito (Dano ou Escudo) é aplicado e ela é movida imediatamente para a Pilha de Descarte. É importante apresentar que os escudos utilizados durante um turno duram apenas neste. Ao iniciar uma nova rodada, estes são resetados. Isso ocorre tanto para o Herói quanto para o Inimigo. Outro caso no qual a carta vai pra pilha de descarte é quando o jogador não usa uma carta. Caso a pilha de compra se esgote, a pilha de descarte é embaralhada e transformada em uma nova pilha de compra.
 
-Ao iniciar o jogo, o usuário deverá escolher um nome para seu calouro e logo em seguida o mesmo será direcionado para um menu, que representa a mão do jogador, e ele poderá escolher entre:
+Ao iniciar o jogo, o usuário deverá escolher um nome para seu calouro, será direcionado para o primeiro combate e logo em seguida o mesmo será direcionado para um menu, podendo escolher entre:
     1 - Utilizar carta,
     2 - Encerrar turno.
 As cartas que vão para a mão do jogador são inicialmente embaralhadas na pilha de compra para garantir diferentes jogos e são selecionadas as três primeiras após isso para ir, de fato, à mão. Tais cartas variam entre:
@@ -80,6 +82,8 @@ O jogador deve sempre digitar a ação que quer realizar primeiramente e, após 
 Ao encerrar o turno ou esgotar sua energia, as cartas que estavam na mão do jogador vão para a pilha de descarte e o usuário encerra suas atividades naquele período e passa a vez para o inimigo;
 
 As jogadas do inimigo são randomizadas, tendo em vista que, a fim de tornar a experiência do jogador mais dinâmica, foram implementados mais de um inimigo (festas universitárias), bem como cartas de dano e escudo distintas das do herói.
+
+Após a vitória, o jogador escolhe qual o próximo inimigo que irá batalhar contra. Dessa forma, escolherá um caminho. Esolhendo um caminho, a batalha correspondente será iniciada e assim por diante. Ao avançar, a vida e baralho do jogaodr não se alteram. Apenas efeitos e energia são restaurados à configuração inicial.
 
 E de maneira simples mas concreta, esse é o modus operandi do jogo, esperamos que você se divirta e vença as tentações universitárias!
 

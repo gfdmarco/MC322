@@ -144,6 +144,7 @@ public class Menu {
             System.out.println("O bixao tem " + heroi.qtdEnergia() + "/4 de Energia para utilizar");
             System.out.println();
             System.out.println("Mao atual do bixao:");
+            System.out.println();
             if (mao_heroi.size() == 0){
                 System.out.println("Voce ja utilizou as tres cartas e sobrou energia! Encerre o turno!");
             }
