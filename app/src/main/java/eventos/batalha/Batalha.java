@@ -162,6 +162,13 @@ public class Batalha extends eventos.Evento{
         System.out.println("**************************");
         System.out.println("    BATALHA ENCERRADA!");
         System.out.println("**************************");
+        
+        try{       
+            Thread.sleep(3000);
+        }
+        catch (InterruptedException e){
+            System.err.println("Pausa interrompida");
+        }
 
         return heroi.estaVivo(); //retorna se o heroi venceu ou perdeu
     }

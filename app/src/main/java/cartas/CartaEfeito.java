@@ -59,4 +59,10 @@ public class CartaEfeito extends Carta {
     public int qtdAcumulos(){
         return acumulos;
     }
+
+    @Override
+    public void melhorar(){
+        this.acumulos += this.custo;
+        this.descricao += "(MELHORIA: +" + this.custo + " de acumulos)";
+    }
 }
