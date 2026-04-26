@@ -11,8 +11,8 @@ public class CartaEscudoTest {
     @Test
     public void cartaForneceEscudo(){
         CartaEscudo c = new CartaEscudo("CartaEscudo1", 3, "Carta que da escudo", 10);
-        Heroi h = new Heroi("Heroi1", 50, 0);
-        Inimigo i = new Inimigo("Inimigo1", 30, 0);
+        Heroi h = new Heroi("Heroi1", 50, 0, 50);
+        Inimigo i = new Inimigo("Inimigo1", 30, 0, 30);
         Menu m = new Menu();
         c.usar(h, i, m);
         assertEquals(50, h.qtdVida());

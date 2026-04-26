@@ -9,7 +9,7 @@ public class EfeitoTest {
 
     @Test
     public void metanolNoHeroiNotificando(){
-        Heroi h = new Heroi("Heroi1", 50, 0);
+        Heroi h = new Heroi("Heroi1", 50, 0, 50);
         Menu m = new Menu();
 
         h.aplicarEfeito("Metanol", 3, h, m);
@@ -20,7 +20,7 @@ public class EfeitoTest {
 
     @Test
     public void metanolNoInimigoNotificando(){
-        Inimigo i = new Inimigo("Inimigo1", 50, 0);
+        Inimigo i = new Inimigo("Inimigo1", 50, 0, 50);
         Menu m = new Menu();
 
         i.aplicarEfeito("Metanol", 3, i, m);
@@ -31,7 +31,7 @@ public class EfeitoTest {
 
     @Test
     public void investimentoNoHeroiNotificando(){
-        Heroi h = new Heroi("Heroi2", 50, 0);
+        Heroi h = new Heroi("Heroi2", 50, 0, 50);
         Menu m = new Menu();
 
         h.aplicarEfeito("Investimento", 3, h, m);
@@ -41,7 +41,7 @@ public class EfeitoTest {
 
     @Test
     public void investimentoNoInimigoNotificando(){
-        Inimigo i = new Inimigo("Inimigo1", 50, 0);
+        Inimigo i = new Inimigo("Inimigo1", 50, 0, 50);
         Menu m = new Menu();
 
         i.aplicarEfeito("Investimento", 3, i, m);
@@ -51,7 +51,7 @@ public class EfeitoTest {
 
     @Test 
     public void naoAtacaNoMomentoErrado(){
-        Heroi h = new Heroi("Heroi2", 50, 0);
+        Heroi h = new Heroi("Heroi2", 50, 0, 50);
         Menu m = new Menu();
 
         h.aplicarEfeito("Investimento", 3, h, m);
@@ -62,7 +62,7 @@ public class EfeitoTest {
 
     @Test
     public void remocaoEfeito(){
-        Heroi h = new Heroi("Heroi3", 50, 0);
+        Heroi h = new Heroi("Heroi3", 50, 0, 50);
         Menu m = new Menu();
 
         h.aplicarEfeito("Metanol", 1, h, m);

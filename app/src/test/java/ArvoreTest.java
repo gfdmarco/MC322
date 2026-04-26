@@ -15,7 +15,7 @@ public class ArvoreTest {
     
     @Test
     public void raizInicializada(){
-        Heroi h = new Heroi("Heroi1", 50, 0);
+        Heroi h = new Heroi("Heroi1", 50, 0, 50);
 
         ArrayList<CartaDano> cd_in = new ArrayList<>();
         ArrayList<CartaEscudo> ce_in = new ArrayList<>();
@@ -41,7 +41,7 @@ public class ArvoreTest {
 
     @Test
     public void numeroNos(){
-        Heroi h = new Heroi("Heroi1", 50, 0);
+        Heroi h = new Heroi("Heroi1", 50, 0, 50);
 
         ArrayList<CartaDano> cd_in = new ArrayList<>();
         ArrayList<CartaEscudo> ce_in = new ArrayList<>();

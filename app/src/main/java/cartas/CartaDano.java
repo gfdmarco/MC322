@@ -69,6 +69,9 @@ public class CartaDano extends Carta{
         return dano;
     }
 
+    /**
+     * Implementação do método melhorar, aumentando o dano na quantidade de custo energético da carta.
+     */
     @Override
     public void melhorar(){
         this.dano += this.custo;

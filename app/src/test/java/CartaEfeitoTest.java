@@ -12,8 +12,8 @@ public class CartaEfeitoTest {
     public void aplicaInvestimento(){
         CartaEfeito c = new CartaEfeito("CartaEfeito1", 2, "Carta de efeito", 
         "Investimento", 2);
-        Heroi h = new Heroi("Heroi1", 50, 0);
-        Inimigo i = new Inimigo("Inimigo1", 30, 0);
+        Heroi h = new Heroi("Heroi1", 50, 0, 50);
+        Inimigo i = new Inimigo("Inimigo1", 30, 0, 30);
         Menu m = new Menu();
         c.usar(h, i, m);
         assertEquals(1, h.pegaEfeitos().size());
@@ -25,8 +25,8 @@ public class CartaEfeitoTest {
     public void aplicaMetanol(){
         CartaEfeito c = new CartaEfeito("CartaEfeito2", 2, "Carta de efeito", 
         "Metanol", 2);
-        Heroi h = new Heroi("Heroi2", 50, 0);
-        Inimigo i = new Inimigo("Inimigo2", 30, 0);
+        Heroi h = new Heroi("Heroi2", 50, 0, 50);
+        Inimigo i = new Inimigo("Inimigo2", 30, 0, 30);
         Menu m = new Menu();
         c.usar(h, i, m);
         assertEquals(1, i.pegaEfeitos().size());
@@ -40,8 +40,8 @@ public class CartaEfeitoTest {
         "Investimento", 2);
         CartaEfeito c2 = new CartaEfeito("CartaEfeito2", 2, "Carta de efeito", 
         "Investimento", 3);
-        Heroi h = new Heroi("Heroi1", 50, 0);
-        Inimigo i = new Inimigo("Inimigo1", 30, 0);
+        Heroi h = new Heroi("Heroi1", 50, 0, 50);
+        Inimigo i = new Inimigo("Inimigo1", 30, 0, 30);
         Menu m = new Menu();
         c1.usar(h, i, m);
         c2.usar(h, i, m);

@@ -50,6 +50,9 @@ public class CartaEscudo extends Carta{
         return escudo;
     }
 
+    /**
+     * Implementação do método melhorar, aumentando o escudo na quantidade de custo energético da carta.
+     */
     @Override
     public void melhorar(){
         this.escudo += this.custo;

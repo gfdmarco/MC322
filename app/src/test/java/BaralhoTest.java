@@ -101,8 +101,8 @@ public class BaralhoTest {
         ArrayList<Carta> pilha_descarte = new ArrayList<>();
 
         CartaDano c = new CartaDano("Carta1", 3, "Da dano", 5);
-        Heroi h = new Heroi("Heroi1", 50, 0);
-        Inimigo i = new Inimigo("Inimigo1", 8, 0);
+        Heroi h = new Heroi("Heroi1", 50, 0, 50);
+        Inimigo i = new Inimigo("Inimigo1", 8, 0, 8);
         Menu m = new Menu();
 
         mao_heroi.add(c);

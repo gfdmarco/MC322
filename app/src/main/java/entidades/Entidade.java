@@ -17,15 +17,17 @@ public abstract class Entidade {
     protected String nome;
     protected int vida;
     protected int escudo;
+    protected int vidaMax;
     /**
      * Representa a lista de efeitos aplicados à entidade.
      */
     private ArrayList<Efeito> efeitos = new ArrayList<>();
 
-    public Entidade(String nome, int vida, int escudo){
+    public Entidade(String nome, int vida, int escudo, int vidaMax){
         this.nome = nome;
         this.vida = vida;
         this.escudo = escudo;
+        this.vidaMax = vidaMax;
     }
 
     /** 
@@ -52,8 +54,23 @@ public abstract class Entidade {
         }
     }
 
+    /**
+     * Retorna a vida que um inimigo possui sem ter recebido nenhum ataque ou efeito (vida maxima).
+     */
+    public int pegaVidaMax(){
+        return vidaMax;
+    }
+
+    /**
+     * Recebe uma quantidade de vida aleatória, sem necessariamente estar nos padrões da regeneração
+     */
     public void receberVida(int bonus){
-        this.vida += bonus;
+        if (this.vida + bonus <= this.pegaVidaMax()){
+            this.vida += bonus;
+        }
+        else {
+            this.vida = this.pegaVidaMax();
+        }
     }
 
     /**

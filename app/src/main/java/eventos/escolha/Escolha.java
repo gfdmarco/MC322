@@ -7,7 +7,17 @@ import java.util.ArrayList;
 import cartas.Carta;
 import jogo.EstadoJogo;
 
+/**
+ * Representa o evento de Escolha, nomeado como Aventura pelo Campus.
+ * Aqui, o jogador escolhe uma resposta a uma pequena história e sofre alguma consequência a partir desta resposta.
+ * As consequências podem envolver benefícios ou não.
+ */
 public class Escolha extends eventos.Evento{
+    /** 
+     * Inicia uma situação de escolha para o usuário como evento no mapa.
+     * @param estado        Estado de Jogo atual, que abrange os elementos imprescindíveis para a escolha.
+     * @param cartasExtras  Cartas que podem ser concedidas como recompensa de determinada escolha.
+    */
     @Override
     public boolean iniciar(EstadoJogo estado, ArrayList<Carta> cartasExtras){
         Scanner entrada = estado.pegaEntrada();
@@ -42,7 +52,7 @@ public class Escolha extends eventos.Evento{
                     estado.pegaHeroi().receberVida(5);
                     System.out.println("Voce perdeu uma grande resenha! Mas acalme-se, valeu a pena!");
                     System.out.println("Gracas a sua decisao, voce passou tirando 10 na P3 e sua sanidade aumentou em 5!");
-                    System.out.println("Parbens por isso!");
+                    System.out.println("Parabens por isso!");
                     break;
                 }
                 else if (leitura == 3){

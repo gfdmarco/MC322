@@ -22,8 +22,8 @@ public class BatalhaTest {
         ArrayList<Carta> pilha_descarte = new ArrayList<>();
 
         CartaDano c = new CartaDano("Ataque", 3, "Mata de uma vez", 10);
-        Heroi h = new Heroi("Heroi1", 50, 0);
-        Inimigo i = new Inimigo("Inimigo1", 8, 0);
+        Heroi h = new Heroi("Heroi1", 50, 0, 50);
+        Inimigo i = new Inimigo("Inimigo1", 8, 0, 8);
         Menu m = new Menu();
         Batalha b = new Batalha(h, i);
 
@@ -49,8 +49,8 @@ public class BatalhaTest {
     @Test 
     public void vitoriaInimigo(){
         CartaDano c = new CartaDano("Ataque", 3, "Mata de uma vez", 10);
-        Heroi h = new Heroi("Heroi1", 8, 0);
-        Inimigo i = new Inimigo("Inimigo1", 50, 0);
+        Heroi h = new Heroi("Heroi1", 8, 0, 8);
+        Inimigo i = new Inimigo("Inimigo1", 50, 0, 50);
         Menu m = new Menu();
 
         i.atacar(h, c, m);

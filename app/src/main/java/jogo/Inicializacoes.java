@@ -18,8 +18,8 @@ public abstract class Inicializacoes {
 
     /**
      * Constrói a estrutura hierárquica do mapa de batalhas do jogo utilizando uma árvore.
-     * <p>O mapa define o caminho que o herói pode seguir, começando por uma batalha raiz 
-     * que se ramifica em múltiplas fases e escolhas possíveis.</p>
+     * O mapa define o caminho que o herói pode seguir, começando por uma batalha raiz 
+     * que se ramifica em múltiplas fases e escolhas possíveis.
      */
     public static DefaultMutableTreeNode iniciaMapa(Heroi heroi, ArrayList<Inimigo> inimigos){
         DefaultMutableTreeNode raiz = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(0)));
@@ -63,22 +63,22 @@ public abstract class Inicializacoes {
      */
     public static ArrayList<Inimigo> iniciaInimigos(ArrayList<CartaDano> cartas_dano_in, ArrayList<CartaEscudo> cartas_escudo_in){
         ArrayList<Inimigo> inimigos = new ArrayList<>();
-        Inimigo inimigo1 = new Inimigo("Integras", 25, 0);
+        Inimigo inimigo1 = new Inimigo("Integras", 25, 0, 25);
 
-        Inimigo inimigo2 = new Inimigo("Postinho", 34, 0);
-        Inimigo inimigo3 = new Inimigo("After", 40, 0);
-        Inimigo inimigo4 = new Inimigo("Embrev", 30, 0);
-        Inimigo inimigo5 = new Inimigo("Metropoly", 32, 0);
+        Inimigo inimigo2 = new Inimigo("Postinho", 34, 0, 34);
+        Inimigo inimigo3 = new Inimigo("After", 40, 0, 40);
+        Inimigo inimigo4 = new Inimigo("Embrev", 30, 0, 30);
+        Inimigo inimigo5 = new Inimigo("Metropoly", 32, 0, 32);
 
-        Inimigo inimigo6 = new Inimigo("FEA Fantasy", 60, 0);
+        Inimigo inimigo6 = new Inimigo("FEA Fantasy", 60, 0, 60);
 
-        Inimigo inimigo7 = new Inimigo("Churras a Trois", 65, 0);
+        Inimigo inimigo7 = new Inimigo("Churras a Trois", 65, 0, 65);
 
-        Inimigo inimigo8 = new Inimigo("Mc Lovin", 70, 0);
+        Inimigo inimigo8 = new Inimigo("Mc Lovin", 70, 0, 70);
 
-        Inimigo inimigo9 = new Inimigo("Quintas Intencoes", 80, 0);
+        Inimigo inimigo9 = new Inimigo("Quintas Intencoes", 80, 0, 80);
 
-        Inimigo inimigoFinal = new Inimigo("Calourada", 100, 0);
+        Inimigo inimigoFinal = new Inimigo("Calourada", 100, 0, 100);
         inimigos.add(inimigo1);
         inimigos.add(inimigo2);
         inimigos.add(inimigo3);
@@ -126,6 +126,10 @@ public abstract class Inicializacoes {
         return inimigos;
     }
 
+    /**
+     * Inicializa as cartas a serem utiizadas pelo herói ao longo do jogo.
+     * Além disso, inicializa as cartas extras que são oferecidas ao longo de eventos no mapa.
+     */
     public static void iniciaCartas(ArrayList<CartaEfeito> cartas_efeito, ArrayList<CartaDano> cartas_dano, 
         ArrayList<CartaEscudo> cartas_escudo, ArrayList<Carta> cartasExtrasEscolha, ArrayList<Carta> cartasExtrasBatalha, 
         ArrayList<Carta> cartasExtrasLoja) {

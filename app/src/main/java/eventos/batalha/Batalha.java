@@ -38,6 +38,7 @@ public class Batalha extends eventos.Evento{
      * Executa o ciclo principal de combate entre as entidades.
      * Este método gerencia a organização de turnos, o fluxo de cartas e a aplicação de efeitos e danos.
      * @param estado        Estado de Jogo atual, que abrange os elementos imprescindíveis para a realização do combate.
+     * @param cartasExtras  Cartas oferecidas como opções na escolha de uma como recompensa por vitória do Herói.
      */
     @Override
     public boolean iniciar(EstadoJogo estado, ArrayList<Carta> cartasExtras){
