@@ -9,19 +9,11 @@ import sistema.Menu;
  */
 
 public class Inimigo extends Entidade {
-    private int vidaMax;
 
-    public Inimigo(String nome, int vida, int escudo){
-        super(nome, vida, escudo);
-        this.vidaMax = vida;
+    public Inimigo(String nome, int vida, int escudo, int vidaMax){
+        super(nome, vida, escudo, vidaMax);
     }
 
-    /**
-     * Retorna a vida que um inimigo possui sem ter recebido nenhum ataque ou efeito (vida maxima).
-     */
-    public int pegaVidaMax(){
-        return vidaMax;
-    }
 
     /**
      * Similar ao método de usar para as cartas de dano dos heróis, o inimigo utiliza este método para causar dano no adversário.

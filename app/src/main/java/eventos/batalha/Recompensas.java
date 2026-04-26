@@ -8,7 +8,15 @@ import java.util.Scanner;
 import cartas.Carta;
 import jogo.EstadoJogo;
 
+/**
+ * Representa as recompensas oferecidas ao Herói pela vitória em uma Batalha.
+ */
 public class Recompensas {
+    /**
+     * Fornece as opções de recompensa e a aplica ao Herói.
+     * @param estado        Estado de Jogo atual, que abrange os elementos imprescindíveis para a realização do combate.
+     * @param cartasExtras  Cartas oferecidas como opções na escolha de uma como recompensa por vitória do Herói.
+     */
     public static void aplicar(EstadoJogo estado, ArrayList<Carta> cartasExtras){
         System.out.println("==================================================================================");
         System.out.println("                                    LOOT!");

@@ -10,6 +10,10 @@ import cartas.CartaDano;
 import cartas.CartaEscudo;
 import cartas.CartaEfeito;
 
+/**
+ * Representa o estado do jogo em dado momento.
+ * O estado representa como está o herói, o menu de jogo, o baralho, as cartas do inimigo e a entrada para leituras.
+ */
 public class EstadoJogo {
     private Heroi heroi;
     private Menu menu;

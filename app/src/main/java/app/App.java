@@ -65,7 +65,7 @@ public class App {
         
         /*Herói (calouro):
         vida máxima: 50, escudo inicial: 0; */
-        Heroi heroi = new Heroi(leitura, 80, 0);
+        Heroi heroi = new Heroi(leitura, 80, 0, 80);
         Inicializacoes.iniciaCartas(cartas_efeito, cartas_dano, cartas_escudo, cartasExtrasEscolha, 
             cartasExtrasBatalha, cartasExtrasLoja);
 
@@ -128,11 +128,11 @@ public class App {
         System.out.println("                           |                          +--> " + i5 + " --+                   ");
         System.out.println("                           |                                                    |                 ");
         System.out.println("                           |                          +--> " + i6 + " --|                 ");
-        System.out.println("                           +--> " + i2 + " --|                               |                 ");
-        System.out.println("                           |                          +--> Fogueira   |                 ");
+        System.out.println("                           +--> " + i2 + " --|                             |                 ");
+        System.out.println("                           |                          +--> Bandeco          |                 ");
         System.out.println("  " + i0 + " --|                                                                +--> C A L O U R A D A");
         System.out.println("                           |                          +--> Aventura (Escolha)   |                 ");
-        System.out.println("                           +--> " + i3 + " --|                               |                 ");
+        System.out.println("                           +--> " + i3 + " --|                             |                 ");
         System.out.println("                           |                          +--> " + i7 + " --|                 ");
         System.out.println("                           |                                                    |                 ");
         System.out.println("                           |                          +--> Loja                 +                 ");

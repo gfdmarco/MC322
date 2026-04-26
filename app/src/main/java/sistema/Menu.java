@@ -92,10 +92,10 @@ public class Menu {
      * As informações básicas incluem nome, vida (herói: sanidade ou inimigo: hype), escudo e efeito (se presentes).
      */
     public void menuInicial(Heroi heroi, Inimigo inimigo){
-        System.out.println("OURO: " + heroi.qtdOuro());
         System.out.println("Calouro " + heroi.pegaNome() + " VS " + inimigo.pegaNome());
         System.out.println("------------------------------------------------------------------------------------");
         System.out.println("Calouro '" + heroi.pegaNome() + "' - Sanidade: " + heroi.qtdVida() + "/80");
+        System.out.println("OURO: " + heroi.qtdOuro());
         if (heroi.qtdEscudo() > 0){
             System.out.println("**");
             System.out.println("Protecao:" + heroi.qtdEscudo());

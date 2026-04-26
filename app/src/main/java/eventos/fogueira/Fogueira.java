@@ -6,11 +6,20 @@ import java.util.Scanner;
 import cartas.Carta;
 import jogo.EstadoJogo;
 
+/**
+ * Representa o evento da Fogueira no mapa. Implementado com padrão de design Strategy.
+ * Strategy foi utilizado em razão da situação de poder utilizar a mesma fogueira de diferentes maneiras (estratégias)
+ */
 public class Fogueira extends eventos.Evento{
+    /**
+     * Executa o evento de Fogueira, denominado como Bandeco.
+     * @param estado        Estado de Jogo atual, que abrange os elementos imprescindíveis para a utilização da fogueira.
+     * @param cartasExtras  Aqui, não são utilizadas. Apenas compõem a função padrão que possui dois parâmetros.
+     */
     @Override
     public boolean iniciar(EstadoJogo estado, ArrayList<Carta> cartasExtras){
         System.out.println("=================================================================================="); 
-        System.out.println("                        Seja bem-vindo(a) ao bandeco!");
+        System.out.println("                        Seja bem-vindo(a) ao Bandeco!");
         System.out.println("=================================================================================="); 
         System.out.println();
         System.out.println("   Aqui voce pode regenerar parte da sua sanidade, ou melhorar uma de suas cartas");

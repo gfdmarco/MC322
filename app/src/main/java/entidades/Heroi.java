@@ -12,9 +12,10 @@ public class Heroi extends Entidade {
     private int energia;
     private int ouro;
 
-    public Heroi(String nome, int vida, int escudo){
-        super(nome, vida, escudo);
+    public Heroi(String nome, int vida, int escudo, int vidaMax){
+        super(nome, vida, escudo, vidaMax);
         this.energia = 4; //energia máxima (inicial)
+        this.ouro = 0;
     }
 
     /**
@@ -35,14 +36,18 @@ public class Heroi extends Entidade {
         return energia;
     }
 
-    public void restaurarOuro(){
-        this.ouro = 0;
-    }
-
+    /**
+     * Consome uma certa quantidade de ouro do Herói, passada como parâmetro
+     * @param gasto     representa a quantidade de ouro que será consumida
+     */
     public void consomeOuro(int gasto){
         this.ouro -= gasto;
     }
 
+    /**
+     * Aumenta o ouro do Herói em certa quantidade, passada como parâmetro
+     * @param ganho     repesenta a quantidade de aumento do ouro do Herói
+     */
     public void ganhaOuro(int ganho){
         this.ouro += ganho;
     }
@@ -51,12 +56,12 @@ public class Heroi extends Entidade {
         return ouro;
     }
 
+    /**
+     * Regenera a vida do Herói. Para tal, ele recebe 20% da vida máxima (16 em relação aos 80 máximos)
+     * Caso possua vida que somada a 16 ultrapasse 80, trunca-se a vida no valor máximo
+     */
     public void regenerar(){
-        if (this.vida + 16 <= 80){
-            this.vida += 16;
-        }
-        else {
-            this.vida = 80;
-        }
+        this.receberVida((int)(0.2 * this.pegaVidaMax()));
     }
+
 }

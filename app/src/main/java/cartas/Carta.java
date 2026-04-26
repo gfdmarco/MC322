@@ -21,7 +21,7 @@ public abstract class Carta {
     }
 
     /**
-     * Método que determina a ação de usar uma carta conforme sua especificação, gastando energia.
+     * Determina a ação de usar uma carta conforme sua especificação, gastando energia.
      * Cada extensão que herda esta classe implementa este método.
      */
     public abstract void usar(Heroi heroi, Inimigo inimigo, Menu menu);
@@ -38,5 +38,9 @@ public abstract class Carta {
         return custo;
     }
 
+    /**
+     * Executa a ação de melhorar uma carta que invocar o método.
+     * A melhoria consiste em aumentar o dano, escudo ou efeito da carta na quantidade de seu custo energético.
+     */
     public abstract void melhorar();
 }

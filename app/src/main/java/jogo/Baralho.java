@@ -8,6 +8,9 @@ public abstract class Baralho {
     /**
      * Organiza o baralho apresentado ao jogador, realizando as operações de descarte de cartas, embaralhamento 
      * e restauração quando esgotada a pilha de compra. O baralho é organizado até que se comprem 3 cartas.
+     * @param pilha_compra      Baralho total do Herói.
+     * @param mao_heroi      Cartas do baralho que compõem a mão de uso em determinado instante do Herói.
+     * @param pilha_descarte     Cartas descartadas por uso ou falta deste após o fim do turno.
      */
     public static void organizar(List<Carta> pilha_compra, List<Carta> mao_heroi, List<Carta> pilha_descarte){
         try{

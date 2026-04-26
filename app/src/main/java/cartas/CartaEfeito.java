@@ -60,6 +60,9 @@ public class CartaEfeito extends Carta {
         return acumulos;
     }
 
+    /**
+     * Implementação do método melhorar, aumentando o efeito na quantidade de custo energético da carta.
+     */
     @Override
     public void melhorar(){
         this.acumulos += this.custo;

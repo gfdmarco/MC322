@@ -3,17 +3,27 @@ package eventos.loja;
 import jogo.EstadoJogo;
 import cartas.Carta;
 
+/**
+ * Representa o comando de comprar carta que a loja precisa intermediar para o jogador.
+ */
 public class ComandoComprarCarta implements Comando{
     private EstadoJogo estado;
     private Carta carta;
     private int preco;
 
+    /**
+     * Construção a partir do estado, para saber como está o saldo do herói, a carta a ser comprada e o preço respectivo
+     * para compra
+     */
     public ComandoComprarCarta(EstadoJogo estado, Carta carta, int preco){
         this.estado = estado;
         this.carta = carta;
         this.preco = preco;
     }
 
+    /**
+     * Executa a compra de carta
+     */
     @Override
     public void executar(){
         if (estado.pegaHeroi().qtdOuro() >= preco){

@@ -9,9 +9,20 @@ import jogo.EstadoJogo;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Representa o evento de Loja no mapa.
+ */
 public class Loja extends eventos.Evento{
+    /**
+     * Utiliza-se uma tabela hash para fazer a associação custo energético -> preço para as cartas
+     * Se aplica ao preço de remoção e ao de compra
+     */
     private Map<Integer, Integer> tabelaPrecos = new HashMap<>();
 
+    /**
+     * Construtor para estabelecer as relações da tabela hash de custo energético -> preço
+     * Exemplo: se a carta exige 1 de energia para ser utilizada, custará 400 de ouro para sua compra ou remoção.
+     */
     public Loja(){; //de custo para energia
         tabelaPrecos.put(1, 400);
         tabelaPrecos.put(2, 600);
@@ -19,15 +30,23 @@ public class Loja extends eventos.Evento{
         tabelaPrecos.put(4, 1000);
     }
 
+    /**
+     * Calcula o preço da carta a partir de seu custo energético
+     */
     public int calcularPreco(Carta carta){
         return tabelaPrecos.get(carta.qtdCusto());
     }
 
+    /**
+     * Executa o evento de Loja.
+     * @param estado        Estado de Jogo atual, que abrange os elementos imprescindíveis para a execução da loja.
+     * @param cartasExtras  Cartas oferecidas para compra na loja. As de remoção são as da própria pilha de compra.
+     */
     @Override
     public boolean iniciar(EstadoJogo estado, ArrayList<Carta> cartasExtras){
         ExecutorComando executor = new ExecutorComando();
         System.out.println("=================================================================================="); 
-        System.out.println("                          Seja bem-vindo(a) a loja!");
+        System.out.println("                          Seja bem-vindo(a) a Loja!");
         System.out.println("=================================================================================="); 
         System.out.println();
         System.out.println("   Aqui voce pode comprar cartas, como tambem remover outras do seu baralho!");

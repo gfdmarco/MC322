@@ -2,13 +2,22 @@ package eventos.fogueira;
 
 import jogo.EstadoJogo;
 
+/**
+ * Representa a estratégia de regeneração do Herói. Portanto, representa como utilizar a fogueira para regenerá-lo.
+ */
 public class EstrategiaRegenerar implements Estrategia {
     private EstadoJogo estado;
 
+    /**
+     * Construção a partir do estado de jogo, para consultar a situação do herói e alterar sua vida.
+     */
     public EstrategiaRegenerar(EstadoJogo estado){
         this.estado = estado;
     } 
 
+    /**
+     * Implementação da estratégia de regeneração do Herói.
+     */
     @Override
     public void executar(){
         System.out.println("=================================================================================="); 
