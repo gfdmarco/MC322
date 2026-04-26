@@ -115,6 +115,8 @@ Dessa forma, há uma batalha inicial predefinida com um inimigo inicial e, vence
 
 Entre nessa jornada para descobrir quem é o inimigo final!
 
+Após a vitória, o jogador escolhe qual o próximo inimigo que irá batalhar contra. Dessa forma, escolherá um caminho. Esolhendo um caminho, a batalha correspondente será iniciada e assim por diante. Ao avançar, a vida e baralho do jogaodr não se alteram. Apenas efeitos e energia são restaurados à configuração inicial.
+
 E de maneira simples mas concreta, esse é o modus operandi do jogo, esperamos que você se divirta e vença as tentações universitárias!
 
 ## COMO COMPILAR:
