@@ -12,7 +12,7 @@ import java.util.Map;
 public class Loja extends eventos.Evento{
     private Map<Integer, Integer> tabelaPrecos = new HashMap<>();
 
-    public void precos(){;
+    public Loja(){; //de custo para energia
         tabelaPrecos.put(1, 400);
         tabelaPrecos.put(2, 600);
         tabelaPrecos.put(3, 800);
@@ -25,18 +25,23 @@ public class Loja extends eventos.Evento{
 
     @Override
     public boolean iniciar(EstadoJogo estado, ArrayList<Carta> cartasExtras){
+        ExecutorComando executor = new ExecutorComando();
         System.out.println("=================================================================================="); 
-        System.out.println("                            Seja bem-vindo a loja!");
+        System.out.println("                          Seja bem-vindo(a) a loja!");
         System.out.println("=================================================================================="); 
         System.out.println();
-        System.out.println("        Aqui voce pode comprar cartas, como tambem remover outras do seu baralho!");
-        System.out.println("                      OBS: TODAS essas operacoes custam ouro!");
+        System.out.println("   Aqui voce pode comprar cartas, como tambem remover outras do seu baralho!");
+        System.out.println("                  OBS: TODAS essas operacoes custam ouro!");
+        System.out.println();
 
         Scanner entrada = estado.pegaEntrada();
         while (true){
+            System.out.println();
+            System.out.println("SALDO ATUAL: " + estado.pegaHeroi().qtdOuro());
+            System.out.println();
             System.out.println("Escolha como deseja investir seu ouro!");
             System.out.println("1 - Comprar carta(s)");
-            System.out.println("2 - Remover Cartas");
+            System.out.println("2 - Remover carta(s)");
             System.out.println("3 - Sair da loja");
             int leitura;
             leitura = entrada.nextInt();
@@ -67,7 +72,7 @@ public class Loja extends eventos.Evento{
                         Comando comando = new ComandoComprarCarta(estado, cartasExtras.get(leitura2 - 1), 
                         calcularPreco(cartasExtras.get(leitura2 - 1)));
 
-                        comando.executar();
+                        executor.executar(comando);
                         break;
                     }
                 }
@@ -96,10 +101,10 @@ public class Loja extends eventos.Evento{
                         break;
                     }
                     else {
-                        Comando comando = new ComandoRemoverCarta(estado, estado.pegaPilhaCompra().get(leitura2 - 1), 
-                        calcularPreco(estado.pegaPilhaCompra().get(leitura2 - 1)));
+                        Comando comando = new ComandoRemoverCarta(estado, leitura2 - 1, 
+                            calcularPreco(estado.pegaPilhaCompra().get(leitura2 - 1)));
                         
-                        comando.executar();
+                        executor.executar(comando);
                         break;
                     }
                 }
@@ -112,6 +117,12 @@ public class Loja extends eventos.Evento{
                 System.out.println("                    ERRO: numero invalido! Digite novamente");
                 System.out.println("==================================================================================");
             }
+        }
+        try{       
+            Thread.sleep(3000);
+        }
+        catch (InterruptedException e){
+            System.err.println("Pausa interrompida");
         }
         return true;
     }

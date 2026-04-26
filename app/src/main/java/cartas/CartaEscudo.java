@@ -49,4 +49,10 @@ public class CartaEscudo extends Carta{
     public int qtdEscudo(){
         return escudo;
     }
+
+    @Override
+    public void melhorar(){
+        this.escudo += this.custo;
+        this.descricao += "(MELHORIA: +" + this.custo + " de escudo)";
+    }
 }

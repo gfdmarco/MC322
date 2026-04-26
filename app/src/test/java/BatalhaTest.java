@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import cartas.Carta;
 import cartas.CartaDano;
+import cartas.CartaEfeito;
+import cartas.CartaEscudo;
 import entidades.Heroi;
 import entidades.Inimigo;
 import eventos.batalha.Batalha;
@@ -26,17 +28,24 @@ public class BatalhaTest {
         Batalha b = new Batalha(h, i);
 
         pilha_compra.add(c);
-        //leitura de 1 para decidir utilizar a carta e 0 para utilizar a primeira carta da mao
-        Scanner entrada = new Scanner("1\n0\n");
 
-        EstadoJogo estado = new EstadoJogo(h, m, pilha_compra, mao_heroi, pilha_descarte, new ArrayList<>(), 
-        new ArrayList<>(), new ArrayList<>(), entrada);
+        Scanner entrada = new Scanner("1\n0\n2\n1\n"); 
 
-        boolean vitoria_heroi = b.iniciar(estado, new ArrayList<>());
+        ArrayList<CartaDano> cd_in = new ArrayList<>();
+        ArrayList<CartaEscudo> ce_in = new ArrayList<>();
+        ArrayList<CartaEfeito> cef = new ArrayList<>();
+
+        EstadoJogo estado = new EstadoJogo(h, m, pilha_compra, mao_heroi, pilha_descarte, cd_in, ce_in, cef, entrada);
+
+        ArrayList<Carta> cExtraB = new ArrayList<>();
+        cExtraB.add(new CartaDano("A",1,"",5));
+        cExtraB.add(new CartaDano("B",1,"",5));
+        cExtraB.add(new CartaDano("C",1,"",5));
+
+        boolean vitoria_heroi = b.iniciar(estado, cExtraB);
 
         assertEquals(true, vitoria_heroi);
     }
-
     @Test 
     public void vitoriaInimigo(){
         CartaDano c = new CartaDano("Ataque", 3, "Mata de uma vez", 10);

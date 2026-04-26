@@ -1,16 +1,15 @@
 package eventos.loja;
 
-import cartas.Carta;
 import jogo.EstadoJogo;
 
 public class ComandoRemoverCarta implements Comando{
     private EstadoJogo estado;
-    private Carta carta;
+    private int indiceCarta;
     private int preco;
 
-    public ComandoRemoverCarta(EstadoJogo estado, Carta carta, int preco){
+    public ComandoRemoverCarta(EstadoJogo estado, int indiceCarta, int preco){
         this.estado = estado;
-        this.carta = carta;
+        this.indiceCarta = indiceCarta;
         this.preco = preco;
     }
 
@@ -18,7 +17,11 @@ public class ComandoRemoverCarta implements Comando{
     public void executar(){
         if (estado.pegaHeroi().qtdOuro() >= preco){
             estado.pegaHeroi().consomeOuro(preco);
-            estado.pegaPilhaCompra().remove(carta);
+            estado.pegaPilhaCompra().remove(indiceCarta);
+            System.out.println("==================================================================================");
+            System.out.println("                            Carta removida!");
+            System.out.println("    Seu saldo agora corresponde a: " + estado.pegaHeroi().qtdOuro() + " de Ouro");
+            System.out.println("==================================================================================");
         }
         else {
             System.out.println("==================================================================================");

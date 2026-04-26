@@ -37,4 +37,6 @@ public abstract class Carta {
     public int qtdCusto(){
         return custo;
     }
+
+    public abstract void melhorar();
 }

@@ -68,4 +68,10 @@ public class CartaDano extends Carta{
     public int qtdDano(){
         return dano;
     }
+
+    @Override
+    public void melhorar(){
+        this.dano += this.custo;
+        this.descricao += "(MELHORIA: +" + this.custo + " de dano)";
+    }
 }

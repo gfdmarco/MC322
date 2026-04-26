@@ -19,6 +19,10 @@ public class ComandoComprarCarta implements Comando{
         if (estado.pegaHeroi().qtdOuro() >= preco){
             estado.pegaHeroi().consomeOuro(preco);
             estado.pegaPilhaCompra().add(carta);
+            System.out.println("==================================================================================");
+            System.out.println("                            Carta comprada!");
+            System.out.println("    Seu saldo agora corresponde a: " + estado.pegaHeroi().qtdOuro() + " de Ouro");
+            System.out.println("==================================================================================");
         }
         else {
             System.out.println("==================================================================================");

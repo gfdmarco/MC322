@@ -50,4 +50,13 @@ public class Heroi extends Entidade {
     public int qtdOuro(){
         return ouro;
     }
+
+    public void regenerar(){
+        if (this.vida + 16 <= 80){
+            this.vida += 16;
+        }
+        else {
+            this.vida = 80;
+        }
+    }
 }

@@ -12,6 +12,7 @@ import jogo.Inicializacoes;
 import eventos.batalha.Batalha;
 import eventos.loja.Loja;
 import eventos.escolha.Escolha;
+import eventos.fogueira.Fogueira;
 
 public abstract class Inicializacoes {
 
@@ -38,7 +39,7 @@ public abstract class Inicializacoes {
         no1_fase1.add(no2_fase2);
 
         DefaultMutableTreeNode no3_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(6)));
-        DefaultMutableTreeNode no4_fase2 = new DefaultMutableTreeNode(new Escolha());
+        DefaultMutableTreeNode no4_fase2 = new DefaultMutableTreeNode(new Fogueira());
         no2_fase1.add(no3_fase2);
         no2_fase1.add(no4_fase2);
 
@@ -51,17 +52,6 @@ public abstract class Inicializacoes {
         DefaultMutableTreeNode no8_fase2 = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(8)));
         no4_fase1.add(no7_fase2);
         no4_fase1.add(no8_fase2);
-
-        //BOSS FINAL (CALOURADA)
-        DefaultMutableTreeNode bossFinal = new DefaultMutableTreeNode(new Batalha(heroi, inimigos.get(9)));
-        no1_fase2.add(bossFinal);
-        no2_fase2.add(bossFinal);
-        no3_fase2.add(bossFinal);
-        no4_fase2.add(bossFinal);
-        no5_fase2.add(bossFinal);
-        no6_fase2.add(bossFinal);
-        no7_fase2.add(bossFinal);
-        no8_fase2.add(bossFinal);
 
         return raiz;
     }

@@ -29,7 +29,7 @@ public class Recompensas {
 
         if (leitura == 1){
             estado.pegaHeroi().ganhaOuro(qtdOuro);
-            System.out.println(qtdOuro + "de Ouro foram adicionados ao seu bixao!");
+            System.out.println(qtdOuro + " de Ouro foram adicionados ao seu bixao!");
         }
         else if (leitura == 2){
             Collections.shuffle(cartasExtras);
@@ -46,6 +46,7 @@ public class Recompensas {
                 if (leitura2 >= 1 && leitura2 <= 3){
                     estado.pegaPilhaCompra().add(cartasExtras.get(leitura2 - 1));
                     System.out.println("Carta escolhida adicionada ao baralho!");
+                    break;
                 }
                 else if (leitura2 == 4){
                     break;
