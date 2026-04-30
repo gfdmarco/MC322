@@ -117,6 +117,8 @@ Entre nessa jornada para descobrir quem é o inimigo final!
 
 E de maneira simples mas concreta, esse é o modus operandi do jogo, esperamos que você se divirta e vença as tentações universitárias!
 
+OBS: neste projeto, foram utilizadas ferramentas de IA para exibição visual mais clara do mapa e na refatoração de testes após mudanças de código.
+
 ## COMO COMPILAR:
 
 Certifique-se de estar na raiz do projeto no terminal e siga as instruções:
