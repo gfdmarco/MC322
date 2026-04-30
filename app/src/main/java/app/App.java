@@ -123,23 +123,24 @@ public class App {
         System.out.println();
         System.out.println("   [ Nivel 1 ]                  [ Nivel 2 ]                      [ Nivel 3 ]                 [ Nivel FINAL ]  ");
         System.out.println();
-        System.out.println("                                                      +--> Loja                                               ");
+        System.out.println("                                                     +--> Loja                                               ");
         System.out.println("                           +--> " + i1 + " --|                                             ");
-        System.out.println("                           |                          +--> " + i5 + " --+                   ");
+        System.out.println("                           |                         +--> " + i5 + "  --+                   ");
         System.out.println("                           |                                                    |                 ");
-        System.out.println("                           |                          +--> " + i6 + " --|                 ");
-        System.out.println("                           +--> " + i2 + " --|                             |                 ");
-        System.out.println("                           |                          +--> Bandeco          |                 ");
-        System.out.println("  " + i0 + " --|                                                                +--> C A L O U R A D A");
-        System.out.println("                           |                          +--> Aventura (Escolha)   |                 ");
-        System.out.println("                           +--> " + i3 + " --|                             |                 ");
-        System.out.println("                           |                          +--> " + i7 + " --|                 ");
+        System.out.println("                           |                         +--> " + i6 + "  --|                 ");
+        System.out.println("                           +--> " + i2 + " --|                          |                 ");
+        System.out.println("                           |                         +--> Bandeco               |                 ");
+        System.out.println("  " + i0 + " --|                                                        +-->        C A L O U R A D A");
+        System.out.println("                           |                         +--> Aventura (Escolha)    |                 ");
+        System.out.println("                           +--> " + i3 + " --|                          |                 ");
+        System.out.println("                           |                         +--> " + i7 + "  --|                 ");
         System.out.println("                           |                                                    |                 ");
-        System.out.println("                           |                          +--> Loja                 +                 ");
+        System.out.println("                           |                         +--> Loja                  +                 ");
         System.out.println("                           +--> " + i4 + " --|                                             ");
-        System.out.println("                                                      +--> " + i8 + "                     ");
+        System.out.println("                                                     +--> " + i8 + "                     ");
         System.out.println();
         System.out.println("==============================================================================================================");
+        System.out.println();
         
         //pausa entre as ações no terminal
         try{       
